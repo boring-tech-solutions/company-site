@@ -1,6 +1,7 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
+import ServicePreview from "@/components/home/ServicePreview";
 import AIChatbot from "@/components/chat/AIChatbot";
 
 const Index = () => {
@@ -9,6 +10,7 @@ const Index = () => {
       <Header />
       <main className="relative z-10">
         <HeroSection />
+        <ServicePreview />
       </main>
       <Footer />
       <AIChatbot />
