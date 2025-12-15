@@ -23,8 +23,19 @@ const HeroSection = () => {
 
       {/* Mobile: Stacked layout */}
       <div className="md:hidden flex flex-col flex-1">
+        {/* Mobile Text */}
+        <div className="flex flex-col justify-center px-6 py-8">
+          <h1 className="text-3xl font-bold mb-4 font-sans text-center" style={{ lineHeight: '1.5' }}>
+            Calm Precision in a{" "}
+            <span className="text-gradient">Noisy Tech World</span>
+          </h1>
+          <p className="text-base text-muted-foreground text-center">
+            Your starting point for real-world AI — no hype, just impact.
+          </p>
+        </div>
+
         {/* Mobile Video */}
-        <div className="relative w-full aspect-video">
+        <div className="relative w-full aspect-video flex-1">
           <video
             autoPlay
             muted
@@ -35,17 +46,6 @@ const HeroSection = () => {
             <source src="https://image-cdn.quizapp.ca/boring-team-hero-video.mp4?ref=12222" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-background/30" />
-        </div>
-
-        {/* Mobile Text */}
-        <div className="flex-1 flex flex-col justify-center px-6 py-8">
-          <h1 className="text-3xl font-bold mb-4 font-sans text-center" style={{ lineHeight: '1.5' }}>
-            Calm Precision in a{" "}
-            <span className="text-gradient">Noisy Tech World</span>
-          </h1>
-          <p className="text-base text-muted-foreground text-center">
-            Your starting point for real-world AI — no hype, just impact.
-          </p>
         </div>
 
         {/* Mobile CTAs */}
