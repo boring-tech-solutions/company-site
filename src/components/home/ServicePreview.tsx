@@ -66,7 +66,7 @@ const ServicePreview = () => {
 
                 <div className="flex-grow">
                   {/* Title */}
-                  <h3 className="font-display text-xl font-semibold mb-2 text-background group-hover:text-primary transition-colors">
+                  <h3 className="font-display text-xl font-semibold mb-2 text-background transition-colors">
                     {service.title}
                   </h3>
 
@@ -76,7 +76,7 @@ const ServicePreview = () => {
                   </p>
 
                   {/* Outcome */}
-                  <div className="inline-flex items-center gap-2 text-primary text-sm font-medium">
+                  <div className="inline-flex items-center gap-2 text-background text-sm font-medium">
                     <span className="w-1.5 h-1.5 rounded-full bg-background" />
                     {service.outcome}
                   </div>
