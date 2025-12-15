@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -31,11 +32,12 @@ const Header = () => {
       <div className="section-container">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-              <span className="font-display font-bold text-primary text-lg">B</span>
-            </div>
-            
+          <a href="#" className="flex items-center group">
+            <img 
+              src={logo} 
+              alt="Boring Tech Solutions" 
+              className="h-10 w-auto"
+            />
           </a>
 
           {/* Desktop Navigation */}
