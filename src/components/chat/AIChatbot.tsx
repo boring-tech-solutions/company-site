@@ -14,12 +14,18 @@ const starterPrompts = [
   "Which Boring Tech service is right for me?",
 ];
 
+// Global function to open chatbot with a message
+export const openChatbotWithMessage = (message: string) => {
+  window.dispatchEvent(new CustomEvent("open-chatbot", { detail: { message } }));
+};
+
 const AIChatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const pendingMessageRef = useRef<string | null>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -28,6 +34,29 @@ const AIChatbot = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Listen for external open requests
+  useEffect(() => {
+    const handleOpenChatbot = (event: CustomEvent<{ message: string }>) => {
+      pendingMessageRef.current = event.detail.message;
+      setIsOpen(true);
+    };
+
+    window.addEventListener("open-chatbot", handleOpenChatbot as EventListener);
+    return () => {
+      window.removeEventListener("open-chatbot", handleOpenChatbot as EventListener);
+    };
+  }, []);
+
+  // Send pending message when chat opens
+  useEffect(() => {
+    if (isOpen && pendingMessageRef.current && !isLoading && messages.length === 0) {
+      const message = pendingMessageRef.current;
+      pendingMessageRef.current = null;
+      // Small delay to ensure UI is ready
+      setTimeout(() => sendMessage(message), 100);
+    }
+  }, [isOpen]);
 
   const sendMessage = async (messageText: string) => {
     if (!messageText.trim() || isLoading) return;

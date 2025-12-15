@@ -1,7 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle } from "lucide-react";
+import { openChatbotWithMessage } from "@/components/chat/AIChatbot";
 
 const HeroSection = () => {
+  const handleShowPossible = () => {
+    openChatbotWithMessage("Show me what's possible with AI for my business");
+  };
   return (
     <section className="relative min-h-screen flex flex-col overflow-hidden pt-20">
       {/* Desktop: Video as background */}
@@ -57,7 +61,12 @@ const HeroSection = () => {
                 Book a Coffee Chat
               </a>
             </Button>
-            <Button size="lg" variant="outline" className="text-base px-6 py-5 group border-border hover:border-primary/50 w-full">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="text-base px-6 py-5 group border-border hover:border-primary/50 w-full"
+              onClick={handleShowPossible}
+            >
               Show Me What's Possible
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
             </Button>
@@ -87,7 +96,12 @@ const HeroSection = () => {
               Book a Coffee Chat
             </a>
           </Button>
-          <Button size="lg" variant="outline" className="text-lg px-8 py-6 group border-border hover:border-primary/50">
+          <Button 
+            size="lg" 
+            variant="outline" 
+            className="text-lg px-8 py-6 group border-border hover:border-primary/50"
+            onClick={handleShowPossible}
+          >
             Show Me What's Possible
             <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
           </Button>
