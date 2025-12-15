@@ -49,7 +49,7 @@ const HeroSection = () => {
         </div>
 
         {/* Mobile CTAs */}
-        <div className="px-6 pb-8">
+        <div className="px-6 pb-4">
           <div className="flex flex-col gap-3">
             <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 text-base px-6 py-5 group glow-gold w-full" asChild>
               <a href="https://cal.com/boring-tech-solutions/15min" target="_blank" rel="noopener noreferrer">
