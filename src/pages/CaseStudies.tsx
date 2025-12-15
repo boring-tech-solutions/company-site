@@ -6,7 +6,6 @@ import AIChatbot from "@/components/chat/AIChatbot";
 const CaseStudies = () => {
   return (
     <div className="min-h-screen bg-background relative">
-      <div className="fixed inset-0 tech-dots pointer-events-none opacity-50" />
       <Header />
       <main className="relative z-10 pt-20">
         <CaseStudyPreview />

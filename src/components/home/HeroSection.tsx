@@ -15,16 +15,7 @@ const HeroSection = () => {
       
       {/* Video Overlay */}
       <div className="absolute inset-0 bg-background/70" />
-      <div className="absolute inset-0 bg-gradient-to-b from-charcoal-deep/50 via-background/60 to-background" />
-      
-      {/* Tech Grid Pattern */}
-      <div className="absolute inset-0 tech-grid opacity-30" />
-      
-      {/* Circuit Pattern Overlay */}
-      <div className="absolute inset-0 circuit-pattern opacity-50" />
-      
-      {/* Scan Line Effect */}
-      <div className="absolute inset-0 scan-line pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/60 to-background" />
 
       <div className="section-container relative z-10">
         <div className="max-w-4xl mx-auto text-center">
