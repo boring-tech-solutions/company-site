@@ -57,10 +57,10 @@ const ServicePreview = () => {
             >
               <div className="flex items-start gap-5">
                 {/* Icon */}
-                <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 group-hover:border-primary/40 transition-all duration-300">
                   <service.icon 
-                    className="text-primary icon-animate [stroke-width:1.5]" 
-                    size={26}
+                    className="text-primary icon-animate" 
+                    size={28}
                   />
                 </div>
 
