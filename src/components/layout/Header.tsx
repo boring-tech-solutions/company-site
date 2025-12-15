@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
+import { cn } from "@/lib/utils";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,7 +49,12 @@ const Header = () => {
               <Link
                 key={link.name}
                 to={link.href}
-                className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium"
+                className={cn(
+                  "transition-colors text-sm font-medium",
+                  location.pathname === link.href
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
               >
                 {link.name}
               </Link>
@@ -81,7 +88,12 @@ const Header = () => {
                 <Link
                   key={link.name}
                   to={link.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors py-2"
+                  className={cn(
+                    "transition-colors py-2",
+                    location.pathname === link.href
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
