@@ -1,15 +1,17 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import HeroSection from "@/components/home/HeroSection";
+import CommunitySection from "@/components/home/CommunitySection";
+import CollectivePreview from "@/components/home/CollectivePreview";
 import AIChatbot from "@/components/chat/AIChatbot";
 
-const Index = () => {
+const Community = () => {
   return (
     <div className="min-h-screen bg-background relative">
       <div className="fixed inset-0 tech-dots pointer-events-none opacity-50" />
       <Header />
-      <main className="relative z-10">
-        <HeroSection />
+      <main className="relative z-10 pt-20">
+        <CommunitySection />
+        <CollectivePreview />
       </main>
       <Footer />
       <AIChatbot />
@@ -17,4 +19,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Community;
