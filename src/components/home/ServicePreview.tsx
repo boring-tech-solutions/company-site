@@ -79,18 +79,12 @@ const ServicePreview = () => {
     <section id="services" className="py-24 bg-muted/50">
       <div className="section-container">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16 gap-6">
-          <div>
-            <span className="text-primary text-sm font-medium uppercase tracking-widest">What We Do</span>
-            <h2 className="font-display text-3xl md:text-4xl font-bold mt-2">
-              Practical Solutions,{" "}
-              <span className="text-gradient">Real Results</span>
-            </h2>
-          </div>
-          <Button variant="outline" className="self-start md:self-auto group">
-            Explore All Services
-            <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
-          </Button>
+        <div className="mb-16">
+          <span className="text-primary text-sm font-medium uppercase tracking-widest">What We Do</span>
+          <h2 className="font-display text-3xl md:text-4xl font-bold mt-2">
+            Agile Solutions,{" "}
+            <span className="text-gradient">Measurable Results</span>
+          </h2>
         </div>
 
         {/* Services Grid */}
@@ -99,33 +93,50 @@ const ServicePreview = () => {
             <div
               key={index}
               onClick={() => setSelectedService(service)}
-              className="bg-foreground border border-foreground/90 rounded-2xl p-6 group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 active:scale-[0.98]"
+              className="bg-foreground border border-foreground/90 rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 active:scale-[0.98]"
               style={{ transition: 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)' }}
             >
-              <div className="flex items-start gap-5">
-                {/* Icon */}
-                <div className="w-14 h-14 rounded-xl bg-background/10 border border-background/20 flex items-center justify-center flex-shrink-0 group-hover:bg-background/20 group-hover:border-background/30 transition-all duration-300">
-                  <service.icon 
-                    className="text-background icon-animate" 
-                    size={28}
-                  />
-                </div>
+              {/* Card Image */}
+              <div className="relative w-full h-40 overflow-hidden">
+                <img 
+                  src={service.image} 
+                  alt={service.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/30 to-transparent" />
+              </div>
 
-                <div className="flex-grow">
-                  {/* Title */}
-                  <h3 className="font-display text-xl font-semibold mb-2 text-background transition-colors">
-                    {service.title}
-                  </h3>
+              <div className="p-6 pt-4">
+                <div className="flex items-start gap-4">
+                  {/* Icon */}
+                  <div className="w-12 h-12 rounded-xl bg-background/10 border border-background/20 flex items-center justify-center flex-shrink-0 group-hover:bg-background/20 group-hover:border-background/30 transition-all duration-300">
+                    <service.icon 
+                      className="text-background icon-animate" 
+                      size={24}
+                    />
+                  </div>
 
-                  {/* Description */}
-                  <p className="text-background/70 text-sm mb-4 leading-relaxed">
-                    {service.description}
-                  </p>
+                  <div className="flex-grow">
+                    {/* Title */}
+                    <h3 className="font-display text-2xl md:text-3xl font-bold mb-3 text-background transition-colors">
+                      {service.title}
+                    </h3>
 
-                  {/* Outcome */}
-                  <div className="inline-flex items-center gap-2 text-background text-sm font-medium">
-                    <span className="w-1.5 h-1.5 rounded-full bg-background" />
-                    {service.outcome}
+                    {/* Bullet Points */}
+                    <ul className="space-y-2 mb-4">
+                      {service.benefits.map((benefit, idx) => (
+                        <li key={idx} className="flex items-start gap-2 text-background/80 text-sm">
+                          <span className="w-1.5 h-1.5 rounded-full bg-background/60 mt-1.5 flex-shrink-0" />
+                          {benefit}
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* Outcome */}
+                    <div className="inline-flex items-center gap-2 text-background text-sm font-semibold">
+                      <span className="w-2 h-2 rounded-full bg-primary" />
+                      {service.outcome}
+                    </div>
                   </div>
                 </div>
               </div>
