@@ -34,18 +34,20 @@ const HeroSection = () => {
       </div>
 
       {/* CTA Buttons - Bottom aligned */}
-      <div className="section-container relative z-10 pb-12">
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in delay-300">
-          <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-6 group glow-gold" asChild>
-            <a href="https://cal.com/boring-tech-solutions/15min" target="_blank" rel="noopener noreferrer">
-              <MessageCircle className="mr-2" size={20} />
-              Book a Coffee Chat
-            </a>
-          </Button>
-          <Button size="lg" variant="outline" className="text-lg px-8 py-6 group border-border hover:border-primary/50">
-            Show Me What's Possible
-            <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
-          </Button>
+      <div className="absolute bottom-[30%] left-0 right-0 z-10">
+        <div className="section-container">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in delay-300">
+            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-6 group glow-gold" asChild>
+              <a href="https://cal.com/boring-tech-solutions/15min" target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="mr-2" size={20} />
+                Book a Coffee Chat
+              </a>
+            </Button>
+            <Button size="lg" variant="outline" className="text-lg px-8 py-6 group border-border hover:border-primary/50">
+              Show Me What's Possible
+              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+            </Button>
+          </div>
         </div>
       </div>
     </section>;
