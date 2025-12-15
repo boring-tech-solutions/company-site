@@ -12,9 +12,12 @@ import AIChatbot from "@/components/chat/AIChatbot";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      {/* Global Tech Dots Background */}
+      <div className="fixed inset-0 tech-dots pointer-events-none opacity-50" />
+      
       <Header />
-      <main>
+      <main className="relative z-10">
         <HeroSection />
         <SelfIdentificationCards />
         <PartnerLogos />
