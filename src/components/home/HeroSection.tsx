@@ -2,21 +2,26 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles, MessageCircle } from "lucide-react";
 const HeroSection = () => {
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-charcoal-deep via-background to-background" />
+      {/* Background Video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="https://image-cdn.quizapp.ca/boring-team-hero-video.mp4?ref=12222" type="video/mp4" />
+      </video>
+      
+      {/* Video Overlay */}
+      <div className="absolute inset-0 bg-background/70" />
+      <div className="absolute inset-0 bg-gradient-to-b from-charcoal-deep/50 via-background/60 to-background" />
       
       {/* Tech Grid Pattern */}
-      <div className="absolute inset-0 tech-grid opacity-40" />
-      
-      {/* Floating Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary/3 rounded-full blur-3xl animate-float" style={{
-      animationDelay: '2s'
-    }} />
-      <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-primary/4 rounded-full blur-3xl animate-pulse-subtle" />
+      <div className="absolute inset-0 tech-grid opacity-30" />
       
       {/* Circuit Pattern Overlay */}
-      <div className="absolute inset-0 circuit-pattern" />
+      <div className="absolute inset-0 circuit-pattern opacity-50" />
       
       {/* Scan Line Effect */}
       <div className="absolute inset-0 scan-line pointer-events-none" />
