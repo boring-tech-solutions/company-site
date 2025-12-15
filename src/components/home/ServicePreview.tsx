@@ -124,7 +124,7 @@ const ServicePreview = () => {
 
                     {/* Bullet Points */}
                     <ul className="space-y-2 mb-4">
-                      {service.benefits.map((benefit, idx) => (
+                      {service.benefits.slice(0, 3).map((benefit, idx) => (
                         <li key={idx} className="flex items-start gap-2 text-background/80 text-sm">
                           <span className="w-1.5 h-1.5 rounded-full bg-background/60 mt-1.5 flex-shrink-0" />
                           {benefit}
