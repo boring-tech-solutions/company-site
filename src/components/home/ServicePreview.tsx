@@ -52,12 +52,12 @@ const ServicePreview = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-primary border border-primary rounded-2xl p-6 group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 active:scale-[0.98]"
+              className="bg-foreground border border-foreground/90 rounded-2xl p-6 group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 active:scale-[0.98]"
               style={{ transition: 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)' }}
             >
               <div className="flex items-start gap-5">
                 {/* Icon */}
-                <div className="w-14 h-14 rounded-xl bg-background/20 border border-background/30 flex items-center justify-center flex-shrink-0 group-hover:bg-background/30 group-hover:border-background/50 transition-all duration-300">
+                <div className="w-14 h-14 rounded-xl bg-background/10 border border-background/20 flex items-center justify-center flex-shrink-0 group-hover:bg-background/20 group-hover:border-background/30 transition-all duration-300">
                   <service.icon 
                     className="text-background icon-animate" 
                     size={28}
@@ -66,18 +66,18 @@ const ServicePreview = () => {
 
                 <div className="flex-grow">
                   {/* Title */}
-                  <h3 className="font-display text-xl font-semibold mb-2 text-primary-foreground group-hover:text-background transition-colors">
+                  <h3 className="font-display text-xl font-semibold mb-2 text-background group-hover:text-primary transition-colors">
                     {service.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-primary-foreground/80 text-sm mb-4 leading-relaxed">
+                  <p className="text-background/70 text-sm mb-4 leading-relaxed">
                     {service.description}
                   </p>
 
                   {/* Outcome */}
-                  <div className="inline-flex items-center gap-2 text-background text-sm font-medium">
-                    <span className="w-1.5 h-1.5 rounded-full bg-background" />
+                  <div className="inline-flex items-center gap-2 text-primary text-sm font-medium">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                     {service.outcome}
                   </div>
                 </div>
