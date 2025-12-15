@@ -77,7 +77,7 @@ const ServicePreview = () => {
 
                   {/* Outcome */}
                   <div className="inline-flex items-center gap-2 text-primary text-sm font-medium">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-background" />
                     {service.outcome}
                   </div>
                 </div>
