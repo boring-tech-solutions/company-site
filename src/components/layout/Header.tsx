@@ -67,8 +67,8 @@ const Header = () => {
             >
               Contact
             </Button>
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
-              Book a Coffee Chat
+            <Button className="bg-primary text-primary-foreground hover:bg-primary/90" asChild>
+              <a href="https://cal.com/boring-tech-solutions/15min" target="_blank" rel="noopener noreferrer">Book a Coffee Chat</a>
             </Button>
           </div>
 
@@ -102,8 +102,8 @@ const Header = () => {
                 <Button variant="outline" className="w-full text-lg py-6">
                   Contact
                 </Button>
-                <Button className="w-full bg-primary text-primary-foreground text-lg py-6">
-                  Book a Coffee Chat
+                <Button className="w-full bg-primary text-primary-foreground text-lg py-6" asChild>
+                  <a href="https://cal.com/boring-tech-solutions/15min" target="_blank" rel="noopener noreferrer">Book a Coffee Chat</a>
                 </Button>
               </div>
             </div>
