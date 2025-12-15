@@ -30,11 +30,8 @@ const services = [
 
 const ServicePreview = () => {
   return (
-    <section id="services" className="py-24 relative">
-      {/* Background Accent */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/3 to-transparent pointer-events-none" />
-      
-      <div className="section-container relative">
+    <section id="services" className="py-24 bg-muted/50">
+      <div className="section-container">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16 gap-6">
           <div>
@@ -55,12 +52,17 @@ const ServicePreview = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="card-premium group cursor-pointer"
+              className="card-premium group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 active:scale-[0.98]"
+              style={{ transition: 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)' }}
             >
               <div className="flex items-start gap-5">
                 {/* Icon */}
                 <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                  <service.icon className="text-primary" size={26} />
+                  <service.icon 
+                    className="text-primary transition-all duration-500 group-hover:stroke-[2.5]" 
+                    size={26} 
+                    strokeWidth={1.5}
+                  />
                 </div>
 
                 <div className="flex-grow">
