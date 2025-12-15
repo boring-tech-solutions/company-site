@@ -44,20 +44,8 @@ const HeroSection = () => {
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
             </Button>
           </div>
-
-          {/* Secondary CTAs */}
-          <div className="flex flex-wrap gap-4 justify-center mt-6 animate-fade-in delay-400">
-            <Button variant="ghost" className="text-muted-foreground hover:text-foreground text-sm">
-              Not sure where to start?
-            </Button>
-            <Button variant="ghost" className="text-muted-foreground hover:text-foreground text-sm">
-              Talk to an AI Specialist
-            </Button>
-            <Button variant="ghost" className="text-muted-foreground hover:text-foreground text-sm">
-              Tell Us Your Challenge
-            </Button>
-          </div>
         </div>
+
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-float">
