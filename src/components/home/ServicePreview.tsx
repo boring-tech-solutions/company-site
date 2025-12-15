@@ -76,7 +76,7 @@ const ServicePreview = () => {
   const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
 
   return (
-    <section id="services" className="py-24 bg-muted/50">
+    <section id="services" className="py-24" style={{ backgroundColor: '#1B1B1B' }}>
       <div className="section-container">
         {/* Section Header */}
         <div className="mb-16">
@@ -93,7 +93,7 @@ const ServicePreview = () => {
             <div
               key={index}
               onClick={() => setSelectedService(service)}
-              className="bg-foreground border border-foreground/90 rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 active:scale-[0.98]"
+              className="bg-foreground rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 active:scale-[0.98]"
               style={{ transition: 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)' }}
             >
               {/* Card Image */}
