@@ -123,20 +123,14 @@ const ServicePreview = () => {
                     </h3>
 
                     {/* Bullet Points */}
-                    <ul className="space-y-2 mb-4">
-                      {service.benefits.slice(0, 3).map((benefit, idx) => (
+                    <ul className="space-y-2">
+                      {service.benefits.map((benefit, idx) => (
                         <li key={idx} className="flex items-start gap-2 text-background/80 text-sm">
                           <span className="w-1.5 h-1.5 rounded-full bg-background/60 mt-1.5 flex-shrink-0" />
                           {benefit}
                         </li>
                       ))}
                     </ul>
-
-                    {/* Outcome */}
-                    <div className="inline-flex items-center gap-2 text-background text-sm font-semibold">
-                      <span className="w-2 h-2 rounded-full bg-primary" />
-                      {service.outcome}
-                    </div>
                   </div>
                 </div>
               </div>
