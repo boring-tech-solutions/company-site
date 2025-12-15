@@ -73,7 +73,7 @@ const Header = () => {
           </div>
 
           <button
-            className="lg:hidden p-2 text-foreground"
+            className="lg:hidden p-2 text-foreground relative z-50"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -81,28 +81,28 @@ const Header = () => {
         </div>
 
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-20 left-0 right-0 bg-background/98 backdrop-blur-md border-b border-border animate-fade-in">
-            <div className="section-container py-6 flex flex-col gap-4">
+          <div className="lg:hidden fixed inset-0 top-0 left-0 right-0 bottom-0 bg-black/95 z-40 animate-fade-in">
+            <div className="flex flex-col items-center justify-center min-h-screen gap-8 px-6">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.href}
                   className={cn(
-                    "transition-colors py-2",
+                    "transition-colors text-2xl font-medium",
                     location.pathname === link.href
                       ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground"
+                      : "text-foreground hover:text-primary"
                   )}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
                 </Link>
               ))}
-              <div className="pt-4 border-t border-border flex flex-col gap-3">
-                <Button variant="outline" className="w-full">
+              <div className="pt-8 flex flex-col gap-4 w-full max-w-xs">
+                <Button variant="outline" className="w-full text-lg py-6">
                   Contact
                 </Button>
-                <Button className="w-full bg-primary text-primary-foreground">
+                <Button className="w-full bg-primary text-primary-foreground text-lg py-6">
                   Book a Coffee Chat
                 </Button>
               </div>
