@@ -52,16 +52,15 @@ const ServicePreview = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="card-premium group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 active:scale-[0.98]"
+              className="card-premium-no-glow group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 active:scale-[0.98]"
               style={{ transition: 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)' }}
             >
               <div className="flex items-start gap-5">
                 {/* Icon */}
                 <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                   <service.icon 
-                    className="text-primary transition-all duration-500 group-hover:stroke-[2.5]" 
-                    size={26} 
-                    strokeWidth={1.5}
+                    className="text-primary icon-animate [stroke-width:1.5]" 
+                    size={26}
                   />
                 </div>
 
