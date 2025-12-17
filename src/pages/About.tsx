@@ -162,8 +162,7 @@ const About = () => {
                   </h3>
                   
                   <p className="text-muted-foreground text-lg leading-relaxed">
-                    To make <span className="text-primary font-medium">AI</span> practical, ethical, and accessible for 
-                    Canadian organizations — especially small and medium-sized businesses who want modern 
+                    To make <span className="text-primary font-bold">AI practical, ethical, and accessible for Canadian organizations</span> — especially small and medium-sized businesses who want modern 
                     tools but don't know where to begin.
                   </p>
                 </div>
