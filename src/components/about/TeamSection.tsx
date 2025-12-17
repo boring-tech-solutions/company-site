@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Linkedin, ExternalLink } from "lucide-react";
+import { Linkedin, ExternalLink, Sparkles } from "lucide-react";
 
 interface TeamMember {
   name: string;
@@ -40,19 +40,6 @@ const teamMembers: TeamMember[] = [
     initials: "SM"
   },
   {
-    name: "Watson",
-    role: "Software Engineer & Creative Technologist",
-    shortRole: "Full-Stack • Cloud Architecture",
-    bio: [
-      "Watson is the engineer who turns ideas into clean, scalable systems. With experience across full-stack development, microservices, Google Cloud infrastructure, DevOps, VR prototyping, and agile environments, he brings a rare blend of creativity and discipline.",
-      "He's known for building user-centric applications, optimizing system performance, and bringing a sense of joy and curiosity into every engineering challenge.",
-      "A true inventor at heart — capable of turning abstract vision into something real, fast."
-    ],
-    linkedIn: "https://linkedin.com/in/watson",
-    cardColor: "from-slate-300 to-gray-200",
-    initials: "W"
-  },
-  {
     name: "Nomatter Anderson",
     role: "Cybersecurity Architect & AI Engineer",
     shortRole: "Security • Compliance Frameworks",
@@ -64,6 +51,19 @@ const teamMembers: TeamMember[] = [
     linkedIn: "https://linkedin.com/in/nomatteranderson",
     cardColor: "from-blue-200 to-slate-200",
     initials: "NA"
+  },
+  {
+    name: "Watson",
+    role: "Software Engineer & Creative Technologist",
+    shortRole: "Full-Stack • Cloud Architecture",
+    bio: [
+      "Watson is the engineer who turns ideas into clean, scalable systems. With experience across full-stack development, microservices, Google Cloud infrastructure, DevOps, VR prototyping, and agile environments, he brings a rare blend of creativity and discipline.",
+      "He's known for building user-centric applications, optimizing system performance, and bringing a sense of joy and curiosity into every engineering challenge.",
+      "A true inventor at heart — capable of turning abstract vision into something real, fast."
+    ],
+    linkedIn: "https://linkedin.com/in/watson",
+    cardColor: "from-slate-300 to-gray-200",
+    initials: "W"
   },
   {
     name: "Thando Ncube",
@@ -84,29 +84,65 @@ const TeamSection = () => {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="pt-8 pb-24 relative overflow-hidden">
       <div className="absolute inset-0 tech-dots opacity-20" />
       
       <div className="section-container relative z-10">
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-primary/20 text-primary rounded-full text-sm font-medium mb-6">
-            The Pride
-          </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
+        <div className="space-y-8 mb-16">
+          <div className="inline-flex items-center gap-2 text-primary">
+            <Sparkles className="w-5 h-5" />
+            <span className="text-sm font-medium uppercase tracking-wider">The Pride</span>
+          </div>
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground leading-tight">
             Meet the <span className="text-gradient">Collective</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-2xl">
             A pride of deeply skilled experts who come together project-by-project to deliver work that moves the needle.
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-6 lg:gap-8">
-          {teamMembers.map((member, index) => (
+        {/* Founders Row */}
+        <div className="flex flex-wrap justify-center gap-6 lg:gap-8 mb-6 lg:mb-8">
+          {teamMembers.slice(0, 2).map((member, index) => (
             <button
               key={member.name}
               onClick={() => setSelectedMember(member)}
               className="group focus:outline-none focus:ring-2 focus:ring-primary rounded-[3rem]"
               style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="w-44 md:w-52 h-80 md:h-96 rounded-[3rem] overflow-hidden transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2">
+                {/* Top colored section with name */}
+                <div className={`h-[45%] bg-gradient-to-b ${member.cardColor} p-4 flex flex-col justify-end items-center text-center`}>
+                  <h3 className="font-display text-lg md:text-xl font-bold text-charcoal-deep mb-1">
+                    {member.name.split(' ')[0]}
+                  </h3>
+                  <p className="text-charcoal-deep/70 text-xs md:text-sm font-medium">
+                    {member.shortRole.split(' • ')[0]}
+                  </p>
+                </div>
+                
+                {/* Bottom section with avatar */}
+                <div className="h-[55%] bg-charcoal-deep flex items-center justify-center relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20" />
+                  <div className="w-28 h-28 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center border-4 border-background/20 shadow-2xl group-hover:scale-110 transition-transform duration-500">
+                    <span className="font-display text-3xl md:text-4xl font-bold text-foreground">
+                      {member.initials}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </button>
+          ))}
+        </div>
+
+        {/* Team Row */}
+        <div className="flex flex-wrap justify-center gap-6 lg:gap-8">
+          {teamMembers.slice(2).map((member, index) => (
+            <button
+              key={member.name}
+              onClick={() => setSelectedMember(member)}
+              className="group focus:outline-none focus:ring-2 focus:ring-primary rounded-[3rem]"
+              style={{ animationDelay: `${(index + 2) * 0.1}s` }}
             >
               <div className="w-44 md:w-52 h-80 md:h-96 rounded-[3rem] overflow-hidden transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2">
                 {/* Top colored section with name */}
