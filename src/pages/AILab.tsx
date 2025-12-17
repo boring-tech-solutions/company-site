@@ -63,7 +63,7 @@ const AILab = () => {
                 AI adoption is accelerating—but many organizations are stuck between overhyped tools that don't fit their reality and avoiding AI due to privacy and compliance concerns.
               </p>
               <p className="text-foreground text-xl font-medium">
-                We bridge that gap with <span className="text-primary">responsible, use-case-driven AI</span>—designed for organizations that need results without risk.
+                We bridge that gap with <span className="text-primary">responsible, use-case-driven AI</span>, designed for organizations that need results without risk.
               </p>
             </div>
           </div>
