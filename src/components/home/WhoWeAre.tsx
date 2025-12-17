@@ -44,7 +44,7 @@ const WhoWeAre = () => {
         </h2>
         
         {/* Description */}
-        <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed">
+        <p className="text-white/90 text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed">
           A Collective is a group of senior, low-ego professionals who assemble project 
           by project to deliver high-impact solutions. Like a pride of lions moving with 
           intention — strategic, efficient, and collaborative.
