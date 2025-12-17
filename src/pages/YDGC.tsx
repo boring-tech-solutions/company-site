@@ -622,7 +622,7 @@ const YDGC = () => {
           </div>
         </section>
       </main>
-      <Footer />
+      <Footer hideCTA />
       <AIChatbot />
     </div>;
 };
