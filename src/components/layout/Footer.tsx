@@ -39,7 +39,7 @@ const Footer = () => {
                 <img
                   src={logo}
                   alt="Boring Tech Solutions"
-                  className="h-10 w-auto"
+                  className="h-24 w-auto"
                 />
               </div>
               <p className="text-muted-foreground text-sm mb-4">
