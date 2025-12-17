@@ -140,27 +140,27 @@ const ServicePreview = () => {
 
       {/* Service Detail Dialog */}
       <Dialog open={!!selectedService} onOpenChange={() => setSelectedService(null)}>
-        <DialogContent className={`max-w-2xl border-none p-0 overflow-hidden ${selectedService?.dialogBg}`}>
+        <DialogContent className="max-w-2xl border-none p-0 overflow-hidden">
           {selectedService && (
-            <>
-              {/* Image - same as card */}
-              <div className="relative w-full h-56 md:h-64">
-                <img 
-                  src={selectedService.image} 
-                  alt={selectedService.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className={`absolute inset-0 ${selectedService.dialogBg} opacity-40`} />
-                <div className={`absolute inset-0 bg-gradient-to-t from-current via-transparent to-transparent ${selectedService.dialogBg}`} style={{ opacity: 0.8 }} />
-              </div>
-
-              <div className="p-6 pt-0 -mt-12 relative">
+            <div className="relative min-h-[500px] md:min-h-[550px]">
+              {/* Full-bleed Background Image */}
+              <img 
+                src={selectedService.image} 
+                alt={selectedService.title}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              
+              {/* Overlay matching card */}
+              <div className={`absolute inset-0 ${selectedService.dialogBg} opacity-90`} />
+              
+              {/* Content */}
+              <div className={`relative z-10 p-8 h-full flex flex-col justify-end min-h-[500px] md:min-h-[550px] ${selectedService.dialogText}`}>
                 <DialogHeader>
-                  <div className="flex items-center gap-3 mb-2">
+                  <div className="flex items-center gap-3 mb-4">
                     <div className={`w-12 h-12 rounded-xl ${selectedService.dialogText === 'text-white' ? 'bg-white/20 border-white/30' : 'bg-charcoal-deep/20 border-charcoal-deep/30'} border flex items-center justify-center`}>
                       <selectedService.icon className={selectedService.dialogText} size={24} />
                     </div>
-                    <DialogTitle className={`font-display text-2xl font-bold ${selectedService.dialogText}`}>
+                    <DialogTitle className={`font-display text-2xl md:text-3xl font-bold ${selectedService.dialogText}`}>
                       {selectedService.title}
                     </DialogTitle>
                   </div>
@@ -190,7 +190,7 @@ const ServicePreview = () => {
                   <ArrowRight className="ml-2" size={18} />
                 </Button>
               </div>
-            </>
+            </div>
           )}
         </DialogContent>
       </Dialog>
