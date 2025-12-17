@@ -178,7 +178,7 @@ const YDGC = () => {
         </section>
 
         {/* What Is YDGC - Card Style */}
-        <section className="py-24 bg-gradient-to-b from-primary/5 to-background">
+        <section className="py-24 bg-gradient-to-br from-primary/10 via-primary/5 to-background border-t border-primary/10">
           <div className="section-container">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
@@ -236,7 +236,7 @@ const YDGC = () => {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-24 bg-gradient-to-b from-background to-primary/5">
+        <section className="py-24 bg-muted/50 border-t border-border">
           <div className="section-container">
             <div className="max-w-3xl mx-auto">
               <div className="text-center mb-12">
@@ -268,7 +268,7 @@ const YDGC = () => {
         </section>
 
         {/* Why YDGC Exists - Timeline Style */}
-        <section className="py-24 bg-card">
+        <section className="py-24 bg-gradient-to-br from-amber-950/20 via-background to-background border-t border-amber-500/10">
           <div className="section-container">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-16">
@@ -339,7 +339,7 @@ const YDGC = () => {
         </section>
 
         {/* Why Now Section */}
-        <section className="py-24 bg-gradient-to-b from-background to-primary/5">
+        <section className="py-24 bg-gradient-to-br from-blue-950/20 via-background to-primary/5 border-t border-blue-500/10">
           <div className="section-container">
             <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
@@ -373,7 +373,7 @@ const YDGC = () => {
         </section>
 
         {/* What YDGC Does - Features */}
-        <section id="how-it-works" className="py-24 bg-card">
+        <section id="how-it-works" className="py-24 bg-gradient-to-br from-emerald-950/20 via-card to-card border-t border-emerald-500/10">
           <div className="section-container">
             <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
@@ -407,7 +407,7 @@ const YDGC = () => {
         </section>
 
         {/* Compliance Section - With Image */}
-        <section className="py-24 bg-gradient-to-b from-background to-primary/5 overflow-hidden">
+        <section className="py-24 bg-gradient-to-br from-violet-950/20 via-background to-primary/5 border-t border-violet-500/10 overflow-hidden">
           <div className="section-container">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className="order-2 lg:order-1">
@@ -456,7 +456,7 @@ const YDGC = () => {
         </section>
 
         {/* Ethics Section - With Image */}
-        <section className="py-24 bg-card">
+        <section className="py-24 bg-gradient-to-br from-rose-950/20 via-card to-card border-t border-rose-500/10">
           <div className="section-container">
             <div className="max-w-3xl mx-auto text-center">
               <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
@@ -488,7 +488,7 @@ const YDGC = () => {
         </section>
 
         {/* Funders Section */}
-        <section className="py-24 bg-gradient-to-b from-background to-card">
+        <section className="py-24 bg-gradient-to-br from-cyan-950/20 via-background to-card border-t border-cyan-500/10">
           <div className="section-container">
             <div className="max-w-4xl mx-auto text-center">
               <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
@@ -534,7 +534,7 @@ const YDGC = () => {
         </section>
 
         {/* Why BTS Section */}
-        <section className="py-24 bg-card">
+        <section className="py-24 bg-gradient-to-br from-primary/15 via-card to-card border-t border-primary/20">
           <div className="section-container">
             <div className="max-w-4xl mx-auto text-center">
               <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
