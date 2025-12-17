@@ -83,7 +83,7 @@ const Header = () => {
         </div>
 
         {isMobileMenuOpen && (
-          <div className="lg:hidden fixed inset-0 top-0 left-0 right-0 bottom-0 bg-black/95 z-40 animate-fade-in">
+          <div className="lg:hidden fixed inset-0 w-screen h-screen bg-background z-40 animate-fade-in">
             <div className="flex flex-col items-center justify-center min-h-screen gap-8 px-6">
               {navLinks.map((link) => (
                 <Link
