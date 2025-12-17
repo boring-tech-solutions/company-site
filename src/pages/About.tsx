@@ -2,8 +2,6 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import AIChatbot from "@/components/chat/AIChatbot";
 import TeamSection from "@/components/about/TeamSection";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import { ArrowRight, Compass, Mountain, Target, Users, Sparkles } from "lucide-react";
 import lionsAtWork from "@/assets/lions-at-work-about.webp";
 
@@ -194,33 +192,6 @@ const About = () => {
                   </p>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-24 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-card/50 to-background" />
-          
-          <div className="section-container relative z-10 text-center">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Ready to work with the Collective?
-            </h2>
-            <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
-              Start with a conversation. No pressure, no jargon — just practical advice on how AI can help your business.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-6 group" asChild>
-                <a href="https://cal.com/boring-tech-solutions/15min" target="_blank" rel="noopener noreferrer">
-                  Book a Coffee Chat
-                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
-                </a>
-              </Button>
-              <Button variant="outline" className="text-lg px-8 py-6" asChild>
-                <Link to="/community">
-                  Join the Collective
-                </Link>
-              </Button>
             </div>
           </div>
         </section>
