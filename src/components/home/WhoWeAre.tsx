@@ -57,16 +57,11 @@ const WhoWeAre = () => {
         </div>
         
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex justify-center">
           <Button className="bg-primary text-primary-foreground hover:bg-primary/90 text-base px-6 py-5 group" asChild>
-            <Link to="/community">
-              Apply to Join the Collective
+            <Link to="/about">
+              Learn More about Us
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
-            </Link>
-          </Button>
-          <Button variant="outline" className="text-base px-6 py-5 border-border hover:border-primary/50" asChild>
-            <Link to="/contact">
-              I'm a Student
             </Link>
           </Button>
         </div>
