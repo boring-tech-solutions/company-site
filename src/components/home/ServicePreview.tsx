@@ -143,15 +143,15 @@ const ServicePreview = () => {
         <DialogContent className={`max-w-2xl border-none p-0 overflow-hidden ${selectedService?.dialogBg}`}>
           {selectedService && (
             <>
-              {/* Image */}
-              <div className="relative w-full h-48 md:h-56">
+              {/* Image - same as card */}
+              <div className="relative w-full h-56 md:h-64">
                 <img 
                   src={selectedService.image} 
                   alt={selectedService.title}
                   className="w-full h-full object-cover"
                 />
-                <div className={`absolute inset-0 ${selectedService.dialogBg}/40`} />
-                <div className={`absolute inset-0 bg-gradient-to-t ${selectedService.dialogBg} via-transparent to-transparent`} />
+                <div className={`absolute inset-0 ${selectedService.dialogBg} opacity-40`} />
+                <div className={`absolute inset-0 bg-gradient-to-t from-current via-transparent to-transparent ${selectedService.dialogBg}`} style={{ opacity: 0.8 }} />
               </div>
 
               <div className="p-6 pt-0 -mt-12 relative">
