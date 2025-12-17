@@ -1,5 +1,12 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Target, Lightbulb, TrendingUp, CheckCircle } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const caseStudies = [
   {
@@ -8,6 +15,19 @@ const caseStudies = [
     description: "Transforming business operations through intelligent automation and predictive analytics.",
     challenge: "Complex manual workflows",
     transformation: "70% efficiency gain",
+    fullDescription: "AIFY partnered with us to revolutionize their operational workflows through cutting-edge AI implementation. Their team was drowning in manual data processing, repetitive tasks, and inefficient communication channels that were costing them valuable time and resources.",
+    approach: "We developed a comprehensive AI-powered automation suite that included intelligent document processing, predictive analytics dashboards, and automated workflow orchestration. Our solution integrated seamlessly with their existing tech stack.",
+    results: [
+      "70% reduction in manual data processing time",
+      "45% improvement in decision-making speed",
+      "24/7 automated customer support handling",
+      "Real-time predictive insights for business planning"
+    ],
+    technologies: ["Machine Learning", "NLP", "Python", "React", "AWS"],
+    timeline: "4 months",
+    bgColor: "bg-destructive",
+    textColor: "text-white",
+    mutedColor: "text-white/70",
   },
   {
     title: "YACO",
@@ -15,6 +35,19 @@ const caseStudies = [
     description: "Building robust infrastructure for youth advocacy and community organizing.",
     challenge: "Disconnected systems",
     transformation: "Unified platform",
+    fullDescription: "Youth Advocacy & Community Organizing (YACO) needed a unified platform to coordinate their grassroots efforts across multiple communities. Their existing tools were fragmented, making collaboration difficult and impact measurement nearly impossible.",
+    approach: "We built a custom software platform that unified communication, event management, volunteer coordination, and impact tracking into a single, intuitive interface designed specifically for community organizers.",
+    results: [
+      "300% increase in volunteer coordination efficiency",
+      "Unified data across 15+ community chapters",
+      "Real-time impact measurement and reporting",
+      "Mobile-first design for field organizers"
+    ],
+    technologies: ["React", "Node.js", "PostgreSQL", "Supabase", "Tailwind"],
+    timeline: "6 months",
+    bgColor: "bg-primary",
+    textColor: "text-charcoal-deep",
+    mutedColor: "text-charcoal-deep/70",
   },
   {
     title: "YDCS",
@@ -22,10 +55,25 @@ const caseStudies = [
     description: "Comprehensive data compliance solution for youth-serving organizations.",
     challenge: "Compliance complexity",
     transformation: "Automated workflows",
+    fullDescription: "Youth Data Compliance System (YDCS) was developed to address the critical need for PIPEDA and FOIP compliance in youth-serving organizations. These organizations handle sensitive data but often lack the resources to manage complex regulatory requirements.",
+    approach: "We created an end-to-end compliance management system featuring automated consent tracking, intelligent data retention policies, comprehensive audit logging, and easy-to-use dashboards for compliance officers.",
+    results: [
+      "100% compliance with PIPEDA & FOIP requirements",
+      "80% reduction in manual compliance tasks",
+      "Automated consent renewal workflows",
+      "Complete audit trail for regulatory inspections"
+    ],
+    technologies: ["TypeScript", "React", "Supabase", "Edge Functions", "Encryption"],
+    timeline: "5 months",
+    bgColor: "bg-charcoal",
+    textColor: "text-white",
+    mutedColor: "text-white/70",
   },
 ];
 
 const CaseStudyPreview = () => {
+  const [selectedStudy, setSelectedStudy] = useState<typeof caseStudies[0] | null>(null);
+
   return (
     <section id="case-studies" className="py-24 relative">
       <div className="section-container">
@@ -49,11 +97,12 @@ const CaseStudyPreview = () => {
           {caseStudies.map((study, index) => (
             <div
               key={index}
+              onClick={() => setSelectedStudy(study)}
               className="group card-premium cursor-pointer flex flex-col"
             >
               {/* Image Placeholder */}
-              <div className="h-48 rounded-xl bg-gradient-to-br from-muted to-muted/50 mb-6 flex items-center justify-center overflow-hidden">
-                <span className="font-display text-4xl font-bold text-muted-foreground/30 group-hover:text-primary/30 transition-colors">
+              <div className={`h-48 rounded-xl ${study.bgColor} mb-6 flex items-center justify-center overflow-hidden`}>
+                <span className={`font-display text-4xl font-bold ${study.textColor} opacity-30 group-hover:opacity-50 transition-opacity`}>
                   {study.title}
                 </span>
               </div>
@@ -89,6 +138,96 @@ const CaseStudyPreview = () => {
           ))}
         </div>
       </div>
+
+      {/* Case Study Detail Dialog */}
+      <Dialog open={!!selectedStudy} onOpenChange={() => setSelectedStudy(null)}>
+        <DialogContent className="max-w-3xl border-none p-0 overflow-hidden">
+          {selectedStudy && (
+            <div className={`relative min-h-[600px] ${selectedStudy.bgColor}`}>
+              {/* Content */}
+              <div className={`relative z-10 p-8 ${selectedStudy.textColor}`}>
+                {/* Header */}
+                <DialogHeader className="mb-6">
+                  <span className={`text-xs font-medium uppercase tracking-widest ${selectedStudy.mutedColor} mb-2 block`}>
+                    {selectedStudy.category}
+                  </span>
+                  <DialogTitle className={`font-display text-3xl md:text-4xl font-bold ${selectedStudy.textColor}`}>
+                    {selectedStudy.title}
+                  </DialogTitle>
+                  <p className={`${selectedStudy.mutedColor} mt-2`}>
+                    {selectedStudy.description}
+                  </p>
+                </DialogHeader>
+
+                {/* Challenge Section */}
+                <div className="mb-6">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Target size={20} />
+                    <h4 className="text-sm font-semibold uppercase tracking-wide">The Challenge</h4>
+                  </div>
+                  <p className={`${selectedStudy.mutedColor} leading-relaxed`}>
+                    {selectedStudy.fullDescription}
+                  </p>
+                </div>
+
+                {/* Approach Section */}
+                <div className="mb-6">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Lightbulb size={20} />
+                    <h4 className="text-sm font-semibold uppercase tracking-wide">Our Approach</h4>
+                  </div>
+                  <p className={`${selectedStudy.mutedColor} leading-relaxed`}>
+                    {selectedStudy.approach}
+                  </p>
+                </div>
+
+                {/* Results Section */}
+                <div className="mb-6">
+                  <div className="flex items-center gap-2 mb-3">
+                    <TrendingUp size={20} />
+                    <h4 className="text-sm font-semibold uppercase tracking-wide">Results</h4>
+                  </div>
+                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    {selectedStudy.results.map((result, idx) => (
+                      <li key={idx} className={`flex items-start gap-2 text-sm ${selectedStudy.mutedColor}`}>
+                        <CheckCircle size={16} className="flex-shrink-0 mt-0.5" />
+                        {result}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Tech & Timeline */}
+                <div className="flex flex-wrap gap-6 mb-6 pt-4 border-t border-white/20">
+                  <div>
+                    <p className={`text-xs ${selectedStudy.mutedColor} uppercase mb-1`}>Timeline</p>
+                    <p className="text-sm font-semibold">{selectedStudy.timeline}</p>
+                  </div>
+                  <div className="flex-1">
+                    <p className={`text-xs ${selectedStudy.mutedColor} uppercase mb-1`}>Technologies</p>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedStudy.technologies.map((tech, idx) => (
+                        <span 
+                          key={idx} 
+                          className={`text-xs px-2 py-1 rounded-full ${selectedStudy.textColor === 'text-white' ? 'bg-white/20' : 'bg-charcoal-deep/20'}`}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* CTA */}
+                <Button className="w-full font-semibold bg-primary text-primary-foreground hover:bg-primary/90">
+                  Discuss Your Project
+                  <ArrowRight className="ml-2" size={18} />
+                </Button>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
