@@ -39,7 +39,7 @@ const HeroSection = () => {
         </div>
 
         {/* Mobile Video */}
-        <div className="relative w-full aspect-video flex-1">
+        <div className="relative w-full aspect-video flex-1 py-8">
           <video
             autoPlay
             muted
@@ -49,7 +49,7 @@ const HeroSection = () => {
           >
             <source src="https://image-cdn.quizapp.ca/boring-team-hero-video.mp4?ref=12222" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-background/30" />
+          <div className="absolute inset-0 bg-background/60" />
         </div>
 
         {/* Mobile CTAs */}
