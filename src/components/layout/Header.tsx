@@ -21,7 +21,7 @@ const Header = () => {
   const navLinks = [
     { name: "About Us", href: "/about" },
     { name: "AI Lab", href: "/ai-lab" },
-    { name: "Case Studies", href: "/case-studies" },
+    { name: "Past Work", href: "/case-studies" },
     { name: "Data Compliance", href: "/ydgc" },
     { name: "Community", href: "/community" },
   ];

@@ -79,18 +79,14 @@ const CaseStudyPreview = () => {
     <section id="case-studies" className="py-24 relative">
       <div className="section-container">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16 gap-6">
+        <div className="mb-16">
           <div>
-            <span className="text-primary text-sm font-medium uppercase tracking-widest">Case Studies</span>
+            <span className="text-primary text-sm font-medium uppercase tracking-widest">Past Work</span>
             <h2 className="font-display text-3xl md:text-4xl font-bold mt-2">
               Challenge → Approach →{" "}
               <span className="text-gradient">Transformation</span>
             </h2>
           </div>
-          <Button variant="outline" className="self-start md:self-auto group">
-            View All Projects
-            <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
-          </Button>
         </div>
 
         {/* Case Studies Grid */}
