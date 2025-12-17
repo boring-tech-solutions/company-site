@@ -244,6 +244,44 @@ const YDGC = () => {
           </div>
         </section>
 
+        {/* FAQ Section */}
+        <section className="py-24 bg-gradient-to-b from-background to-primary/5">
+          <div className="section-container">
+            <div className="max-w-3xl mx-auto">
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
+                  <HelpCircle size={18} />
+                  <span>FAQ</span>
+                </div>
+                
+                <h2 className="font-display text-3xl md:text-4xl font-bold">
+                  Frequently Asked Questions
+                </h2>
+              </div>
+
+              <Accordion type="single" collapsible className="space-y-4">
+                {faqs.map((faq, index) => (
+                  <AccordionItem 
+                    key={index} 
+                    value={`item-${index}`}
+                    className="bg-card border border-border rounded-2xl px-6 data-[state=open]:border-primary/30 transition-colors"
+                  >
+                    <AccordionTrigger className="text-left font-medium hover:no-underline py-6">
+                      <div className="flex items-start gap-3">
+                        <span className="text-primary font-bold">Q{index + 1}.</span>
+                        <span>{faq.question}</span>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground pb-6 pl-8">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          </div>
+        </section>
+
         {/* Why YDGC Exists - Timeline Style */}
         <section className="py-24 bg-card">
           <div className="section-container">
@@ -582,44 +620,6 @@ const YDGC = () => {
               <p className="mt-12 text-lg font-medium text-foreground">
                 Our approach favors clarity, responsibility, and trust.
               </p>
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ Section */}
-        <section className="py-24 bg-gradient-to-b from-background to-primary/5">
-          <div className="section-container">
-            <div className="max-w-3xl mx-auto">
-              <div className="text-center mb-12">
-                <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
-                  <HelpCircle size={18} />
-                  <span>FAQ</span>
-                </div>
-                
-                <h2 className="font-display text-3xl md:text-4xl font-bold">
-                  Frequently Asked Questions
-                </h2>
-              </div>
-
-              <Accordion type="single" collapsible className="space-y-4">
-                {faqs.map((faq, index) => (
-                  <AccordionItem 
-                    key={index} 
-                    value={`item-${index}`}
-                    className="bg-card border border-border rounded-2xl px-6 data-[state=open]:border-primary/30 transition-colors"
-                  >
-                    <AccordionTrigger className="text-left font-medium hover:no-underline py-6">
-                      <div className="flex items-start gap-3">
-                        <span className="text-primary font-bold">Q{index + 1}.</span>
-                        <span>{faq.question}</span>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground pb-6 pl-8">
-                      {faq.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
             </div>
           </div>
         </section>
