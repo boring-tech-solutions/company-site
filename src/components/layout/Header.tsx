@@ -39,7 +39,7 @@ const Header = () => {
             <img
               src={logo}
               alt="Boring Tech Solutions"
-              className="h-10 w-auto"
+              className="h-16 lg:h-10 w-auto"
             />
           </Link>
 
