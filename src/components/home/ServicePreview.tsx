@@ -93,42 +93,41 @@ const ServicePreview = () => {
             <div
               key={index}
               onClick={() => setSelectedService(service)}
-              className="bg-foreground rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 active:scale-[0.98]"
+              className="relative bg-foreground rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 active:scale-[0.98] min-h-[320px]"
               style={{ transition: 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)' }}
             >
-              {/* Card Image */}
-              <div className="relative w-full h-40 overflow-hidden">
-                <img 
-                  src={service.image} 
-                  alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                {/* Dark overlay to blend with color palette */}
-                <div className="absolute inset-0 bg-background/50" />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/40 to-transparent" />
-              </div>
+              {/* Full Card Background Image */}
+              <img 
+                src={service.image} 
+                alt={service.title}
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                style={{ opacity: 0.85 }}
+              />
+              {/* Overlay for text readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-background/20" />
 
-              <div className="p-6 pt-4">
+              {/* Card Content */}
+              <div className="relative z-10 p-6 flex flex-col h-full justify-end">
                 <div className="flex items-start gap-4">
                   {/* Icon */}
-                  <div className="w-12 h-12 rounded-xl bg-background/10 border border-background/20 flex items-center justify-center flex-shrink-0 group-hover:bg-background/20 group-hover:border-background/30 transition-all duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-background/20 border border-foreground/20 flex items-center justify-center flex-shrink-0 group-hover:bg-background/30 group-hover:border-foreground/30 transition-all duration-300 backdrop-blur-sm">
                     <service.icon 
-                      className="text-background icon-animate" 
+                      className="text-foreground icon-animate" 
                       size={24}
                     />
                   </div>
 
                   <div className="flex-grow">
                     {/* Title */}
-                    <h3 className="font-display text-2xl md:text-3xl font-bold mb-3 text-background transition-colors">
+                    <h3 className="font-display text-2xl md:text-3xl font-bold mb-3 text-foreground transition-colors">
                       {service.title}
                     </h3>
 
                     {/* Bullet Points */}
                     <ul className="space-y-2">
                       {service.benefits.map((benefit, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-background/80 text-sm">
-                          <span className="w-1.5 h-1.5 rounded-full bg-background/60 mt-1.5 flex-shrink-0" />
+                        <li key={idx} className="flex items-start gap-2 text-foreground/80 text-sm">
+                          <span className="w-1.5 h-1.5 rounded-full bg-foreground/60 mt-1.5 flex-shrink-0" />
                           {benefit}
                         </li>
                       ))}
