@@ -89,34 +89,35 @@ const ServicePreview = () => {
             <div
               key={index}
               onClick={() => setSelectedService(service)}
-              className="bg-card rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 border border-border/30"
+              className="bg-card rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 border border-border/30 hover:border-primary/30"
             >
-              {/* Image */}
-              <div className="relative h-48 overflow-hidden">
+              {/* Image with dark overlay */}
+              <div className="relative h-52 overflow-hidden">
                 <img 
                   src={service.image} 
                   alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
+                <div className="absolute inset-0 bg-gradient-to-b from-card/30 via-card/50 to-card" />
               </div>
               
               {/* Content */}
-              <div className="p-6">
+              <div className="p-6 pt-4">
                 {/* Icon + Title */}
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center flex-shrink-0">
-                    <service.icon className="text-foreground" size={20} />
+                <div className="flex items-start gap-4 mb-5">
+                  <div className="w-12 h-12 rounded-xl bg-muted/80 border border-border/50 flex items-center justify-center flex-shrink-0">
+                    <service.icon className="text-primary" size={22} />
                   </div>
-                  <h3 className="font-display text-xl font-bold text-foreground">
+                  <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground leading-tight">
                     {service.title}
                   </h3>
                 </div>
                 
                 {/* Benefits List */}
-                <ul className="space-y-2">
+                <ul className="space-y-3 pl-1">
                   {service.benefits.map((benefit, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <span className="w-1.5 h-1.5 rounded-full bg-foreground flex-shrink-0" />
+                    <li key={idx} className="flex items-center gap-3 text-sm text-muted-foreground">
+                      <span className="w-2 h-2 rounded-full bg-primary/80 flex-shrink-0" />
                       {benefit}
                     </li>
                   ))}
