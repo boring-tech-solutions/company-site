@@ -28,6 +28,9 @@ const services = [
     ],
     overlayColor: "bg-destructive/80 group-hover:bg-destructive/95",
     textColor: "text-white",
+    dialogBg: "bg-destructive",
+    dialogText: "text-white",
+    dialogMuted: "text-white/70",
   },
   {
     icon: Compass,
@@ -43,6 +46,9 @@ const services = [
     ],
     overlayColor: "bg-white/90 group-hover:bg-white/95",
     textColor: "text-charcoal-deep",
+    dialogBg: "bg-white",
+    dialogText: "text-charcoal-deep",
+    dialogMuted: "text-charcoal-deep/70",
   },
   {
     icon: Code,
@@ -58,6 +64,9 @@ const services = [
     ],
     overlayColor: "bg-primary/90 group-hover:bg-primary/95",
     textColor: "text-charcoal-deep",
+    dialogBg: "bg-primary",
+    dialogText: "text-charcoal-deep",
+    dialogMuted: "text-charcoal-deep/70",
   },
   {
     icon: Shield,
@@ -73,6 +82,9 @@ const services = [
     ],
     overlayColor: "bg-charcoal/90 group-hover:bg-charcoal/95",
     textColor: "text-white",
+    dialogBg: "bg-charcoal",
+    dialogText: "text-white",
+    dialogMuted: "text-white/70",
   },
 ];
 
@@ -128,7 +140,7 @@ const ServicePreview = () => {
 
       {/* Service Detail Dialog */}
       <Dialog open={!!selectedService} onOpenChange={() => setSelectedService(null)}>
-        <DialogContent className="max-w-2xl bg-card border-border p-0 overflow-hidden">
+        <DialogContent className={`max-w-2xl border-none p-0 overflow-hidden ${selectedService?.dialogBg}`}>
           {selectedService && (
             <>
               {/* Image */}
@@ -138,34 +150,34 @@ const ServicePreview = () => {
                   alt={selectedService.title}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-background/40" />
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
+                <div className={`absolute inset-0 ${selectedService.dialogBg}/40`} />
+                <div className={`absolute inset-0 bg-gradient-to-t ${selectedService.dialogBg} via-transparent to-transparent`} />
               </div>
 
               <div className="p-6 pt-0 -mt-12 relative">
                 <DialogHeader>
                   <div className="flex items-center gap-3 mb-2">
-                    <div className="w-12 h-12 rounded-xl bg-primary/20 border border-primary/30 flex items-center justify-center">
-                      <selectedService.icon className="text-primary" size={24} />
+                    <div className={`w-12 h-12 rounded-xl ${selectedService.dialogText === 'text-white' ? 'bg-white/20 border-white/30' : 'bg-charcoal-deep/20 border-charcoal-deep/30'} border flex items-center justify-center`}>
+                      <selectedService.icon className={selectedService.dialogText} size={24} />
                     </div>
-                    <DialogTitle className="font-display text-2xl font-bold text-foreground">
+                    <DialogTitle className={`font-display text-2xl font-bold ${selectedService.dialogText}`}>
                       {selectedService.title}
                     </DialogTitle>
                   </div>
                 </DialogHeader>
 
                 {/* Expanded Description */}
-                <p className="text-muted-foreground leading-relaxed mb-6">
+                <p className={`${selectedService.dialogMuted} leading-relaxed mb-6`}>
                   {selectedService.expandedDescription}
                 </p>
 
                 {/* Benefits */}
                 <div className="mb-6">
-                  <h4 className="text-sm font-semibold text-foreground mb-3 uppercase tracking-wide">Key Benefits</h4>
+                  <h4 className={`text-sm font-semibold ${selectedService.dialogText} mb-3 uppercase tracking-wide`}>Key Benefits</h4>
                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
                     {selectedService.benefits.map((benefit, idx) => (
-                      <li key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                      <li key={idx} className={`flex items-center gap-2 text-sm ${selectedService.dialogMuted}`}>
+                        <span className={`w-1.5 h-1.5 rounded-full ${selectedService.dialogText === 'text-white' ? 'bg-white' : 'bg-charcoal-deep'} flex-shrink-0`} />
                         {benefit}
                       </li>
                     ))}
@@ -173,7 +185,7 @@ const ServicePreview = () => {
                 </div>
 
                 {/* CTA */}
-                <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold">
+                <Button className={`w-full font-semibold ${selectedService.dialogText === 'text-white' ? 'bg-white text-charcoal-deep hover:bg-white/90' : 'bg-charcoal-deep text-white hover:bg-charcoal-deep/90'}`}>
                   Talk to Us
                   <ArrowRight className="ml-2" size={18} />
                 </Button>
