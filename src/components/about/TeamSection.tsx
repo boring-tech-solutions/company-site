@@ -54,7 +54,7 @@ const teamMembers: TeamMember[] = [
     linkedIn: "https://linkedin.com/in/nomatteranderson",
     cardColor: "from-blue-200 to-slate-200",
     initials: "NA",
-    image: "https://image-cdn.quizapp.ca/watson-linkedin-profile.webp"
+    image: "https://image-cdn.quizapp.ca/anderson_linkedin_image.webp"
   },
   {
     name: "Watson",
@@ -112,7 +112,7 @@ const TeamSection = () => {
             <button
               key={member.name}
               onClick={() => setSelectedMember(member)}
-              className="group focus:outline-none focus:ring-2 focus:ring-primary rounded-[3rem] w-[80%] sm:w-auto"
+              className="group focus:outline-none focus:ring-2 focus:ring-primary rounded-[3rem] w-[60%] sm:w-auto"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="w-full sm:w-44 md:w-52 h-80 md:h-96 rounded-[3rem] overflow-hidden transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2">
@@ -154,7 +154,7 @@ const TeamSection = () => {
             <button
               key={member.name}
               onClick={() => setSelectedMember(member)}
-              className="group focus:outline-none focus:ring-2 focus:ring-primary rounded-[3rem] w-[80%] sm:w-auto"
+              className="group focus:outline-none focus:ring-2 focus:ring-primary rounded-[3rem] w-[60%] sm:w-auto"
               style={{ animationDelay: `${(index + 2) * 0.1}s` }}
             >
               <div className="w-full sm:w-44 md:w-52 h-80 md:h-96 rounded-[3rem] overflow-hidden transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2">
