@@ -185,7 +185,7 @@ const ServicePreview = () => {
                 </div>
 
                 {/* CTA */}
-                <Button className={`w-full font-semibold ${selectedService.dialogText === 'text-white' ? 'bg-white text-charcoal-deep hover:bg-white/90' : 'bg-charcoal-deep text-white hover:bg-charcoal-deep/90'}`}>
+                <Button className="w-full font-semibold bg-primary text-primary-foreground hover:bg-primary/90">
                   Talk to Us
                   <ArrowRight className="ml-2" size={18} />
                 </Button>
