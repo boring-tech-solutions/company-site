@@ -8,10 +8,10 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-import serviceAiAutomation from "@/assets/service-ai-automation.png";
-import serviceStrategicAdvisory from "@/assets/service-strategic-advisory.png";
-import serviceSoftwareDev from "@/assets/service-software-dev.png";
-import serviceCompliance from "@/assets/service-compliance.png";
+import serviceAiAutomation from "@/assets/lion-ai-automation.webp";
+import serviceStrategicAdvisory from "@/assets/lion-strategic-advisory.webp";
+import serviceSoftwareDev from "@/assets/lion-software-dev.webp";
+import serviceCompliance from "@/assets/lion-compliance.webp";
 
 const services = [
   {
@@ -103,7 +103,9 @@ const ServicePreview = () => {
                   alt={service.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/30 to-transparent" />
+                {/* Dark overlay to blend with color palette */}
+                <div className="absolute inset-0 bg-background/50" />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/40 to-transparent" />
               </div>
 
               <div className="p-6 pt-4">
@@ -151,6 +153,7 @@ const ServicePreview = () => {
                   alt={selectedService.title}
                   className="w-full h-full object-cover"
                 />
+                <div className="absolute inset-0 bg-background/40" />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
               </div>
 
