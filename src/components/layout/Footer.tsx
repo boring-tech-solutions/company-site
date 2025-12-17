@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail, MapPin, Linkedin } from "lucide-react";
 
+const logo = "https://image-cdn.quizapp.ca/logo.webp";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -34,10 +36,11 @@ const Footer = () => {
             {/* Brand */}
             <div className="md:col-span-1">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center">
-                  <span className="font-display font-bold text-primary text-lg">B</span>
-                </div>
-                <span className="font-display font-semibold text-xl">Boring Tech</span>
+                <img
+                  src={logo}
+                  alt="Boring Tech Solutions"
+                  className="h-10 w-auto"
+                />
               </div>
               <p className="text-muted-foreground text-sm mb-4">
                 Calm precision in a noisy tech world. AI solutions that augment humans, not replace them.
