@@ -48,17 +48,45 @@ const CollectivePreview = () => {
 
     setIsSubmitting(true);
     
-    // Simulate submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Application submitted!",
-      description: "We'll be in touch soon.",
-    });
-    
-    setFormData({ name: "", email: "", phone: "", linkedin: "", website: "", message: "", role: "" });
-    setIsOpen(false);
-    setIsSubmitting(false);
+    try {
+      // TODO: Replace with actual Airtable webhook URL
+      const AIRTABLE_WEBHOOK_URL = "https://hooks.airtable.com/workflows/v1/YOUR_COLLECTIVE_WEBHOOK_ID";
+      
+      await fetch(AIRTABLE_WEBHOOK_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "no-cors",
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          linkedin: formData.linkedin,
+          website: formData.website,
+          message: formData.message,
+          role: formData.role,
+          submitted_at: new Date().toISOString(),
+        }),
+      });
+
+      toast({
+        title: "Application submitted!",
+        description: "We'll be in touch soon.",
+      });
+      
+      setFormData({ name: "", email: "", phone: "", linkedin: "", website: "", message: "", role: "" });
+      setIsOpen(false);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: "Submission failed",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
