@@ -32,12 +32,12 @@ const SelfIdentificationCards = () => {
     <section className="py-24 relative">
       <div className="section-container">
         {/* Section Header */}
-        <div className="mb-16">
+        <div className="text-center mb-16">
           <span className="text-primary text-sm font-medium uppercase tracking-widest">Contact Us</span>
           <h2 className="font-display text-3xl md:text-4xl font-bold mt-2">
             Where Are You on Your <span className="text-gradient">AI Journey</span>?
           </h2>
-          <p className="text-muted-foreground max-w-2xl mt-4">
+          <p className="text-muted-foreground max-w-2xl mx-auto mt-4">
             Every business starts somewhere. Find your path and we'll guide you through the terrain.
           </p>
         </div>
