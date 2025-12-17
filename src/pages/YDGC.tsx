@@ -458,41 +458,30 @@ const YDGC = () => {
         {/* Ethics Section - With Image */}
         <section className="py-24 bg-card">
           <div className="section-container">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
-                  <Heart size={18} className="animate-pulse" />
-                  <span>Ethics</span>
-                </div>
-                
-                <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
-                  Ethics at the Core
-                </h2>
-                
-                <p className="text-lg text-muted-foreground mb-4">
-                  YDGC is shaped by direct experience working alongside children, youth, and vulnerable communities in Alberta.
-                </p>
-                <p className="text-lg text-muted-foreground mb-8">
-                  This includes long-term volunteer mentorship with <strong className="text-foreground">Big Brothers Big Sisters of Edmonton</strong> and career mentorship through programs such as <strong className="text-foreground">All In For Youth</strong>.
-                </p>
-
-                <h3 className="font-display text-lg font-semibold mb-4">Design Principles:</h3>
-
-                <div className="grid grid-cols-2 gap-4">
-                  {ethicsPrinciples.map((principle, index) => <div key={index} className="flex items-center gap-3 p-4 rounded-xl bg-background border border-border hover:border-primary/30 transition-colors group">
-                      <principle.icon className="text-primary group-hover:scale-110 transition-transform" size={20} />
-                      <span className="text-muted-foreground text-sm">{principle.text}</span>
-                    </div>)}
-                </div>
-
-                <div className="mt-8 p-4 rounded-xl bg-primary/5 border-l-4 border-primary">
-                  
-                </div>
+            <div className="max-w-3xl mx-auto text-center">
+              <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
+                <Heart size={18} className="animate-pulse" />
+                <span>Ethics</span>
               </div>
               
-              <div className="relative">
-                <div className="absolute -inset-8 bg-gradient-to-l from-primary/20 to-transparent rounded-3xl blur-3xl" />
-                <img src={ydgcEthics} alt="Ethics illustration" className="relative rounded-3xl border border-border shadow-2xl" />
+              <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
+                Ethics at the Core
+              </h2>
+              
+              <p className="text-lg text-muted-foreground mb-4">
+                YDGC is shaped by direct experience working alongside children, youth, and vulnerable communities in Alberta.
+              </p>
+              <p className="text-lg text-muted-foreground mb-8">
+                This includes long-term volunteer mentorship with <strong className="text-foreground">Big Brothers Big Sisters of Edmonton</strong> and career mentorship through programs such as <strong className="text-foreground">All In For Youth</strong>.
+              </p>
+
+              <h3 className="font-display text-lg font-semibold mb-4">Design Principles:</h3>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {ethicsPrinciples.map((principle, index) => <div key={index} className="flex flex-col items-center gap-3 p-4 rounded-xl bg-background border border-border hover:border-primary/30 transition-colors group">
+                    <principle.icon className="text-primary group-hover:scale-110 transition-transform" size={20} />
+                    <span className="text-muted-foreground text-sm text-center">{principle.text}</span>
+                  </div>)}
               </div>
             </div>
           </div>
