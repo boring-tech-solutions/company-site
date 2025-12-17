@@ -1,7 +1,5 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import SelfIdentificationCards from "@/components/home/SelfIdentificationCards";
-import PartnerLogos from "@/components/home/PartnerLogos";
 import AIChatbot from "@/components/chat/AIChatbot";
 
 const About = () => {
@@ -9,8 +7,7 @@ const About = () => {
     <div className="min-h-screen bg-background relative">
       <Header />
       <main className="relative z-10 pt-20">
-        <SelfIdentificationCards />
-        <PartnerLogos />
+        {/* Content coming soon */}
       </main>
       <Footer />
       <AIChatbot />
