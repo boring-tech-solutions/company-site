@@ -25,50 +25,50 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/60 to-background" />
       </div>
 
-      {/* Mobile: Stacked layout with video fitting screen */}
-      <div className="md:hidden flex flex-col min-h-screen">
-        {/* Mobile Text */}
-        <div className="flex flex-col justify-center px-6 py-8">
-          <h1 className="text-3xl font-bold mb-4 font-sans text-center" style={{ lineHeight: '1.5' }}>
+      {/* Mobile: Stacked layout with video filling screen */}
+      <div className="md:hidden flex flex-col h-screen">
+        {/* Mobile Text - compact */}
+        <div className="flex flex-col justify-center px-6 py-4 pt-6">
+          <h1 className="text-2xl font-bold mb-2 font-sans text-center" style={{ lineHeight: '1.4' }}>
             Calm Precision in a{" "}
             <span className="text-gradient">Noisy Tech World</span>
           </h1>
-          <p className="text-base text-muted-foreground text-center">
+          <p className="text-sm text-muted-foreground text-center">
             Your starting point for real-world AI — no hype, just impact.
           </p>
         </div>
 
-        {/* Mobile Video - fits remaining screen height */}
-        <div className="relative flex-1">
+        {/* Mobile Video - fills remaining height */}
+        <div className="relative flex-1 min-h-0">
           <video
             autoPlay
             muted
             loop
             playsInline
-            className="absolute inset-0 w-full h-full object-contain"
+            className="absolute inset-0 w-full h-full object-cover"
           >
             <source src="https://image-cdn.quizapp.ca/boring-team-hero-video.mp4?ref=12222" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-background/60" />
+          <div className="absolute inset-0 bg-background/40" />
         </div>
 
-        {/* Mobile CTAs */}
-        <div className="px-6 py-4">
-          <div className="flex flex-col gap-3">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 text-base px-6 py-5 group glow-gold w-full" asChild>
+        {/* Mobile CTAs - fixed at bottom */}
+        <div className="px-4 py-3 bg-background/95 backdrop-blur-sm">
+          <div className="flex flex-col gap-2">
+            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 text-sm px-4 py-4 group glow-gold w-full" asChild>
               <a href="https://cal.com/boring-tech-solutions/15min" target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="mr-2" size={18} />
+                <MessageCircle className="mr-2" size={16} />
                 Book a Coffee Chat
               </a>
             </Button>
             <Button 
               size="lg" 
               variant="outline" 
-              className="text-base px-6 py-5 group border-border hover:border-primary/50 w-full"
+              className="text-sm px-4 py-4 group border-border hover:border-primary/50 w-full"
               onClick={handleShowPossible}
             >
               Show Me What's Possible
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
+              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
             </Button>
           </div>
         </div>
