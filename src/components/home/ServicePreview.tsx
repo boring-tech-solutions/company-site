@@ -16,6 +16,7 @@ import serviceCompliance from "@/assets/lion-compliance.webp";
 const services = [
   {
     icon: Bot,
+    category: "AI Implementation",
     title: "AI Implementation & Automation",
     description: "Custom agents, workflow automation, document intelligence, and predictive analytics tailored for your business.",
     outcome: "Reduce costs and boost efficiency",
@@ -26,10 +27,13 @@ const services = [
       "90% reduction in manual data processing",
       "Real-time predictive analytics",
       "Seamless integration with existing tools"
-    ]
+    ],
+    bgColor: "bg-gradient-to-br from-amber-500/20 to-yellow-600/30",
+    layout: "image-right" as const
   },
   {
     icon: Compass,
+    category: "Strategic Advisory",
     title: "Strategic AI Advisory",
     description: "Your starting point for AI. Includes readiness assessment, workflow diagnosis, and a tailored plan for your business.",
     outcome: "Clarity and confidence to move forward",
@@ -40,10 +44,13 @@ const services = [
       "Prioritized opportunity mapping",
       "Custom implementation roadmap",
       "ROI projections and risk analysis"
-    ]
+    ],
+    bgColor: "bg-gradient-to-br from-primary/20 to-amber-600/30",
+    layout: "image-bottom" as const
   },
   {
     icon: Code,
+    category: "Software Development",
     title: "Custom Software Development",
     description: "Backend systems, cloud infrastructure, secure APIs, and data pipelines built with precision.",
     outcome: "Reliable, scalable technology",
@@ -54,10 +61,13 @@ const services = [
       "Enterprise-grade security",
       "High-performance APIs",
       "Real-time data pipelines"
-    ]
+    ],
+    bgColor: "bg-gradient-to-br from-blue-500/20 to-indigo-600/30",
+    layout: "image-bottom" as const
   },
   {
     icon: Shield,
+    category: "Compliance & Security",
     title: "Youth Data Compliance System",
     description: "PIPEDA & FOIP workflows, consent tracking, automated retention, and audit logs for youth-serving organizations.",
     outcome: "Reduce legal and operational risk",
@@ -68,7 +78,9 @@ const services = [
       "Comprehensive consent management",
       "Intelligent retention scheduling",
       "Complete audit trail"
-    ]
+    ],
+    bgColor: "bg-gradient-to-br from-emerald-500/20 to-teal-600/30",
+    layout: "image-right" as const
   },
 ];
 
@@ -93,50 +105,65 @@ const ServicePreview = () => {
             <div
               key={index}
               onClick={() => setSelectedService(service)}
-              className="relative bg-foreground rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 active:scale-[0.98] min-h-[320px]"
+              className={`${service.bgColor} rounded-3xl overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 active:scale-[0.98] border border-border/20`}
               style={{ transition: 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)' }}
             >
-              {/* Full Card Background Image */}
-              <img 
-                src={service.image} 
-                alt={service.title}
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                style={{ opacity: 0.85 }}
-              />
-              {/* Dark overlay */}
-              <div className="absolute inset-0 bg-background/30" />
-              {/* Gradient overlay for text readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent" />
-
-              {/* Card Content */}
-              <div className="relative z-10 p-6 flex flex-col h-full justify-end">
-                <div className="flex items-start gap-4">
-                  {/* Icon */}
-                  <div className="w-12 h-12 rounded-xl bg-background/20 border border-foreground/20 flex items-center justify-center flex-shrink-0 group-hover:bg-background/30 group-hover:border-foreground/30 transition-all duration-300 backdrop-blur-sm">
-                    <service.icon 
-                      className="text-foreground icon-animate" 
-                      size={24}
+              {service.layout === 'image-right' ? (
+                /* Layout: Text left, Image right */
+                <div className="flex flex-col md:flex-row h-full min-h-[320px]">
+                  {/* Text Content */}
+                  <div className="flex-1 p-6 md:p-8 flex flex-col justify-between">
+                    <div>
+                      <span className="text-foreground/60 text-sm font-medium">{service.category}</span>
+                      <h3 className="font-display text-xl md:text-2xl font-bold mt-2 mb-4 text-foreground">
+                        {service.title}
+                      </h3>
+                      <p className="text-foreground/70 text-sm leading-relaxed">
+                        {service.description}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-2 mt-6 text-foreground font-medium text-sm group-hover:gap-3 transition-all">
+                      More about {service.category}
+                      <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                  {/* Image */}
+                  <div className="relative w-full md:w-2/5 h-48 md:h-auto">
+                    <img 
+                      src={service.image} 
+                      alt={service.title}
+                      className="w-full h-full object-cover rounded-2xl md:rounded-l-none md:rounded-r-2xl m-4 md:m-0 md:mr-4 md:my-4 group-hover:scale-105 transition-transform duration-500"
+                      style={{ width: 'calc(100% - 2rem)', height: 'calc(100% - 2rem)' }}
                     />
                   </div>
-
-                  <div className="flex-grow">
-                    {/* Title */}
-                    <h3 className="font-display text-2xl md:text-3xl font-bold mb-3 text-foreground transition-colors">
+                </div>
+              ) : (
+                /* Layout: Text top, Image bottom */
+                <div className="flex flex-col h-full min-h-[380px]">
+                  {/* Text Content */}
+                  <div className="p-6 md:p-8 flex-shrink-0">
+                    <span className="text-foreground/60 text-sm font-medium">{service.category}</span>
+                    <h3 className="font-display text-xl md:text-2xl font-bold mt-2 mb-4 text-foreground">
                       {service.title}
                     </h3>
-
-                    {/* Bullet Points */}
-                    <ul className="space-y-2">
-                      {service.benefits.map((benefit, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-foreground/80 text-sm">
-                          <span className="w-1.5 h-1.5 rounded-full bg-foreground/60 mt-1.5 flex-shrink-0" />
-                          {benefit}
-                        </li>
-                      ))}
-                    </ul>
+                    <p className="text-foreground/70 text-sm leading-relaxed mb-4">
+                      {service.description}
+                    </p>
+                    <div className="flex items-center gap-2 text-foreground font-medium text-sm group-hover:gap-3 transition-all">
+                      More about {service.category}
+                      <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                  {/* Image */}
+                  <div className="flex-1 px-4 pb-4 min-h-[160px]">
+                    <img 
+                      src={service.image} 
+                      alt={service.title}
+                      className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           ))}
         </div>
