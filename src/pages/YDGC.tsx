@@ -228,13 +228,6 @@ const YDGC = () => {
                     It embeds ethical data handling, accountability, and compliance <strong className="text-foreground">directly into daily operations</strong>—so governance is built into systems, not left to policy binders.
                   </p>
                 </div>
-                
-                <div className="mt-8 p-6 rounded-2xl bg-card border border-primary/20 relative overflow-hidden">
-                  <div className="absolute top-0 left-0 w-1 h-full bg-primary" />
-                  <p className="text-foreground font-medium pl-4">
-                    Delivered as a secure, subscription-based platform—purpose-built for organizations carrying a duty of care.
-                  </p>
-                </div>
               </div>
               
               <div className="relative">
