@@ -26,7 +26,7 @@ const WhoWeAre = () => {
       <div className="absolute inset-0 bg-charcoal-deep/90" />
       
       {/* Content */}
-      <div className="relative z-10 section-container py-24 flex flex-col items-center justify-center min-h-[600px] md:min-h-[700px] text-center">
+      <div className="relative z-10 section-container py-24 flex flex-col justify-center min-h-[600px] md:min-h-[700px]">
         {/* Section Header */}
         <span className="text-primary text-sm font-medium uppercase tracking-widest mb-6">Who We Are</span>
         
@@ -42,14 +42,14 @@ const WhoWeAre = () => {
         </h2>
         
         {/* Description */}
-        <p className="text-white/90 text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed">
+        <p className="text-white/90 text-lg md:text-xl max-w-3xl mb-10 leading-relaxed">
           A Collective is a group of senior, low-ego professionals who assemble project 
           by project to deliver high-impact solutions. Like a pride of lions moving with 
           intention — strategic, efficient, and collaborative.
         </p>
         
         {/* Team Avatars */}
-        <div className="flex items-center justify-center gap-2 mb-10">
+        <div className="flex items-center gap-2 mb-10">
           {teamMembers.map((member, index) => (
             <div 
               key={index}
@@ -64,7 +64,7 @@ const WhoWeAre = () => {
         </div>
         
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-4">
           <Button className="bg-primary text-primary-foreground hover:bg-primary/90 text-base px-6 py-5 group" asChild>
             <Link to="/community">
               Apply to Join the Collective
