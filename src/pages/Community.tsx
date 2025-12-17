@@ -12,7 +12,7 @@ const Community = () => {
         <CommunitySection />
         <CollectivePreview />
       </main>
-      <Footer />
+      <Footer hideCTA />
       <AIChatbot />
     </div>
   );
