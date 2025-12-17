@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Users } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import lionsAtWork from "@/assets/lions-at-work.webp";
 
 const teamMembers = [
@@ -27,13 +27,11 @@ const WhoWeAre = () => {
       
       {/* Content */}
       <div className="relative z-10 section-container py-24 flex flex-col items-center justify-center min-h-[600px] md:min-h-[700px] text-center">
-        {/* Icon */}
-        <div className="w-16 h-16 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center mb-6">
-          <Users className="text-primary" size={28} />
-        </div>
+        {/* Section Header */}
+        <span className="text-primary text-sm font-medium uppercase tracking-widest mb-6">Who We Are</span>
         
         {/* Label */}
-        <span className="text-primary text-sm font-medium uppercase tracking-widest mb-4">
+        <span className="text-white/70 text-sm font-medium uppercase tracking-wider mb-4">
           The Boring Tech Collective
         </span>
         

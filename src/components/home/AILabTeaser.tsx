@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { FlaskConical, ArrowRight, Sparkles, Zap, Binary } from "lucide-react";
+import { ArrowRight, Zap, Binary } from "lucide-react";
 import lionInLab from "@/assets/lion-in-lab.webp";
 
 const AILabTeaser = () => {
@@ -45,15 +45,11 @@ const AILabTeaser = () => {
           {/* Content */}
           <div className="relative z-10 p-8 md:p-12 lg:p-16 flex flex-col justify-center h-full min-h-[500px] md:min-h-[550px]">
             <div className="max-w-xl">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm mb-8 animate-fade-in">
-                <FlaskConical className="text-primary animate-pulse" size={16} />
-                <span className="text-primary text-sm font-medium uppercase tracking-widest">AI Lab</span>
-                <Sparkles className="text-primary/60" size={14} />
-              </div>
+              {/* Section Header */}
+              <span className="text-primary text-sm font-medium uppercase tracking-widest">AI Lab</span>
               
               {/* Heading */}
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 mt-2 animate-fade-in" style={{ animationDelay: '0.1s' }}>
                 Where Ideas
                 <br />
                 <span className="text-primary relative">
@@ -84,20 +80,6 @@ const AILabTeaser = () => {
                     <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary/80 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </Link>
                 </Button>
-              </div>
-
-              {/* Tech Stats */}
-              <div className="mt-12 flex gap-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-                {[
-                  { label: "Active Projects", value: "12+" },
-                  { label: "Prototypes Built", value: "50+" },
-                  { label: "Beta Testers", value: "200+" }
-                ].map((stat, idx) => (
-                  <div key={idx} className="text-center">
-                    <div className="text-2xl md:text-3xl font-bold text-primary">{stat.value}</div>
-                    <div className="text-xs text-muted-foreground uppercase tracking-wider">{stat.label}</div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>
