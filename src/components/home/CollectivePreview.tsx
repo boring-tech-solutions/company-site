@@ -1,7 +1,64 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Users, ArrowRight } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useToast } from "@/hooks/use-toast";
 
 const CollectivePreview = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+    role: "",
+  });
+  const { toast } = useToast();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!formData.name || !formData.email || !formData.role) {
+      toast({
+        title: "Missing fields",
+        description: "Please fill in all required fields.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    // Simulate submission
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    
+    toast({
+      title: "Application submitted!",
+      description: "We'll be in touch soon.",
+    });
+    
+    setFormData({ name: "", email: "", phone: "", message: "", role: "" });
+    setIsOpen(false);
+    setIsSubmitting(false);
+  };
+
   return (
     <section id="about" className="py-24 relative overflow-hidden">
       {/* Background */}
@@ -40,16 +97,108 @@ const CollectivePreview = () => {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 group">
+            <Button 
+              className="bg-primary text-primary-foreground hover:bg-primary/90 group"
+              onClick={() => setIsOpen(true)}
+            >
               Apply to Join the Collective
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
             </Button>
-            <Button variant="outline">
+            <Button variant="outline" onClick={() => {
+              setFormData(prev => ({ ...prev, role: "Student" }));
+              setIsOpen(true);
+            }}>
               I'm a Student
             </Button>
           </div>
         </div>
       </div>
+
+      {/* Application Dialog */}
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <DialogContent className="sm:max-w-md bg-card border-border">
+          <DialogHeader>
+            <DialogTitle className="font-display text-2xl">Join the Collective</DialogTitle>
+            <DialogDescription>
+              Fill out the form below and we'll get back to you soon.
+            </DialogDescription>
+          </DialogHeader>
+          
+          <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+            <div className="space-y-2">
+              <Label htmlFor="name">Name *</Label>
+              <Input
+                id="name"
+                placeholder="Your name"
+                value={formData.name}
+                onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                className="bg-background"
+                required
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <Label htmlFor="email">Email *</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="your@email.com"
+                value={formData.email}
+                onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                className="bg-background"
+                required
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <Label htmlFor="phone">Phone</Label>
+              <Input
+                id="phone"
+                type="tel"
+                placeholder="Your phone number"
+                value={formData.phone}
+                onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
+                className="bg-background"
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <Label htmlFor="role">Role *</Label>
+              <Select
+                value={formData.role}
+                onValueChange={(value) => setFormData(prev => ({ ...prev, role: value }))}
+              >
+                <SelectTrigger className="bg-background">
+                  <SelectValue placeholder="Select your role" />
+                </SelectTrigger>
+                <SelectContent className="bg-card border-border z-50">
+                  <SelectItem value="Collective Member">Collective Member</SelectItem>
+                  <SelectItem value="Student">Student</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            
+            <div className="space-y-2">
+              <Label htmlFor="message">Message</Label>
+              <Textarea
+                id="message"
+                placeholder="Tell us about yourself..."
+                value={formData.message}
+                onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
+                className="bg-background min-h-[100px]"
+              />
+            </div>
+            
+            <Button 
+              type="submit" 
+              className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Submitting..." : "Submit Application"}
+            </Button>
+          </form>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
