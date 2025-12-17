@@ -70,6 +70,27 @@ const caseStudies = [
     textColor: "text-white",
     mutedColor: "text-white/70",
   },
+  {
+    title: "QuizApp",
+    category: "Learning Platform",
+    description: "Empowering newcomers with accessible, structured citizenship learning.",
+    challenge: "Fragmented resources",
+    transformation: "Structured learning",
+    fullDescription: "Newcomers preparing for the Canadian citizenship test often face fragmented, inaccessible learning resources. Materials are dense, language barriers are high, and many learners struggle to study consistently without guidance, feedback, or culturally inclusive support. Traditional study methods make it difficult to measure readiness, track progress, or adapt learning to individual needs—especially for adult learners balancing work, family, and settlement pressures.",
+    approach: "We built QuizApp, a dedicated learning platform designed specifically for citizenship test preparation. QuizApp transforms the Discover Canada guide into structured, bite-sized quizzes that support repetition, comprehension, and confidence-building. The platform emphasizes clarity, accessibility, and consistency—meeting learners where they are. The experience is self-paced and intuitive, designed for adult learners and English language learners, and focused on retention, not rote memorization.",
+    results: [
+      "Improved learner engagement through interactive quizzes",
+      "Clear progress tracking to support consistent study habits",
+      "Increased learner confidence through immediate feedback",
+      "Accessible learning experience for diverse newcomer communities",
+      "Scalable platform suitable for workshops, classrooms, and independent study"
+    ],
+    technologies: ["Python", "FastAPI", "PostgreSQL", "React", "Tailwind"],
+    timeline: "4 months",
+    bgColor: "bg-blue-600",
+    textColor: "text-white",
+    mutedColor: "text-white/70",
+  },
 ];
 
 const CaseStudyPreview = () => {
