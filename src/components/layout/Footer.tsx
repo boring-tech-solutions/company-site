@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail, MapPin, Linkedin } from "lucide-react";
 
@@ -18,12 +19,16 @@ const Footer = () => {
             Start with a conversation. No pressure, no jargon — just practical advice on how AI can help your business.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-6 group">
-              Book a Coffee Chat
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-6 group" asChild>
+              <a href="https://cal.com/boring-tech-solutions/15min" target="_blank" rel="noopener noreferrer">
+                Book a Coffee Chat
+                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+              </a>
             </Button>
-            <Button variant="outline" className="text-lg px-8 py-6">
-              Tell Us Your Challenge
+            <Button variant="outline" className="text-lg px-8 py-6" asChild>
+              <Link to="/contact">
+                Tell Us Your Challenge
+              </Link>
             </Button>
           </div>
         </div>
@@ -55,10 +60,10 @@ const Footer = () => {
             <div>
               <h4 className="font-display font-semibold mb-4">Services</h4>
               <ul className="space-y-3 text-muted-foreground text-sm">
-                <li><a href="#" className="hover:text-foreground transition-colors">AI Implementation</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">Strategic AI Advisory</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">Custom Software</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">YDCS</a></li>
+                <li><Link to="/#services" className="hover:text-foreground transition-colors">AI Implementation</Link></li>
+                <li><Link to="/#services" className="hover:text-foreground transition-colors">Strategic AI Advisory</Link></li>
+                <li><Link to="/#services" className="hover:text-foreground transition-colors">Custom Software</Link></li>
+                <li><Link to="/#services" className="hover:text-foreground transition-colors">YDCS</Link></li>
               </ul>
             </div>
 
@@ -66,10 +71,10 @@ const Footer = () => {
             <div>
               <h4 className="font-display font-semibold mb-4">Company</h4>
               <ul className="space-y-3 text-muted-foreground text-sm">
-                <li><a href="#" className="hover:text-foreground transition-colors">About Us</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">AI Lab</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">Case Studies</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">Community</a></li>
+                <li><Link to="/about" className="hover:text-foreground transition-colors">About Us</Link></li>
+                <li><Link to="/ai-lab" className="hover:text-foreground transition-colors">AI Lab</Link></li>
+                <li><Link to="/case-studies" className="hover:text-foreground transition-colors">Case Studies</Link></li>
+                <li><Link to="/community" className="hover:text-foreground transition-colors">Community</Link></li>
               </ul>
             </div>
 
@@ -84,7 +89,7 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-foreground transition-colors flex items-center gap-2">
+                  <a href="https://linkedin.com/company/boring-tech-solutions" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors flex items-center gap-2">
                     <Linkedin size={16} />
                     LinkedIn
                   </a>
