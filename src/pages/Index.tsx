@@ -3,6 +3,8 @@ import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
 import ServicePreview from "@/components/home/ServicePreview";
 import WhoWeAre from "@/components/home/WhoWeAre";
+import SelfIdentificationCards from "@/components/home/SelfIdentificationCards";
+import PartnerLogos from "@/components/home/PartnerLogos";
 import AIChatbot from "@/components/chat/AIChatbot";
 
 const Index = () => {
@@ -13,6 +15,8 @@ const Index = () => {
         <HeroSection />
         <ServicePreview />
         <WhoWeAre />
+        <SelfIdentificationCards />
+        <PartnerLogos />
       </main>
       <Footer />
       <AIChatbot />
