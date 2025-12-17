@@ -10,6 +10,7 @@ import About from "./pages/About";
 import Community from "./pages/Community";
 import Contact from "./pages/Contact";
 import ContactSuccess from "./pages/ContactSuccess";
+import YDGC from "./pages/YDGC";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/community" element={<Community />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/contact/success" element={<ContactSuccess />} />
+          <Route path="/ydgc" element={<YDGC />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
