@@ -1,35 +1,27 @@
 import { ArrowRight, HelpCircle, TrendingDown, Database, Lightbulb } from "lucide-react";
-
-const cards = [
-  {
-    icon: HelpCircle,
-    statement: "I'm a small business and I don't know where to start.",
-    action: "Start with AI Advisory",
-    color: "from-primary/20 to-primary/5",
-  },
-  {
-    icon: TrendingDown,
-    statement: "I want to reduce costs but don't know what to automate.",
-    action: "Explore Automation",
-    color: "from-accent/20 to-accent/5",
-  },
-  {
-    icon: Database,
-    statement: "I have a lot of data but no idea how it can help me.",
-    action: "Discover Data Insights",
-    color: "from-primary/15 to-primary/5",
-  },
-  {
-    icon: Lightbulb,
-    statement: "I'm exploring AI and want to try a prototype.",
-    action: "Visit the AI Lab",
-    color: "from-accent/15 to-accent/5",
-  },
-];
-
+const cards = [{
+  icon: HelpCircle,
+  statement: "I'm a small business and I don't know where to start.",
+  action: "Start with AI Advisory",
+  color: "from-primary/20 to-primary/5"
+}, {
+  icon: TrendingDown,
+  statement: "I want to reduce costs but don't know what to automate.",
+  action: "Explore Automation",
+  color: "from-accent/20 to-accent/5"
+}, {
+  icon: Database,
+  statement: "I have a lot of data but no idea how it can help me.",
+  action: "Discover Data Insights",
+  color: "from-primary/15 to-primary/5"
+}, {
+  icon: Lightbulb,
+  statement: "I'm exploring AI and want to try a prototype.",
+  action: "Visit the AI Lab",
+  color: "from-accent/15 to-accent/5"
+}];
 const SelfIdentificationCards = () => {
-  return (
-    <section className="py-24 relative">
+  return <section className="relative py-[75px]">
       <div className="section-container">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -44,12 +36,9 @@ const SelfIdentificationCards = () => {
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {cards.map((card, index) => (
-            <div
-              key={index}
-              className="group card-premium cursor-pointer relative overflow-hidden"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
+          {cards.map((card, index) => <div key={index} className="group card-premium cursor-pointer relative overflow-hidden" style={{
+          animationDelay: `${index * 100}ms`
+        }}>
               {/* Background Gradient */}
               <div className={`absolute inset-0 bg-gradient-to-br ${card.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
               
@@ -70,12 +59,9 @@ const SelfIdentificationCards = () => {
                   <ArrowRight className="ml-2" size={18} />
                 </div>
               </div>
-            </div>
-          ))}
+            </div>)}
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default SelfIdentificationCards;

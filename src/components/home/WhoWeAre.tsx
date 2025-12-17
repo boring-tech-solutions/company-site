@@ -2,25 +2,23 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import lionsAtWork from "@/assets/lions-at-work.webp";
-
-const teamMembers = [
-  { initials: "CP" },
-  { initials: "SM" },
-  { initials: "W" },
-  { initials: "J" },
-  { initials: "T" },
-  { initials: "A" },
-];
-
+const teamMembers = [{
+  initials: "CP"
+}, {
+  initials: "SM"
+}, {
+  initials: "W"
+}, {
+  initials: "J"
+}, {
+  initials: "T"
+}, {
+  initials: "A"
+}];
 const WhoWeAre = () => {
-  return (
-    <section className="relative min-h-[600px] md:min-h-[700px] overflow-hidden">
+  return <section className="relative min-h-[600px] md:min-h-[700px] overflow-hidden">
       {/* Background Image */}
-      <img 
-        src={lionsAtWork} 
-        alt="The Boring Tech Collective - Lions at work"
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+      <img src={lionsAtWork} alt="The Boring Tech Collective - Lions at work" className="absolute inset-0 w-full h-full object-cover" />
       
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-charcoal-deep/90" />
@@ -45,14 +43,7 @@ const WhoWeAre = () => {
         
         {/* Team Avatars */}
         <div className="flex items-center justify-center gap-2 mb-10">
-          {teamMembers.map((member, index) => (
-            <div 
-              key={index}
-              className="w-12 h-12 rounded-full bg-charcoal border-2 border-border flex items-center justify-center text-sm font-medium text-muted-foreground"
-            >
-              {member.initials}
-            </div>
-          ))}
+          {teamMembers.map((member, index) => {})}
           <div className="text-muted-foreground text-sm ml-2">
             + more
           </div>
@@ -73,8 +64,6 @@ const WhoWeAre = () => {
           </Button>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default WhoWeAre;
