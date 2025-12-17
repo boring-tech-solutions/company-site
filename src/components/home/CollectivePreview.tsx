@@ -99,7 +99,10 @@ const CollectivePreview = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               className="bg-primary text-primary-foreground hover:bg-primary/90 group"
-              onClick={() => setIsOpen(true)}
+              onClick={() => {
+                setFormData(prev => ({ ...prev, role: "Collective Member" }));
+                setIsOpen(true);
+              }}
             >
               Apply to Join the Collective
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
