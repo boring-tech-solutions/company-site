@@ -8,6 +8,8 @@ import AILab from "./pages/AILab";
 import CaseStudies from "./pages/CaseStudies";
 import About from "./pages/About";
 import Community from "./pages/Community";
+import Contact from "./pages/Contact";
+import ContactSuccess from "./pages/ContactSuccess";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +26,8 @@ const App = () => (
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/about" element={<About />} />
           <Route path="/community" element={<Community />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/contact/success" element={<ContactSuccess />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

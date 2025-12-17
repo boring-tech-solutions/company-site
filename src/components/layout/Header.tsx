@@ -64,8 +64,9 @@ const Header = () => {
             <Button
               variant="ghost"
               className="text-muted-foreground hover:text-foreground"
+              asChild
             >
-              Contact
+              <Link to="/contact">Contact</Link>
             </Button>
             <Button className="bg-primary text-primary-foreground hover:bg-primary/90" asChild>
               <a href="https://cal.com/boring-tech-solutions/15min" target="_blank" rel="noopener noreferrer">Book a Coffee Chat</a>
@@ -99,8 +100,8 @@ const Header = () => {
                 </Link>
               ))}
               <div className="pt-8 flex flex-col gap-4 w-full max-w-xs">
-                <Button variant="outline" className="w-full text-lg py-6">
-                  Contact
+                <Button variant="outline" className="w-full text-lg py-6" asChild>
+                  <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
                 </Button>
                 <Button className="w-full bg-primary text-primary-foreground text-lg py-6" asChild>
                   <a href="https://cal.com/boring-tech-solutions/15min" target="_blank" rel="noopener noreferrer">Book a Coffee Chat</a>
