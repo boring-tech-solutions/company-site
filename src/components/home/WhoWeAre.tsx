@@ -22,8 +22,9 @@ const WhoWeAre = () => {
         className="absolute inset-0 w-full h-full object-cover"
       />
       
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-charcoal-deep/90" />
+      {/* Dark Overlay with yellow tinge */}
+      <div className="absolute inset-0 bg-charcoal-deep/85" />
+      <div className="absolute inset-0 bg-primary/15" />
       
       {/* Content */}
       <div className="relative z-10 section-container py-24 flex flex-col items-center justify-center min-h-[600px] md:min-h-[700px] text-center">
@@ -44,7 +45,7 @@ const WhoWeAre = () => {
         </h2>
         
         {/* Description */}
-        <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed">
+        <p className="text-white/80 text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed">
           A Collective is a group of senior, low-ego professionals who assemble project 
           by project to deliver high-impact solutions. Like a pride of lions moving with 
           intention — strategic, efficient, and collaborative.
@@ -55,12 +56,12 @@ const WhoWeAre = () => {
           {teamMembers.map((member, index) => (
             <div 
               key={index}
-              className="w-12 h-12 rounded-full bg-charcoal border-2 border-border flex items-center justify-center text-sm font-medium text-muted-foreground"
+              className="w-12 h-12 rounded-full bg-charcoal border-2 border-white/20 flex items-center justify-center text-sm font-medium text-white/70"
             >
               {member.initials}
             </div>
           ))}
-          <div className="text-muted-foreground text-sm ml-2">
+          <div className="text-white/70 text-sm ml-2">
             + more
           </div>
         </div>
