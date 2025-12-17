@@ -26,6 +26,8 @@ const services = [
       "Real-time predictive analytics",
       "Seamless integration with existing tools"
     ],
+    cardStyle: "bg-muted text-foreground",
+    overlayStyle: "from-muted/60 via-muted/80 to-muted",
   },
   {
     icon: Compass,
@@ -39,6 +41,8 @@ const services = [
       "Custom implementation roadmap",
       "ROI projections and risk analysis"
     ],
+    cardStyle: "bg-primary text-primary-foreground",
+    overlayStyle: "from-primary/60 via-primary/80 to-primary",
   },
   {
     icon: Code,
@@ -52,6 +56,8 @@ const services = [
       "High-performance APIs",
       "Real-time data pipelines"
     ],
+    cardStyle: "bg-charcoal-deep text-foreground",
+    overlayStyle: "from-charcoal-deep/60 via-charcoal-deep/80 to-charcoal-deep",
   },
   {
     icon: Shield,
@@ -65,6 +71,8 @@ const services = [
       "Intelligent retention scheduling",
       "Complete audit trail"
     ],
+    cardStyle: "bg-charcoal text-foreground",
+    overlayStyle: "from-charcoal/60 via-charcoal/80 to-charcoal",
   },
 ];
 
@@ -89,39 +97,29 @@ const ServicePreview = () => {
             <div
               key={index}
               onClick={() => setSelectedService(service)}
-              className="bg-card rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 border border-border/30 hover:border-primary/30"
+              className={`${service.cardStyle} rounded-3xl overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 flex flex-col min-h-[480px]`}
             >
-              {/* Image with dark overlay */}
-              <div className="relative h-52 overflow-hidden">
+              {/* Content - Top */}
+              <div className="p-8 flex-shrink-0">
+                {/* Title */}
+                <h3 className="font-display text-3xl md:text-4xl font-bold leading-tight mb-4">
+                  {service.title}
+                </h3>
+                
+                {/* Description */}
+                <p className={`text-base leading-relaxed ${index === 1 ? 'text-primary-foreground/80' : 'text-muted-foreground'}`}>
+                  {service.description}
+                </p>
+              </div>
+              
+              {/* Image - Bottom with overlay */}
+              <div className="relative flex-1 mt-auto">
+                <div className={`absolute inset-0 bg-gradient-to-b ${service.overlayStyle} z-10`} />
                 <img 
                   src={service.image} 
                   alt={service.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-card/30 via-card/50 to-card" />
-              </div>
-              
-              {/* Content */}
-              <div className="p-6 pt-4">
-                {/* Icon + Title */}
-                <div className="flex items-start gap-4 mb-5">
-                  <div className="w-12 h-12 rounded-xl bg-muted/80 border border-border/50 flex items-center justify-center flex-shrink-0">
-                    <service.icon className="text-primary" size={22} />
-                  </div>
-                  <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground leading-tight">
-                    {service.title}
-                  </h3>
-                </div>
-                
-                {/* Benefits List */}
-                <ul className="space-y-3 pl-1">
-                  {service.benefits.map((benefit, idx) => (
-                    <li key={idx} className="flex items-center gap-3 text-sm text-muted-foreground">
-                      <span className="w-2 h-2 rounded-full bg-primary/80 flex-shrink-0" />
-                      {benefit}
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
           ))}
