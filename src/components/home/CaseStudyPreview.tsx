@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ArrowUpRight, Target, Lightbulb, TrendingUp, CheckCircle } from "lucide-react";
 import {
@@ -163,7 +164,7 @@ const CaseStudyPreview = () => {
                 <div className="mb-6">
                   <div className="flex items-center gap-2 mb-3">
                     <Target size={20} />
-                    <h4 className="text-sm font-semibold uppercase tracking-wide">The Challenge</h4>
+                    <h4 className="font-bold text-base uppercase tracking-wide">The Challenge</h4>
                   </div>
                   <p className={`${selectedStudy.mutedColor} leading-relaxed`}>
                     {selectedStudy.fullDescription}
@@ -174,7 +175,7 @@ const CaseStudyPreview = () => {
                 <div className="mb-6">
                   <div className="flex items-center gap-2 mb-3">
                     <Lightbulb size={20} />
-                    <h4 className="text-sm font-semibold uppercase tracking-wide">Our Approach</h4>
+                    <h4 className="font-bold text-base uppercase tracking-wide">Our Approach</h4>
                   </div>
                   <p className={`${selectedStudy.mutedColor} leading-relaxed`}>
                     {selectedStudy.approach}
@@ -185,7 +186,7 @@ const CaseStudyPreview = () => {
                 <div className="mb-6">
                   <div className="flex items-center gap-2 mb-3">
                     <TrendingUp size={20} />
-                    <h4 className="text-sm font-semibold uppercase tracking-wide">Results</h4>
+                    <h4 className="font-bold text-base uppercase tracking-wide">Results</h4>
                   </div>
                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
                     {selectedStudy.results.map((result, idx) => (
@@ -219,9 +220,11 @@ const CaseStudyPreview = () => {
                 </div>
 
                 {/* CTA */}
-                <Button className="w-full font-semibold bg-primary text-primary-foreground hover:bg-primary/90">
-                  Discuss Your Project
-                  <ArrowRight className="ml-2" size={18} />
+                <Button className="w-full font-semibold bg-primary text-primary-foreground hover:bg-primary/90" asChild>
+                  <Link to="/contact">
+                    Discuss Your Project
+                    <ArrowRight className="ml-2" size={18} />
+                  </Link>
                 </Button>
               </div>
             </div>
