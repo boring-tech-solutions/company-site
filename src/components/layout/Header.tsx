@@ -64,7 +64,11 @@ const Header = () => {
           <div className="hidden lg:flex items-center gap-4">
             <Button
               variant="ghost"
-              className="text-muted-foreground hover:text-foreground"
+              className={cn(
+                location.pathname === "/contact"
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-foreground"
+              )}
               asChild
             >
               <Link to="/contact">Contact</Link>
@@ -101,7 +105,14 @@ const Header = () => {
                 </Link>
               ))}
               <div className="pt-8 flex flex-col gap-4 w-full max-w-xs">
-                <Button variant="outline" className="w-full text-lg py-6" asChild>
+                <Button 
+                  variant="outline" 
+                  className={cn(
+                    "w-full text-lg py-6",
+                    location.pathname === "/contact" && "border-primary text-primary"
+                  )} 
+                  asChild
+                >
                   <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
                 </Button>
                 <Button className="w-full bg-primary text-primary-foreground text-lg py-6" asChild>
