@@ -27,6 +27,8 @@ const CollectivePreview = () => {
     name: "",
     email: "",
     phone: "",
+    linkedin: "",
+    website: "",
     message: "",
     role: "",
   });
@@ -54,7 +56,7 @@ const CollectivePreview = () => {
       description: "We'll be in touch soon.",
     });
     
-    setFormData({ name: "", email: "", phone: "", message: "", role: "" });
+    setFormData({ name: "", email: "", phone: "", linkedin: "", website: "", message: "", role: "" });
     setIsOpen(false);
     setIsSubmitting(false);
   };
@@ -161,6 +163,30 @@ const CollectivePreview = () => {
                 placeholder="Your phone number"
                 value={formData.phone}
                 onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
+                className="bg-background"
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <Label htmlFor="linkedin">LinkedIn</Label>
+              <Input
+                id="linkedin"
+                type="url"
+                placeholder="https://linkedin.com/in/yourprofile"
+                value={formData.linkedin}
+                onChange={(e) => setFormData(prev => ({ ...prev, linkedin: e.target.value }))}
+                className="bg-background"
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <Label htmlFor="website">Website</Label>
+              <Input
+                id="website"
+                type="url"
+                placeholder="https://yourwebsite.com"
+                value={formData.website}
+                onChange={(e) => setFormData(prev => ({ ...prev, website: e.target.value }))}
                 className="bg-background"
               />
             </div>
