@@ -254,7 +254,7 @@ const YDGC = () => {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-24 bg-gradient-to-b from-background to-primary/5">
+        <section className="pt-12 pb-24 bg-gradient-to-b from-background to-primary/5">
           <div className="section-container">
             <div className="max-w-3xl mx-auto">
               <div className="text-center mb-12">
