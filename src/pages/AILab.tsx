@@ -156,14 +156,6 @@ const AILab = () => {
               </div>
             </div>
 
-            <div className="text-center mt-10">
-              <Button variant="outline" size="lg" asChild>
-                <Link to="/contact">
-                  See How We Build Responsible AI
-                  <ArrowRight className="ml-2" size={18} />
-                </Link>
-              </Button>
-            </div>
           </div>
         </section>
 
