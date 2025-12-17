@@ -63,7 +63,7 @@ const Footer = () => {
                 <li><Link to="/#services" className="hover:text-foreground transition-colors">AI Implementation</Link></li>
                 <li><Link to="/#services" className="hover:text-foreground transition-colors">Strategic AI Advisory</Link></li>
                 <li><Link to="/#services" className="hover:text-foreground transition-colors">Custom Software</Link></li>
-                <li><Link to="/ydgc" className="hover:text-foreground transition-colors">YDGC</Link></li>
+                <li><Link to="/ydgc" className="hover:text-foreground transition-colors">Data Compliance</Link></li>
               </ul>
             </div>
 
