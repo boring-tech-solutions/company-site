@@ -26,14 +26,9 @@ const WhoWeAre = () => {
       <div className="absolute inset-0 bg-charcoal-deep/90" />
       
       {/* Content */}
-      <div className="relative z-10 section-container py-24 flex flex-col justify-center min-h-[600px] md:min-h-[700px]">
+      <div className="relative z-10 section-container py-24 flex flex-col items-center justify-center min-h-[600px] md:min-h-[700px] text-center">
         {/* Section Header */}
         <span className="text-primary text-sm font-medium uppercase tracking-widest mb-6">Who We Are</span>
-        
-        {/* Label */}
-        <span className="text-white/70 text-sm font-medium uppercase tracking-wider mb-4">
-          The Boring Tech Collective
-        </span>
         
         {/* Headline */}
         <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
@@ -42,14 +37,14 @@ const WhoWeAre = () => {
         </h2>
         
         {/* Description */}
-        <p className="text-white/90 text-lg md:text-xl max-w-3xl mb-10 leading-relaxed">
+        <p className="text-white/90 text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed">
           A Collective is a group of senior, low-ego professionals who assemble project 
           by project to deliver high-impact solutions. Like a pride of lions moving with 
           intention — strategic, efficient, and collaborative.
         </p>
         
         {/* Team Avatars */}
-        <div className="flex items-center gap-2 mb-10">
+        <div className="flex items-center justify-center gap-2 mb-10">
           {teamMembers.map((member, index) => (
             <div 
               key={index}
@@ -64,7 +59,7 @@ const WhoWeAre = () => {
         </div>
         
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-4">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button className="bg-primary text-primary-foreground hover:bg-primary/90 text-base px-6 py-5 group" asChild>
             <Link to="/community">
               Apply to Join the Collective
