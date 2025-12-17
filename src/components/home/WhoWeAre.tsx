@@ -43,7 +43,14 @@ const WhoWeAre = () => {
         
         {/* Team Avatars */}
         <div className="flex items-center justify-center gap-2 mb-10">
-          {teamMembers.map((member, index) => {})}
+          {teamMembers.map((member, index) => (
+            <div 
+              key={index}
+              className="w-10 h-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-sm font-medium text-primary"
+            >
+              {member.initials}
+            </div>
+          ))}
           <div className="text-muted-foreground text-sm ml-2">
             + more
           </div>
