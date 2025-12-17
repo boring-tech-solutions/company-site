@@ -23,7 +23,7 @@ const WhoWeAre = () => {
       />
       
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-charcoal-deep/85" />
+      <div className="absolute inset-0 bg-charcoal-deep/90" />
       
       {/* Content */}
       <div className="relative z-10 section-container py-24 flex flex-col items-center justify-center min-h-[600px] md:min-h-[700px] text-center">
