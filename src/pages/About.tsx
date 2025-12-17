@@ -1,6 +1,7 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import AIChatbot from "@/components/chat/AIChatbot";
+import TeamSection from "@/components/about/TeamSection";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, Compass, Mountain, Target, Users, Sparkles } from "lucide-react";
@@ -95,6 +96,9 @@ const About = () => {
             </div>
           </div>
         </section>
+
+        {/* Team Section */}
+        <TeamSection />
 
         {/* The Boring Way Section */}
         <section className="py-24 bg-card/50 relative overflow-hidden">
