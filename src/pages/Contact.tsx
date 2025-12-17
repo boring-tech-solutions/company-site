@@ -46,9 +46,29 @@ const Contact = () => {
       return;
     }
 
-    // TODO: Send to Airtable
-    // For now, redirect to success page
-    navigate("/contact/success");
+    try {
+      // TODO: Replace with actual Airtable webhook URL
+      const AIRTABLE_WEBHOOK_URL = "https://hooks.airtable.com/workflows/v1/YOUR_WEBHOOK_ID";
+      
+      await fetch(AIRTABLE_WEBHOOK_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "no-cors",
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          submitted_at: new Date().toISOString(),
+        }),
+      });
+
+      navigate("/contact/success");
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setIsSubmitting(false);
+    }
   };
 
   return (
