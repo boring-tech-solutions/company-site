@@ -4,13 +4,17 @@ import { ArrowRight, Mail, MapPin, Linkedin } from "lucide-react";
 
 const logo = "https://image-cdn.quizapp.ca/logo.webp";
 
-const Footer = () => {
+interface FooterProps {
+  hideCTA?: boolean;
+}
+
+const Footer = ({ hideCTA = false }: FooterProps) => {
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-card border-t border-border">
       {/* CTA Section */}
-      <div className="section-container py-20">
+      {!hideCTA && <div className="section-container py-20">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">
             Ready to Navigate the <span className="text-gradient">AI Terrain</span>?
@@ -32,7 +36,7 @@ const Footer = () => {
             </Button>
           </div>
         </div>
-      </div>
+      </div>}
 
       {/* Footer Links */}
       <div className="border-t border-border">
