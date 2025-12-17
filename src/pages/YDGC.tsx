@@ -100,24 +100,40 @@ const YDGC = () => {
 
   const faqs = [
     {
-      question: "Why is youth data governance becoming a priority now?",
-      answer: "As digital and AI-assisted tools become more common, organizations are expected to demonstrate clearer oversight of how sensitive data is collected, accessed, retained, and deleted. Youth data carries a higher duty of care, and governance expectations are rising accordingly."
+      question: "Why is youth data governance becoming urgent right now?",
+      answer: "Because the way data is handled has changed faster than the rules most organizations are relying on. In an AI-enabled environment, youth data can be copied, synced, shared, and retained indefinitely—often without clear visibility. Funders and reviewers are increasingly aware of this gap and are asking organizations to demonstrate how governance actually works in practice, not just on paper. Organizations that address this early are finding it easier to maintain funding and credibility. Those that wait are often forced to react under pressure."
     },
     {
-      question: "Is this about fear of AI or data misuse?",
-      answer: "No. YDGC is not designed around fear. It is designed around clarity and responsibility. AI has accelerated how data moves and is processed. YDGC helps organizations ensure their systems keep pace—without restricting innovation or service delivery."
+      question: "Are common tools like Dropbox, Google Drive, or shared folders a risk?",
+      answer: "They can be. While tools like Dropbox and shared cloud drives are convenient, they were not designed for youth data governance. In many organizations, these tools: lack clear, enforceable retention rules; make it difficult to prove who accessed data and when; allow files to be copied, synced, or retained indefinitely; and do not reliably enforce role-based access as staff change. As a result, organizations may unknowingly fall out of alignment with privacy and governance expectations—especially during audits or funding reviews."
     },
     {
-      question: "Are organizations being forced to adopt platforms like YDGC?",
-      answer: "In most cases, adoption is driven by funder and governance expectations, not formal mandates. Organizations are choosing stronger data governance because funding, trust, and accountability are increasingly connected."
+      question: "Does this mean we're already in violation?",
+      answer: "Not necessarily—but many organizations cannot confidently prove they are not. In funding and audit contexts, the issue is often less about intent and more about demonstrability: Can you show when youth data expires? Can you prove who accessed it? Can you demonstrate that deletion actually occurred? YDGC exists to remove this uncertainty by embedding governance directly into systems."
     },
     {
-      question: "Is YDGC only for organizations worried about compliance?",
-      answer: "No. While compliance is important, most organizations adopt YDGC to reduce operational risk, simplify reporting and audits, and build long-term credibility with funders and boards. Compliance becomes a by-product of good governance."
+      question: "Is funding actually being affected by these issues?",
+      answer: "Increasingly, yes. Even when funders do not mandate a specific platform, they are: asking more detailed governance questions; expecting evidence, not assurances; and flagging risk when answers are unclear or inconsistent. Organizations relying solely on shared storage tools often struggle to respond confidently—leading to delays, conditions, or increased scrutiny."
     },
     {
-      question: "Does YDGC limit how organizations can use technology or AI?",
-      answer: "No. YDGC does not prohibit tools or innovation. It provides guardrails—ensuring youth data is handled ethically, with clear purpose and accountability."
+      question: "Are other organizations already moving away from shared drives?",
+      answer: "Yes. Many Alberta-based organizations are transitioning away from general-purpose storage for youth data—not because of panic, but because expectations have shifted. Boards and funders now expect systems that enforce governance, not tools that rely on best intentions. YDGC is designed for organizations that want to align with where expectations are going—not where they used to be."
+    },
+    {
+      question: "Can't we fix this with policies or staff training?",
+      answer: "Policies and training are important, but they do not scale on their own. Most governance gaps appear when: staff turnover occurs; volunteers rotate; programs overlap; or data lives longer than expected. YDGC turns policy into practice by enforcing governance automatically—reducing reliance on memory and manual checks."
+    },
+    {
+      question: "What happens if we continue as-is for now?",
+      answer: "For many organizations, nothing happens—until a review, audit, or renewal brings these questions forward. At that point, governance gaps become time-sensitive, resource-intensive, and stressful to address. Organizations that adopt YDGC earlier typically experience smoother funding cycles and fewer last-minute compliance exercises."
+    },
+    {
+      question: "Is YDGC difficult to adopt?",
+      answer: "No. YDGC is designed for lean teams and real-world constraints. Most organizations find that automating governance: reduces administrative burden; simplifies reporting; and frees staff to focus on service delivery."
+    },
+    {
+      question: "How do we know if this applies to us?",
+      answer: "The fastest way is to see how your current tools would hold up under a funding or audit review. That's why most organizations start with a demo."
     }
   ];
 
@@ -251,7 +267,7 @@ const YDGC = () => {
               <div className="text-center mb-12">
                 <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
                   <HelpCircle size={18} />
-                  <span>FAQ</span>
+                  <span>Is This Relevant To Me</span>
                 </div>
                 
                 <h2 className="font-display text-3xl md:text-4xl font-bold">
