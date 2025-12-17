@@ -13,7 +13,19 @@ import {
   Building2,
   Sparkles,
   ArrowRight,
-  ChevronDown
+  ChevronDown,
+  Lock,
+  Eye,
+  Trash2,
+  Database,
+  TrendingUp,
+  AlertTriangle,
+  Scale,
+  BadgeCheck,
+  Briefcase,
+  Globe,
+  Lightbulb,
+  HelpCircle
 } from "lucide-react";
 import {
   Accordion,
@@ -21,61 +33,69 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import ydgcHero from "@/assets/ydgc-hero.webp";
+import ydgcCompliance from "@/assets/ydgc-compliance.webp";
+import ydgcEthics from "@/assets/ydgc-ethics.webp";
 
 const YDGC = () => {
   const features = [
     {
       icon: CheckCircle2,
       title: "Consent & Purpose Tracking",
-      description: "Document why youth data is collected, how it may be used, and who approved its use—clearly and consistently."
+      description: "Document why youth data is collected, how it may be used, and who approved its use.",
+      color: "from-emerald-500/20 to-emerald-500/5"
     },
     {
-      icon: Users,
+      icon: Lock,
       title: "Role-Based Access Control",
-      description: "Ensure staff and volunteers only access the data they are authorized to see."
+      description: "Ensure staff and volunteers only access the data they are authorized to see.",
+      color: "from-blue-500/20 to-blue-500/5"
     },
     {
-      icon: Clock,
-      title: "Automated Retention & Secure Deletion",
-      description: "Apply retention rules automatically and remove data when it is no longer required—reducing manual risk and oversight gaps."
+      icon: Trash2,
+      title: "Automated Retention & Deletion",
+      description: "Apply retention rules automatically and remove data when no longer required.",
+      color: "from-rose-500/20 to-rose-500/5"
     },
     {
-      icon: FileSearch,
+      icon: Eye,
       title: "Audit Logs & Accountability",
-      description: "Maintain clear, defensible records of data access and changes—critical during audits and funding reviews."
+      description: "Maintain clear, defensible records of data access and changes.",
+      color: "from-amber-500/20 to-amber-500/5"
     },
     {
-      icon: Layers,
+      icon: Database,
       title: "Program-Ready Infrastructure",
-      description: "Support multiple programs, reporting periods, and youth cohorts without duplicating systems."
+      description: "Support multiple programs, reporting periods, and youth cohorts.",
+      color: "from-violet-500/20 to-violet-500/5"
     }
   ];
 
+  const adoptionReasons = [
+    { icon: Lightbulb, text: "AI-enabled tools are becoming unavoidable in everyday operations" },
+    { icon: TrendingUp, text: "Funder expectations are becoming clearer, even when not formally mandated" },
+    { icon: Users, text: "Manual processes do not scale across programs, cohorts, and staff turnover" },
+    { icon: AlertTriangle, text: "Boards and leadership are asking sharper questions about risk" }
+  ];
+
   const complianceFrameworks = [
-    "PIPEDA (Personal Information Protection and Electronic Documents Act)",
-    "FOIP (Freedom of Information and Protection of Privacy Act, Alberta)",
-    "Common governance expectations from Alberta-based funders and public bodies"
+    { name: "PIPEDA", full: "Personal Information Protection and Electronic Documents Act" },
+    { name: "FOIP", full: "Freedom of Information and Protection of Privacy Act, Alberta" },
+    { name: "Funders", full: "Common governance expectations from Alberta-based funders and public bodies" }
   ];
 
   const ethicsPrinciples = [
-    "Data minimization by default",
-    "Clear purpose limitation",
-    "Respect for youth dignity",
-    "No profiling, surveillance, or secondary data use"
+    { icon: Database, text: "Data minimization by default" },
+    { icon: Scale, text: "Clear purpose limitation" },
+    { icon: Heart, text: "Respect for youth dignity" },
+    { icon: Shield, text: "No profiling or surveillance" }
   ];
 
   const funderBenefits = [
-    "Strong data governance maturity",
-    "Reduced compliance and reputational risk",
-    "Operational readiness for audits and renewals",
-    "Responsible stewardship of public and donor funding"
-  ];
-
-  const adoptionReasons = [
-    "AI-enabled tools are becoming unavoidable in everyday operations",
-    "Funder expectations are becoming clearer, even when not formally mandated",
-    "Manual processes do not scale across programs, cohorts, and staff turnover",
-    "Boards and leadership are asking sharper questions about risk and accountability"
+    { icon: BadgeCheck, text: "Strong data governance maturity" },
+    { icon: Shield, text: "Reduced compliance and reputational risk" },
+    { icon: FileSearch, text: "Operational readiness for audits" },
+    { icon: Heart, text: "Responsible stewardship of funding" }
   ];
 
   const faqs = [
@@ -106,266 +126,384 @@ const YDGC = () => {
       <Header />
       <main className="relative z-10">
         {/* Hero Section */}
-        <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background" />
-          <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float delay-500" />
-          
-          <div className="section-container relative text-center py-24">
-            <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
-              <Shield size={18} />
-              <span>By Boring Tech Solutions</span>
-            </div>
-            
-            <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              Youth Data,<br />
-              <span className="text-primary">Governed With Care</span>
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10">
-              Youth Data Governance & Compliance Infrastructure
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 group" asChild>
-                <a href="https://cal.com/boring-tech-solutions/15min" target="_blank" rel="noopener noreferrer">
-                  Book a Demo
-                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
-                </a>
-              </Button>
-              <Button size="lg" variant="outline" asChild>
-                <a href="#how-it-works">
-                  See How Governance Works
-                  <ChevronDown className="ml-2" size={18} />
-                </a>
-              </Button>
-            </div>
+        <section className="relative min-h-screen flex items-center overflow-hidden">
+          {/* Background Image with Overlay */}
+          <div className="absolute inset-0">
+            <img 
+              src={ydgcHero} 
+              alt="Data protection illustration" 
+              className="w-full h-full object-cover opacity-40"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
           </div>
-        </section>
-
-        {/* What Is YDGC */}
-        <section className="py-24 bg-card/50">
-          <div className="section-container">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
-                <Sparkles size={18} />
-                <span>What Is YDGC</span>
+          
+          {/* Animated Elements */}
+          <div className="absolute top-1/4 left-10 w-4 h-4 bg-primary rounded-full animate-ping opacity-75" />
+          <div className="absolute top-1/3 right-20 w-3 h-3 bg-primary/50 rounded-full animate-pulse" />
+          <div className="absolute bottom-1/4 left-1/4 w-2 h-2 bg-primary/30 rounded-full animate-bounce" />
+          
+          <div className="section-container relative py-32">
+            <div className="max-w-4xl">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-8 animate-fade-in">
+                <Shield size={16} className="animate-pulse" />
+                <span>By Boring Tech Solutions</span>
               </div>
               
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                YDGC is a youth data governance and compliance infrastructure designed for Alberta-based organizations that work with children and youth.
+              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-fade-in">
+                Youth Data,
+                <br />
+                <span className="text-primary relative">
+                  Governed With Care
+                  <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 300 12" fill="none">
+                    <path d="M2 10C50 4 150 4 298 10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className="text-primary/30"/>
+                  </svg>
+                </span>
+              </h1>
+              
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mb-10 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+                Youth Data Governance & Compliance Infrastructure for Alberta organizations
               </p>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mt-6">
-                It embeds ethical data handling, accountability, and compliance directly into daily operations—so governance is built into systems, not left to policy binders or manual processes.
-              </p>
-              <p className="text-lg md:text-xl text-foreground font-medium mt-6">
-                YDGC is delivered as a secure, subscription-based platform and is purpose-built for organizations carrying a duty of care.
-              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 group text-lg px-8 py-6" asChild>
+                  <a href="https://cal.com/boring-tech-solutions/15min" target="_blank" rel="noopener noreferrer">
+                    Book a Demo
+                    <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+                  </a>
+                </Button>
+                <Button size="lg" variant="outline" className="text-lg px-8 py-6 group" asChild>
+                  <a href="#how-it-works">
+                    See How It Works
+                    <ChevronDown className="ml-2 group-hover:translate-y-1 transition-transform" size={20} />
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </div>
+          
+          {/* Scroll Indicator */}
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground animate-bounce">
+            <span className="text-sm">Scroll to explore</span>
+            <ChevronDown size={20} />
+          </div>
+        </section>
+
+        {/* What Is YDGC - Card Style */}
+        <section className="py-24 bg-gradient-to-b from-primary/5 to-background">
+          <div className="section-container">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
+                  <Sparkles size={18} className="animate-pulse" />
+                  <span>What Is YDGC</span>
+                </div>
+                
+                <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
+                  Data Governance,
+                  <br />
+                  <span className="text-primary">Built Into Your Systems</span>
+                </h2>
+                
+                <div className="space-y-4 text-lg text-muted-foreground">
+                  <p>
+                    YDGC is a youth data governance and compliance infrastructure designed specifically for <strong className="text-foreground">Alberta-based organizations</strong> that work with children and youth.
+                  </p>
+                  <p>
+                    It embeds ethical data handling, accountability, and compliance <strong className="text-foreground">directly into daily operations</strong>—so governance is built into systems, not left to policy binders.
+                  </p>
+                </div>
+                
+                <div className="mt-8 p-6 rounded-2xl bg-card border border-primary/20 relative overflow-hidden">
+                  <div className="absolute top-0 left-0 w-1 h-full bg-primary" />
+                  <p className="text-foreground font-medium pl-4">
+                    Delivered as a secure, subscription-based platform—purpose-built for organizations carrying a duty of care.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/5 rounded-3xl blur-2xl" />
+                <div className="relative grid grid-cols-2 gap-4">
+                  {[
+                    { icon: Shield, label: "Secure by Design" },
+                    { icon: Users, label: "Youth-Focused" },
+                    { icon: Scale, label: "Compliant" },
+                    { icon: Heart, label: "Ethical" }
+                  ].map((item, idx) => (
+                    <div 
+                      key={idx}
+                      className="p-6 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/5"
+                    >
+                      <item.icon className="text-primary mb-3" size={28} />
+                      <span className="font-medium">{item.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Why YDGC Exists */}
-        <section className="py-24">
+        {/* Why YDGC Exists - Timeline Style */}
+        <section className="py-24 bg-card">
           <div className="section-container">
             <div className="max-w-4xl mx-auto">
-              <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
-                <Sparkles size={18} />
-                <span>Why YDGC Exists</span>
-              </div>
-              
-              <h2 className="font-display text-3xl md:text-4xl font-bold mb-8">
-                A New Data Reality
-              </h2>
-              
-              <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
-                <p>
+              <div className="text-center mb-16">
+                <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
+                  <AlertTriangle size={18} />
+                  <span>The Challenge</span>
+                </div>
+                
+                <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
+                  A New Data Reality
+                </h2>
+                
+                <p className="text-lg text-muted-foreground">
                   Youth-serving organizations are operating in a fundamentally different data environment than even a few years ago.
                 </p>
-                <p>
-                  In the age of AI, sensitive youth information can move faster, be copied more easily, and be processed by tools never designed with children's data in mind. At the same time, expectations around privacy, accountability, and data stewardship are rising across Alberta's funding and regulatory landscape.
-                </p>
-                <p>
-                  Most organizations did not set out to build complex data systems. Many relied on spreadsheets, shared drives, and email—tools that worked when data volumes were smaller and expectations were lower.
-                </p>
               </div>
-
-              <div className="mt-12 p-8 rounded-2xl bg-card border border-border">
-                <h3 className="font-display text-xl font-semibold mb-6">Today, organizations are being asked to demonstrate:</h3>
-                <ul className="space-y-4">
+              
+              {/* Visual Timeline */}
+              <div className="relative">
+                <div className="absolute left-1/2 top-0 bottom-0 w-px bg-border hidden md:block" />
+                
+                <div className="space-y-8">
+                  {[
+                    { title: "The Old World", desc: "Spreadsheets, shared drives, and email worked when data volumes were smaller.", side: "left" },
+                    { title: "The AI Age", desc: "Sensitive youth information moves faster and can be processed by tools never designed with children in mind.", side: "right" },
+                    { title: "Rising Expectations", desc: "Privacy, accountability, and data stewardship expectations are rising across Alberta's funding landscape.", side: "left" }
+                  ].map((item, idx) => (
+                    <div key={idx} className={`relative flex items-center ${item.side === 'right' ? 'md:flex-row-reverse' : ''}`}>
+                      <div className={`flex-1 ${item.side === 'right' ? 'md:text-right md:pr-12' : 'md:pl-12'}`}>
+                        <div className="p-6 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
+                          <h3 className="font-display text-xl font-semibold mb-2">{item.title}</h3>
+                          <p className="text-muted-foreground">{item.desc}</p>
+                        </div>
+                      </div>
+                      <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background" />
+                      <div className="flex-1 hidden md:block" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Requirements Box */}
+              <div className="mt-16 p-8 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20">
+                <h3 className="font-display text-xl font-semibold mb-6 text-center">
+                  Today, organizations must demonstrate:
+                </h3>
+                <div className="grid sm:grid-cols-2 gap-4">
                   {[
                     "Clear consent and purpose for data collection",
                     "Controlled access to sensitive information",
                     "Defined retention and deletion practices",
                     "Accountability during audits and funding reviews"
                   ].map((item, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <CheckCircle2 className="text-primary mt-1 flex-shrink-0" size={20} />
+                    <div key={index} className="flex items-start gap-3 p-4 rounded-xl bg-background/50">
+                      <CheckCircle2 className="text-primary mt-0.5 flex-shrink-0" size={20} />
                       <span className="text-muted-foreground">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <p className="mt-8 text-lg text-muted-foreground leading-relaxed">
-                In many cases, stronger data governance has become essential to maintaining funding, trust, and credibility—not because of fear, but because responsible stewardship is now part of organizational maturity.
-              </p>
-              <p className="mt-6 text-lg font-medium text-foreground">
-                YDGC exists to support this shift. It replaces uncertainty with structure and helps organizations meet modern expectations without slowing down service delivery.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Why Organizations Are Adopting Now */}
-        <section className="py-24 bg-card/50">
-          <div className="section-container">
-            <div className="max-w-4xl mx-auto">
-              <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
-                <Sparkles size={18} />
-                <span>Timing</span>
-              </div>
-              
-              <h2 className="font-display text-3xl md:text-4xl font-bold mb-8">
-                Why Organizations Are Adopting YDGC Now
-              </h2>
-              
-              <p className="text-lg text-muted-foreground mb-8">
-                Organizations across Alberta are strengthening their data governance because:
-              </p>
-
-              <div className="grid md:grid-cols-2 gap-4">
-                {adoptionReasons.map((reason, index) => (
-                  <div key={index} className="p-6 rounded-xl bg-background border border-border">
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <span className="text-primary font-semibold text-sm">{index + 1}</span>
-                      </div>
-                      <p className="text-muted-foreground">{reason}</p>
                     </div>
-                  </div>
-                ))}
-              </div>
-
-              <p className="mt-8 text-lg font-medium text-foreground">
-                YDGC supports organizations that want to stay ahead—by embedding governance into systems early, rather than reacting under pressure later.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* What YDGC Does */}
-        <section id="how-it-works" className="py-24">
-          <div className="section-container">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
-                <Sparkles size={18} />
-                <span>Features</span>
-              </div>
-              
-              <h2 className="font-display text-3xl md:text-4xl font-bold">
-                What YDGC Does
-              </h2>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-              {features.map((feature, index) => (
-                <div 
-                  key={index}
-                  className="group p-8 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300"
-                >
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <feature.icon className="text-primary" size={28} />
-                  </div>
-                  <h3 className="font-display text-xl font-semibold mb-3">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Compliance Section */}
-        <section className="py-24 bg-card/50">
-          <div className="section-container">
-            <div className="max-w-4xl mx-auto">
-              <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
-                <Shield size={18} />
-                <span>Compliance</span>
               </div>
               
-              <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
-                Built for Alberta's Compliance Reality
-              </h2>
-              
-              <p className="text-lg text-muted-foreground mb-8">
-                YDGC translates Alberta's privacy expectations into practical, operational workflows. It is designed to align with:
-              </p>
-
-              <div className="space-y-4 mb-8">
-                {complianceFrameworks.map((framework, index) => (
-                  <div key={index} className="flex items-start gap-3 p-4 rounded-xl bg-background border border-border">
-                    <CheckCircle2 className="text-primary mt-0.5 flex-shrink-0" size={20} />
-                    <span className="text-muted-foreground">{framework}</span>
-                  </div>
-                ))}
-              </div>
-
-              <p className="text-muted-foreground italic">
-                YDGC does not replace legal advice. It provides systems that make compliance achievable in practice.
-              </p>
-
-              <div className="mt-8 p-6 rounded-xl bg-primary/10 border border-primary/20">
-                <p className="text-foreground font-medium text-center">
-                  Compliance implemented through systems—not memory.
+              <div className="mt-8 text-center">
+                <p className="text-lg font-medium text-foreground">
+                  YDGC replaces uncertainty with structure—helping organizations meet modern expectations without slowing down service delivery.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Ethics Section */}
-        <section className="py-24">
+        {/* Why Now Section */}
+        <section className="py-24 bg-gradient-to-b from-background to-primary/5">
           <div className="section-container">
-            <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
-                <Heart size={18} />
-                <span>Ethics</span>
+                <Clock size={18} />
+                <span>Timing</span>
               </div>
               
-              <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
-                Ethics at the Core
+              <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+                Why Organizations Are Adopting YDGC Now
               </h2>
-              
-              <p className="text-lg text-muted-foreground mb-6">
-                YDGC is shaped by direct experience working alongside children, youth, and vulnerable communities in Alberta.
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Organizations across Alberta are strengthening their data governance for these key reasons:
               </p>
-              <p className="text-lg text-muted-foreground mb-8">
-                This includes long-term volunteer mentorship with Big Brothers Big Sisters of Edmonton and career mentorship through programs such as All In For Youth—where trust, discretion, and care are essential.
-              </p>
+            </div>
 
-              <h3 className="font-display text-xl font-semibold mb-6">These experiences inform YDGC's design principles:</h3>
-
-              <div className="grid sm:grid-cols-2 gap-4 mb-8">
-                {ethicsPrinciples.map((principle, index) => (
-                  <div key={index} className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border">
-                    <CheckCircle2 className="text-primary flex-shrink-0" size={20} />
-                    <span className="text-muted-foreground">{principle}</span>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+              {adoptionReasons.map((reason, index) => (
+                <div 
+                  key={index} 
+                  className="group p-6 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/10"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <reason.icon className="text-primary" size={24} />
                   </div>
-                ))}
-              </div>
+                  <p className="text-muted-foreground text-sm">{reason.text}</p>
+                </div>
+              ))}
+            </div>
 
-              <p className="text-lg font-medium text-foreground">
-                Ethics are not an add-on. They are built into how the system works.
+            <div className="mt-12 text-center">
+              <p className="text-lg font-medium text-foreground max-w-3xl mx-auto px-4 py-6 rounded-2xl bg-card border border-border">
+                YDGC supports organizations that want to stay ahead—by embedding governance into systems early, rather than reacting under pressure later.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Funders Section */}
-        <section className="py-24 bg-card/50">
+        {/* What YDGC Does - Features */}
+        <section id="how-it-works" className="py-24 bg-card">
           <div className="section-container">
-            <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
+                <Layers size={18} />
+                <span>Core Features</span>
+              </div>
+              
+              <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+                What YDGC Does
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Comprehensive governance tools designed for youth-serving organizations
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {features.map((feature, index) => (
+                <div 
+                  key={index}
+                  className="group relative p-8 rounded-3xl bg-background border border-border hover:border-primary/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl overflow-hidden"
+                >
+                  {/* Gradient Background */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                  
+                  <div className="relative">
+                    <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
+                      <feature.icon className="text-primary" size={32} />
+                    </div>
+                    <h3 className="font-display text-xl font-semibold mb-3">{feature.title}</h3>
+                    <p className="text-muted-foreground">{feature.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Compliance Section - With Image */}
+        <section className="py-24 bg-gradient-to-b from-background to-primary/5 overflow-hidden">
+          <div className="section-container">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div className="order-2 lg:order-1">
+                <div className="relative">
+                  <div className="absolute -inset-8 bg-gradient-to-r from-primary/20 to-transparent rounded-3xl blur-3xl" />
+                  <img 
+                    src={ydgcCompliance} 
+                    alt="Compliance illustration" 
+                    className="relative rounded-3xl border border-border shadow-2xl"
+                  />
+                </div>
+              </div>
+              
+              <div className="order-1 lg:order-2">
+                <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
+                  <Shield size={18} />
+                  <span>Compliance</span>
+                </div>
+                
+                <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
+                  Built for Alberta's
+                  <br />
+                  <span className="text-primary">Compliance Reality</span>
+                </h2>
+                
+                <p className="text-lg text-muted-foreground mb-8">
+                  YDGC translates Alberta's privacy expectations into practical, operational workflows.
+                </p>
+
+                <div className="space-y-4 mb-8">
+                  {complianceFrameworks.map((framework, index) => (
+                    <div key={index} className="flex items-start gap-4 p-4 rounded-xl bg-card border border-border hover:border-primary/30 transition-colors">
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <CheckCircle2 className="text-primary" size={24} />
+                      </div>
+                      <div>
+                        <span className="font-semibold text-foreground">{framework.name}</span>
+                        <p className="text-sm text-muted-foreground">{framework.full}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="p-6 rounded-2xl bg-primary/10 border border-primary/20">
+                  <p className="text-foreground font-medium text-center">
+                    Compliance implemented through systems—not memory.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Ethics Section - With Image */}
+        <section className="py-24 bg-card">
+          <div className="section-container">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
+                  <Heart size={18} className="animate-pulse" />
+                  <span>Ethics</span>
+                </div>
+                
+                <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
+                  Ethics at the Core
+                </h2>
+                
+                <p className="text-lg text-muted-foreground mb-4">
+                  YDGC is shaped by direct experience working alongside children, youth, and vulnerable communities in Alberta.
+                </p>
+                <p className="text-lg text-muted-foreground mb-8">
+                  This includes long-term volunteer mentorship with <strong className="text-foreground">Big Brothers Big Sisters of Edmonton</strong> and career mentorship through programs such as <strong className="text-foreground">All In For Youth</strong>.
+                </p>
+
+                <h3 className="font-display text-lg font-semibold mb-4">Design Principles:</h3>
+
+                <div className="grid grid-cols-2 gap-4">
+                  {ethicsPrinciples.map((principle, index) => (
+                    <div key={index} className="flex items-center gap-3 p-4 rounded-xl bg-background border border-border hover:border-primary/30 transition-colors group">
+                      <principle.icon className="text-primary group-hover:scale-110 transition-transform" size={20} />
+                      <span className="text-muted-foreground text-sm">{principle.text}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-8 p-4 rounded-xl bg-primary/5 border-l-4 border-primary">
+                  <p className="font-medium text-foreground">
+                    Ethics are not an add-on. They are built into how the system works.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="relative">
+                <div className="absolute -inset-8 bg-gradient-to-l from-primary/20 to-transparent rounded-3xl blur-3xl" />
+                <img 
+                  src={ydgcEthics} 
+                  alt="Ethics illustration" 
+                  className="relative rounded-3xl border border-border shadow-2xl"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Funders Section */}
+        <section className="py-24 bg-gradient-to-b from-background to-card">
+          <div className="section-container">
+            <div className="max-w-4xl mx-auto text-center">
               <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
                 <Building2 size={18} />
                 <span>For Funders</span>
@@ -375,40 +513,40 @@ const YDGC = () => {
                 Designed With Funders in Mind
               </h2>
               
-              <p className="text-lg text-muted-foreground mb-8">
-                YDGC helps organizations demonstrate:
+              <p className="text-lg text-muted-foreground mb-12">
+                YDGC helps organizations demonstrate governance maturity to stakeholders
               </p>
 
-              <div className="grid sm:grid-cols-2 gap-4 mb-8">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                 {funderBenefits.map((benefit, index) => (
-                  <div key={index} className="flex items-center gap-3 p-4 rounded-xl bg-background border border-border">
-                    <CheckCircle2 className="text-primary flex-shrink-0" size={20} />
-                    <span className="text-muted-foreground">{benefit}</span>
+                  <div key={index} className="p-6 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 group">
+                    <benefit.icon className="text-primary mx-auto mb-4 group-hover:scale-110 transition-transform" size={32} />
+                    <p className="text-muted-foreground text-sm">{benefit.text}</p>
                   </div>
                 ))}
               </div>
 
-              <h3 className="font-display text-lg font-semibold mb-4">It is well-suited for organizations engaging with:</h3>
-              <ul className="space-y-2 text-muted-foreground">
-                <li className="flex items-center gap-2">
-                  <ArrowRight className="text-primary" size={16} />
-                  Municipal, provincial, and federal funding programs
-                </li>
-                <li className="flex items-center gap-2">
-                  <ArrowRight className="text-primary" size={16} />
-                  Alberta-based innovation and capacity-building grants
-                </li>
-                <li className="flex items-center gap-2">
-                  <ArrowRight className="text-primary" size={16} />
-                  Foundations prioritizing accountability and trust
-                </li>
-              </ul>
+              <div className="p-8 rounded-3xl bg-card border border-border">
+                <h3 className="font-display text-lg font-semibold mb-6">Well-suited for organizations engaging with:</h3>
+                <div className="flex flex-wrap justify-center gap-4">
+                  {[
+                    { icon: Globe, text: "Municipal, provincial, and federal funding" },
+                    { icon: Briefcase, text: "Alberta innovation grants" },
+                    { icon: Heart, text: "Foundations prioritizing trust" }
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-sm">
+                      <item.icon className="text-primary" size={16} />
+                      <span className="text-muted-foreground">{item.text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Why BTS Section */}
-        <section className="py-24">
+        <section className="py-24 bg-card">
           <div className="section-container">
             <div className="max-w-4xl mx-auto text-center">
               <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
@@ -420,24 +558,28 @@ const YDGC = () => {
                 Why Boring Tech Solutions
               </h2>
               
-              <p className="text-lg text-muted-foreground mb-8">
-                Boring Tech Solutions builds calm, reliable infrastructure for organizations doing important work.
+              <p className="text-lg text-muted-foreground mb-12">
+                We build calm, reliable infrastructure for organizations doing important work.
               </p>
 
-              <div className="grid sm:grid-cols-3 gap-6">
+              <div className="grid sm:grid-cols-3 gap-8">
                 {[
-                  { title: "Ethical Technology Design", icon: Heart },
-                  { title: "Compliance-Ready Systems", icon: Shield },
-                  { title: "Long-Term Sustainability", icon: Clock }
+                  { title: "Ethical Technology", desc: "Design that prioritizes people", icon: Heart, color: "from-rose-500/20" },
+                  { title: "Compliance-Ready", desc: "Systems built for audits", icon: Shield, color: "from-blue-500/20" },
+                  { title: "Long-Term Focus", desc: "Sustainability over hype", icon: Clock, color: "from-amber-500/20" }
                 ].map((item, index) => (
-                  <div key={index} className="p-6 rounded-xl bg-card border border-border">
-                    <item.icon className="text-primary mx-auto mb-4" size={32} />
-                    <p className="font-medium">{item.title}</p>
+                  <div key={index} className="group relative p-8 rounded-3xl bg-background border border-border hover:border-primary/30 transition-all duration-300 hover:-translate-y-2 overflow-hidden">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${item.color} to-transparent opacity-0 group-hover:opacity-100 transition-opacity`} />
+                    <div className="relative">
+                      <item.icon className="text-primary mx-auto mb-4 group-hover:scale-110 transition-transform" size={40} />
+                      <h3 className="font-display text-xl font-semibold mb-2">{item.title}</h3>
+                      <p className="text-muted-foreground text-sm">{item.desc}</p>
+                    </div>
                   </div>
                 ))}
               </div>
 
-              <p className="mt-8 text-lg font-medium text-foreground">
+              <p className="mt-12 text-lg font-medium text-foreground">
                 Our approach favors clarity, responsibility, and trust.
               </p>
             </div>
@@ -445,12 +587,12 @@ const YDGC = () => {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-24 bg-card/50">
+        <section className="py-24 bg-gradient-to-b from-background to-primary/5">
           <div className="section-container">
             <div className="max-w-3xl mx-auto">
               <div className="text-center mb-12">
                 <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
-                  <Sparkles size={18} />
+                  <HelpCircle size={18} />
                   <span>FAQ</span>
                 </div>
                 
@@ -464,12 +606,15 @@ const YDGC = () => {
                   <AccordionItem 
                     key={index} 
                     value={`item-${index}`}
-                    className="bg-background border border-border rounded-xl px-6"
+                    className="bg-card border border-border rounded-2xl px-6 data-[state=open]:border-primary/30 transition-colors"
                   >
-                    <AccordionTrigger className="text-left font-medium hover:no-underline">
-                      {faq.question}
+                    <AccordionTrigger className="text-left font-medium hover:no-underline py-6">
+                      <div className="flex items-start gap-3">
+                        <span className="text-primary font-bold">Q{index + 1}.</span>
+                        <span>{faq.question}</span>
+                      </div>
                     </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground">
+                    <AccordionContent className="text-muted-foreground pb-6 pl-8">
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>
@@ -480,25 +625,33 @@ const YDGC = () => {
         </section>
 
         {/* Final CTA */}
-        <section className="py-24">
-          <div className="section-container">
+        <section className="py-32 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-card to-primary/10" />
+          <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }} />
+          
+          <div className="section-container relative">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
+              <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-8 animate-pulse">
+                <Shield className="text-primary" size={40} />
+              </div>
+              
+              <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">
                 Build Trust Into Your Data Systems
               </h2>
               
-              <p className="text-lg text-muted-foreground mb-10">
+              <p className="text-xl text-muted-foreground mb-10">
                 Youth data deserves care, structure, and accountability.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 group" asChild>
+                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 group text-lg px-8 py-6" asChild>
                   <a href="https://cal.com/boring-tech-solutions/15min" target="_blank" rel="noopener noreferrer">
                     Book a Demo
-                    <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
+                    <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
                   </a>
                 </Button>
-                <Button size="lg" variant="outline" asChild>
+                <Button size="lg" variant="outline" className="text-lg px-8 py-6" asChild>
                   <a href="/contact">
                     Discuss Pilots or Partnerships
                   </a>
