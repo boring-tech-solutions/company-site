@@ -78,9 +78,9 @@ const Footer = () => {
               <h4 className="font-display font-semibold mb-4">Connect</h4>
               <ul className="space-y-3 text-muted-foreground text-sm">
                 <li>
-                  <a href="mailto:hello@boringtech.ca" className="hover:text-foreground transition-colors flex items-center gap-2">
+                  <a href="mailto:hello@boringtechsolutions.com" className="hover:text-foreground transition-colors flex items-center gap-2">
                     <Mail size={16} />
-                    hello@boringtech.ca
+                    hello@boringtechsolutions.com
                   </a>
                 </li>
                 <li>
