@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Linkedin, ExternalLink, Sparkles } from "lucide-react";
+import thandoImage from "@/assets/thando-linkedin-profile.webp";
 
 interface TeamMember {
   name: string;
@@ -81,7 +82,8 @@ const teamMembers: TeamMember[] = [
     ],
     linkedIn: "https://linkedin.com/in/thandoncube",
     cardColor: "from-rose-200 to-orange-100",
-    initials: "TN"
+    initials: "TN",
+    image: thandoImage
   }
 ];
 
