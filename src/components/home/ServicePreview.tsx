@@ -26,8 +26,8 @@ const services = [
       "Real-time predictive analytics",
       "Seamless integration with existing tools"
     ],
-    overlayColor: "bg-destructive/80 group-hover:bg-destructive/5",
-    textColor: "text-white group-hover:text-white",
+    overlayColor: "bg-destructive/80 group-hover:bg-destructive/95",
+    textColor: "text-white",
   },
   {
     icon: Compass,
@@ -41,8 +41,8 @@ const services = [
       "Custom implementation roadmap",
       "ROI projections and risk analysis"
     ],
-    overlayColor: "bg-white/90 group-hover:bg-white/5",
-    textColor: "text-charcoal-deep group-hover:text-white",
+    overlayColor: "bg-white/90 group-hover:bg-white/95",
+    textColor: "text-charcoal-deep",
   },
   {
     icon: Code,
@@ -56,8 +56,8 @@ const services = [
       "High-performance APIs",
       "Real-time data pipelines"
     ],
-    overlayColor: "bg-primary/90 group-hover:bg-primary/5",
-    textColor: "text-charcoal-deep group-hover:text-white",
+    overlayColor: "bg-primary/90 group-hover:bg-primary/95",
+    textColor: "text-charcoal-deep",
   },
   {
     icon: Shield,
@@ -71,8 +71,8 @@ const services = [
       "Intelligent retention scheduling",
       "Complete audit trail"
     ],
-    overlayColor: "bg-charcoal/90 group-hover:bg-charcoal/5",
-    textColor: "text-white group-hover:text-white",
+    overlayColor: "bg-charcoal/90 group-hover:bg-charcoal/95",
+    textColor: "text-white",
   },
 ];
 
