@@ -26,7 +26,7 @@ const services = [
       "Real-time predictive analytics",
       "Seamless integration with existing tools"
     ],
-    overlayColor: "bg-charcoal-deep/70 group-hover:bg-charcoal-deep/95",
+    overlayColor: "bg-destructive/80 group-hover:bg-destructive/95",
     textColor: "text-white",
   },
   {
@@ -41,7 +41,7 @@ const services = [
       "Custom implementation roadmap",
       "ROI projections and risk analysis"
     ],
-    overlayColor: "bg-white/80 group-hover:bg-white/95",
+    overlayColor: "bg-white/90 group-hover:bg-white/98",
     textColor: "text-charcoal-deep",
   },
   {
@@ -56,7 +56,7 @@ const services = [
       "High-performance APIs",
       "Real-time data pipelines"
     ],
-    overlayColor: "bg-primary/80 group-hover:bg-primary/95",
+    overlayColor: "bg-primary/90 group-hover:bg-primary/98",
     textColor: "text-charcoal-deep",
   },
   {
@@ -71,7 +71,7 @@ const services = [
       "Intelligent retention scheduling",
       "Complete audit trail"
     ],
-    overlayColor: "bg-charcoal/80 group-hover:bg-charcoal/95",
+    overlayColor: "bg-charcoal/90 group-hover:bg-charcoal/98",
     textColor: "text-white",
   },
 ];
