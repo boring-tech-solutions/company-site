@@ -26,8 +26,8 @@ const services = [
       "Real-time predictive analytics",
       "Seamless integration with existing tools"
     ],
-    cardStyle: "bg-muted text-foreground",
-    overlayStyle: "from-muted/60 via-muted/80 to-muted",
+    overlayColor: "bg-charcoal-deep/70 group-hover:bg-charcoal-deep/95",
+    textColor: "text-white",
   },
   {
     icon: Compass,
@@ -41,8 +41,8 @@ const services = [
       "Custom implementation roadmap",
       "ROI projections and risk analysis"
     ],
-    cardStyle: "bg-primary text-primary-foreground",
-    overlayStyle: "from-primary/60 via-primary/80 to-primary",
+    overlayColor: "bg-white/80 group-hover:bg-white/95",
+    textColor: "text-charcoal-deep",
   },
   {
     icon: Code,
@@ -56,8 +56,8 @@ const services = [
       "High-performance APIs",
       "Real-time data pipelines"
     ],
-    cardStyle: "bg-charcoal-deep text-foreground",
-    overlayStyle: "from-charcoal-deep/60 via-charcoal-deep/80 to-charcoal-deep",
+    overlayColor: "bg-primary/80 group-hover:bg-primary/95",
+    textColor: "text-charcoal-deep",
   },
   {
     icon: Shield,
@@ -71,8 +71,8 @@ const services = [
       "Intelligent retention scheduling",
       "Complete audit trail"
     ],
-    cardStyle: "bg-charcoal text-foreground",
-    overlayStyle: "from-charcoal/60 via-charcoal/80 to-charcoal",
+    overlayColor: "bg-charcoal/80 group-hover:bg-charcoal/95",
+    textColor: "text-white",
   },
 ];
 
@@ -97,29 +97,29 @@ const ServicePreview = () => {
             <div
               key={index}
               onClick={() => setSelectedService(service)}
-              className={`${service.cardStyle} rounded-3xl overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 flex flex-col min-h-[480px]`}
+              className="relative rounded-3xl overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 min-h-[400px] md:min-h-[450px]"
             >
-              {/* Content - Top */}
-              <div className="p-8 flex-shrink-0">
+              {/* Background Image */}
+              <img 
+                src={service.image} 
+                alt={service.title}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              
+              {/* Overlay */}
+              <div className={`absolute inset-0 ${service.overlayColor} transition-all duration-500`} />
+              
+              {/* Content */}
+              <div className={`relative z-10 p-8 h-full flex flex-col justify-end ${service.textColor}`}>
                 {/* Title */}
                 <h3 className="font-display text-3xl md:text-4xl font-bold leading-tight mb-4">
                   {service.title}
                 </h3>
                 
                 {/* Description */}
-                <p className={`text-base leading-relaxed ${index === 1 ? 'text-primary-foreground/80' : 'text-muted-foreground'}`}>
+                <p className="text-base leading-relaxed opacity-80">
                   {service.description}
                 </p>
-              </div>
-              
-              {/* Image - Bottom with overlay */}
-              <div className="relative flex-1 mt-auto">
-                <div className={`absolute inset-0 bg-gradient-to-b ${service.overlayStyle} z-10`} />
-                <img 
-                  src={service.image} 
-                  alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
               </div>
             </div>
           ))}
