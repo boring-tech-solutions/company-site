@@ -11,6 +11,7 @@ interface TeamMember {
   linkedIn: string;
   cardColor: string;
   initials: string;
+  image?: string;
 }
 
 const teamMembers: TeamMember[] = [
@@ -25,7 +26,8 @@ const teamMembers: TeamMember[] = [
     ],
     linkedIn: "https://linkedin.com/in/creigphiri",
     cardColor: "from-amber-400 to-amber-300",
-    initials: "CP"
+    initials: "CP",
+    image: "https://image-cdn.quizapp.ca/creig-linkedin-profile.webp"
   },
   {
     name: "Shradha Maira",
@@ -37,7 +39,8 @@ const teamMembers: TeamMember[] = [
     ],
     linkedIn: "https://linkedin.com/in/shradhamaira",
     cardColor: "from-violet-300 to-indigo-200",
-    initials: "SM"
+    initials: "SM",
+    image: "https://image-cdn.quizapp.ca/shradha-linkedin-profile.webp"
   },
   {
     name: "Nomatter Anderson",
@@ -50,7 +53,8 @@ const teamMembers: TeamMember[] = [
     ],
     linkedIn: "https://linkedin.com/in/nomatteranderson",
     cardColor: "from-blue-200 to-slate-200",
-    initials: "NA"
+    initials: "NA",
+    image: "https://image-cdn.quizapp.ca/watson-linkedin-profile.webp"
   },
   {
     name: "Watson",
@@ -63,7 +67,8 @@ const teamMembers: TeamMember[] = [
     ],
     linkedIn: "https://linkedin.com/in/watson",
     cardColor: "from-slate-300 to-gray-200",
-    initials: "W"
+    initials: "W",
+    image: "https://image-cdn.quizapp.ca/watson-linkedin-profile.webp"
   },
   {
     name: "Thando Ncube",
@@ -107,10 +112,10 @@ const TeamSection = () => {
             <button
               key={member.name}
               onClick={() => setSelectedMember(member)}
-              className="group focus:outline-none focus:ring-2 focus:ring-primary rounded-[3rem]"
+              className="group focus:outline-none focus:ring-2 focus:ring-primary rounded-[3rem] w-[80%] sm:w-auto"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="w-44 md:w-52 h-80 md:h-96 rounded-[3rem] overflow-hidden transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2">
+              <div className="w-full sm:w-44 md:w-52 h-80 md:h-96 rounded-[3rem] overflow-hidden transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2">
                 {/* Top colored section with name */}
                 <div className={`h-[45%] bg-gradient-to-b ${member.cardColor} p-4 flex flex-col justify-end items-center text-center`}>
                   <h3 className="font-display text-lg md:text-xl font-bold text-charcoal-deep mb-1">
@@ -124,11 +129,19 @@ const TeamSection = () => {
                 {/* Bottom section with avatar */}
                 <div className="h-[55%] bg-charcoal-deep flex items-center justify-center relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20" />
-                  <div className="w-28 h-28 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center border-4 border-background/20 shadow-2xl group-hover:scale-110 transition-transform duration-500">
-                    <span className="font-display text-3xl md:text-4xl font-bold text-foreground">
-                      {member.initials}
-                    </span>
-                  </div>
+                  {member.image ? (
+                    <img 
+                      src={member.image} 
+                      alt={member.name}
+                      className="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover border-4 border-background/20 shadow-2xl group-hover:scale-110 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="w-28 h-28 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center border-4 border-background/20 shadow-2xl group-hover:scale-110 transition-transform duration-500">
+                      <span className="font-display text-3xl md:text-4xl font-bold text-foreground">
+                        {member.initials}
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
             </button>
@@ -141,10 +154,10 @@ const TeamSection = () => {
             <button
               key={member.name}
               onClick={() => setSelectedMember(member)}
-              className="group focus:outline-none focus:ring-2 focus:ring-primary rounded-[3rem]"
+              className="group focus:outline-none focus:ring-2 focus:ring-primary rounded-[3rem] w-[80%] sm:w-auto"
               style={{ animationDelay: `${(index + 2) * 0.1}s` }}
             >
-              <div className="w-44 md:w-52 h-80 md:h-96 rounded-[3rem] overflow-hidden transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2">
+              <div className="w-full sm:w-44 md:w-52 h-80 md:h-96 rounded-[3rem] overflow-hidden transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2">
                 {/* Top colored section with name */}
                 <div className={`h-[45%] bg-gradient-to-b ${member.cardColor} p-4 flex flex-col justify-end items-center text-center`}>
                   <h3 className="font-display text-lg md:text-xl font-bold text-charcoal-deep mb-1">
@@ -158,11 +171,19 @@ const TeamSection = () => {
                 {/* Bottom section with avatar */}
                 <div className="h-[55%] bg-charcoal-deep flex items-center justify-center relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20" />
-                  <div className="w-28 h-28 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center border-4 border-background/20 shadow-2xl group-hover:scale-110 transition-transform duration-500">
-                    <span className="font-display text-3xl md:text-4xl font-bold text-foreground">
-                      {member.initials}
-                    </span>
-                  </div>
+                  {member.image ? (
+                    <img 
+                      src={member.image} 
+                      alt={member.name}
+                      className="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover border-4 border-background/20 shadow-2xl group-hover:scale-110 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="w-28 h-28 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center border-4 border-background/20 shadow-2xl group-hover:scale-110 transition-transform duration-500">
+                      <span className="font-display text-3xl md:text-4xl font-bold text-foreground">
+                        {member.initials}
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
             </button>
@@ -178,11 +199,19 @@ const TeamSection = () => {
               <DialogHeader>
                 <div className={`-mx-6 -mt-6 mb-6 p-8 bg-gradient-to-br ${selectedMember.cardColor} rounded-t-lg`}>
                   <div className="flex items-center gap-4">
-                    <div className="w-20 h-20 rounded-full bg-charcoal-deep/90 flex items-center justify-center border-4 border-white/30 shadow-xl">
-                      <span className="font-display text-2xl font-bold text-foreground">
-                        {selectedMember.initials}
-                      </span>
-                    </div>
+                    {selectedMember.image ? (
+                      <img 
+                        src={selectedMember.image} 
+                        alt={selectedMember.name}
+                        className="w-20 h-20 rounded-full object-cover border-4 border-white/30 shadow-xl"
+                      />
+                    ) : (
+                      <div className="w-20 h-20 rounded-full bg-charcoal-deep/90 flex items-center justify-center border-4 border-white/30 shadow-xl">
+                        <span className="font-display text-2xl font-bold text-foreground">
+                          {selectedMember.initials}
+                        </span>
+                      </div>
+                    )}
                     <div>
                       <DialogTitle className="text-2xl font-bold text-charcoal-deep">
                         {selectedMember.name}
