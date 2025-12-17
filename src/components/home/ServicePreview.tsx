@@ -103,8 +103,10 @@ const ServicePreview = () => {
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 style={{ opacity: 0.85 }}
               />
-              {/* Overlay for text readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-background/20" />
+              {/* Dark overlay */}
+              <div className="absolute inset-0 bg-background/30" />
+              {/* Gradient overlay for text readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent" />
 
               {/* Card Content */}
               <div className="relative z-10 p-6 flex flex-col h-full justify-end">
