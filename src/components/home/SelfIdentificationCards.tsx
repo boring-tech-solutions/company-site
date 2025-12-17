@@ -33,7 +33,8 @@ const SelfIdentificationCards = () => {
       <div className="section-container">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+          <span className="text-primary text-sm font-medium uppercase tracking-widest">Contact Us</span>
+          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4 mt-2">
             Where Are You on Your <span className="text-gradient">AI Journey</span>?
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
