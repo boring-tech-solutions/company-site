@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import AIChatbot from "@/components/chat/AIChatbot";
@@ -6,6 +7,9 @@ import { ArrowRight, Compass, Mountain, Target, Users, Sparkles } from "lucide-r
 import lionsAtWork from "@/assets/lions-at-work-about.webp";
 
 const About = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="min-h-screen bg-background relative">
       <Header />
