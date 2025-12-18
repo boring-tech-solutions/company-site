@@ -5,19 +5,19 @@ import lionInLab from "@/assets/lion-in-lab.webp";
 
 const AILabTeaser = () => {
   return (
-    <section id="ai-lab" className="py-24 relative overflow-hidden bg-surface-teal">
-      <div className="section-container relative">
-        <div className="relative rounded-3xl overflow-hidden min-h-[500px] md:min-h-[550px]">
-          {/* Background Image with Dark Overlay */}
-          <div className="absolute inset-0">
-            <img 
-              src={lionInLab} 
-              alt="AI Lab" 
-              className="w-full h-full object-cover scale-105 hover:scale-100 transition-transform duration-[2000ms]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/40" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-background/50" />
-          </div>
+    <section id="ai-lab" className="relative overflow-hidden min-h-[500px] md:min-h-[550px]">
+      {/* Background Image with Dark Overlay - Full Bleed */}
+      <div className="absolute inset-0">
+        <img 
+          src={lionInLab} 
+          alt="AI Lab" 
+          className="w-full h-full object-cover scale-105 hover:scale-100 transition-transform duration-[2000ms]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-background/50" />
+      </div>
+      
+      <div className="section-container relative min-h-[500px] md:min-h-[550px]">
           
           {/* Animated Tech Elements */}
           <div className="absolute top-10 right-10 w-32 h-32 border border-primary/20 rounded-full animate-spin" style={{ animationDuration: '20s' }} />
@@ -86,7 +86,6 @@ const AILabTeaser = () => {
           
           {/* Bottom Gradient Line */}
           <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-        </div>
       </div>
     </section>
   );
