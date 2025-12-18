@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Heart, Users, GraduationCap, Globe } from "lucide-react";
 import prideOfLions from "@/assets/pride-of-lions.webp";
@@ -56,6 +57,8 @@ const initiatives = [
 ];
 
 const CommunitySection = () => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   return (
     <>
       {/* Hero Section with Background Image */}
@@ -104,14 +107,16 @@ const CommunitySection = () => {
               <span className="text-sm font-medium uppercase tracking-wider">Our Initiatives</span>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
             {initiatives.map((initiative, index) => (
               <div
                 key={index}
                 className="group cursor-pointer"
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
               >
                 {/* Geometric Art Card */}
-                <div className={`${initiative.bgColor} aspect-[4/5] rounded-2xl overflow-hidden relative transition-transform duration-300 group-hover:scale-[1.02] group-hover:shadow-xl`}>
+                <div className={`${initiative.bgColor} aspect-[4/5] rounded-2xl overflow-hidden relative transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-xl`}>
                   {initiative.shapes}
                 </div>
                 
@@ -125,6 +130,29 @@ const CommunitySection = () => {
               </div>
             ))}
           </div>
+
+          {/* Expanded Card Overlay */}
+          {hoveredIndex !== null && (
+            <div 
+              className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm transition-opacity duration-300"
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <div 
+                className="w-[90vw] max-w-md animate-scale-in"
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                <div className={`${initiatives[hoveredIndex].bgColor} aspect-[4/5] rounded-2xl overflow-hidden relative shadow-2xl`}>
+                  {initiatives[hoveredIndex].shapes}
+                </div>
+                <h3 className="font-display font-bold text-xl mt-6 text-center uppercase tracking-wide text-foreground">
+                  {initiatives[hoveredIndex].title}
+                </h3>
+                <p className="text-muted-foreground text-base text-center mt-2">
+                  {initiatives[hoveredIndex].description}
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </section>
     </>
