@@ -58,7 +58,8 @@ const caseStudies = [{
   timeline: "4 months",
   bgColor: "bg-blue-600",
   textColor: "text-white",
-  mutedColor: "text-white/70"
+  mutedColor: "text-white/70",
+  image: "https://image-cdn.quizapp.ca/quizapp_portfolio_screenshot_tablet.webp"
 }];
 const CaseStudyPreview = () => {
   const [selectedStudy, setSelectedStudy] = useState<typeof caseStudies[0] | null>(null);
@@ -78,11 +79,15 @@ const CaseStudyPreview = () => {
         {/* Case Studies Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {caseStudies.map((study, index) => <div key={index} onClick={() => setSelectedStudy(study)} className="group card-premium cursor-pointer flex flex-col">
-              {/* Image Placeholder */}
+              {/* Image */}
               <div className={`h-48 rounded-xl ${study.bgColor} mb-6 flex items-center justify-center overflow-hidden`}>
-                <span className={`font-display text-4xl font-bold ${study.textColor} opacity-30 group-hover:opacity-50 transition-opacity`}>
-                  {study.title}
-                </span>
+                {study.image ? (
+                  <img src={study.image} alt={study.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                ) : (
+                  <span className={`font-display text-4xl font-bold ${study.textColor} opacity-30 group-hover:opacity-50 transition-opacity`}>
+                    {study.title}
+                  </span>
+                )}
               </div>
 
               {/* Category */}
