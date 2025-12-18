@@ -108,7 +108,7 @@ const Contact = () => {
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Contact Info Cards */}
             <div className="space-y-6">
-              <div className="card-premium p-6">
+              <div className="bg-card border border-border rounded-2xl p-6">
                 <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4">
                   <Mail className="text-primary" size={22} />
                 </div>
@@ -118,7 +118,7 @@ const Contact = () => {
                 </a>
               </div>
 
-              <div className="card-premium p-6">
+              <div className="bg-card border border-border rounded-2xl p-6">
                 <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4">
                   <MapPin className="text-primary" size={22} />
                 </div>
@@ -126,7 +126,7 @@ const Contact = () => {
                 <p className="text-muted-foreground">Edmonton, Alberta, Canada</p>
               </div>
 
-              <div className="card-premium p-6">
+              <div className="bg-card border border-border rounded-2xl p-6">
                 <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4">
                   <Phone className="text-primary" size={22} />
                 </div>
@@ -144,7 +144,7 @@ const Contact = () => {
 
             {/* Form */}
             <div className="lg:col-span-2">
-              <div className="card-premium p-8">
+              <div className="bg-card border border-border rounded-2xl p-8">
                 <h2 className="font-display text-2xl font-bold mb-6">Send us a message</h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
