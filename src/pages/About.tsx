@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import AIChatbot from "@/components/chat/AIChatbot";
+
 import TeamSection from "@/components/about/TeamSection";
 import { ArrowRight, Compass, Mountain, Target, Users, Sparkles } from "lucide-react";
 import lionsAtWork from "@/assets/lions-at-work-about.webp";
@@ -199,7 +199,7 @@ const About = () => {
         </section>
       </main>
       <Footer />
-      <AIChatbot />
+      
     </div>
   );
 };

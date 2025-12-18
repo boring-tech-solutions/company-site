@@ -1,6 +1,6 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import AIChatbot from "@/components/chat/AIChatbot";
+
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, Bot, Brain, Shield, CheckCircle, Zap, Target, Eye, Rocket, Settings } from "lucide-react";
@@ -331,7 +331,7 @@ const AILab = () => {
         </section>
       </main>
       <Footer />
-      <AIChatbot />
+      
     </div>
   );
 };

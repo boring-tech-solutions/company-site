@@ -1,11 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle } from "lucide-react";
-import { openChatbotWithMessage } from "@/components/chat/AIChatbot";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
-  const handleShowPossible = () => {
-    openChatbotWithMessage("Show me what's possible with AI for my business");
-  };
   return (
     <section className="relative min-h-screen flex flex-col overflow-hidden pt-20">
       {/* Video as background - all screen sizes */}
@@ -49,10 +46,12 @@ const HeroSection = () => {
             size="lg"
             variant="outline"
             className="text-base md:text-lg px-6 md:px-8 py-5 md:py-6 group border-border hover:border-primary/50 w-full sm:w-auto"
-            onClick={handleShowPossible}
+            asChild
           >
-            Show Me What's Possible
-            <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
+            <Link to="/contact">
+              Show Me What's Possible
+              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
+            </Link>
           </Button>
         </div>
       </div>

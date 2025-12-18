@@ -1,7 +1,7 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import CaseStudyPreview from "@/components/home/CaseStudyPreview";
-import AIChatbot from "@/components/chat/AIChatbot";
+
 
 const CaseStudies = () => {
   return (
@@ -11,7 +11,7 @@ const CaseStudies = () => {
         <CaseStudyPreview />
       </main>
       <Footer />
-      <AIChatbot />
+      
     </div>
   );
 };
