@@ -124,7 +124,7 @@ const Contact = () => {
             </a>
 
             {/* Location Card */}
-            <div className="group relative overflow-hidden rounded-2xl bg-[#101A26] p-8 border border-white/10">
+            <div className="group relative overflow-hidden rounded-2xl bg-[#101A26] p-8 border border-white/10 transition-transform duration-300 hover:scale-[1.02]">
               <div className="absolute top-4 right-4 w-16 h-16 rounded-full bg-[#1B3540]" />
               <div className="absolute bottom-0 left-0 w-24 h-24 rounded-full bg-[#F2C84B]/10 -translate-x-8 translate-y-8" />
               <div className="relative z-10">
