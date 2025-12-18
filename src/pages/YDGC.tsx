@@ -245,12 +245,6 @@ const YDGC = () => {
                     <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
                   </a>
                 </Button>
-                <Button size="lg" variant="outline" className="text-lg px-8 py-6 group" asChild>
-                  <a href="#how-it-works">
-                    See How It Works
-                    <ChevronDown className="ml-2 group-hover:translate-y-1 transition-transform" size={20} />
-                  </a>
-                </Button>
               </div>
             </div>
           </div>
