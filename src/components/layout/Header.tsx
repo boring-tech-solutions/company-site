@@ -29,19 +29,13 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? "bg-background/95 backdrop-blur-md border-b border-border"
-          : "bg-transparent"
+        isScrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-transparent"
       }`}
     >
       <div className="section-container">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center group">
-            <img
-              src={logo}
-              alt="Boring Tech Solutions"
-              className="h-24 w-auto"
-            />
+            <img src={logo} alt="Boring Tech Solutions" className="h-24 w-auto" />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8">
@@ -50,10 +44,8 @@ const Header = () => {
                 key={link.name}
                 to={link.href}
                 className={cn(
-                  "transition-colors text-sm font-medium",
-                  location.pathname === link.href
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
+                  "transition-colors text-md font-medium",
+                  location.pathname === link.href ? "text-primary" : "text-muted-foreground hover:text-foreground",
                 )}
               >
                 {link.name}
@@ -65,16 +57,16 @@ const Header = () => {
             <Button
               variant="ghost"
               className={cn(
-                location.pathname === "/contact"
-                  ? "text-primary"
-                  : "text-muted-foreground hover:text-foreground"
+                location.pathname === "/contact" ? "text-primary" : "text-muted-foreground hover:text-foreground",
               )}
               asChild
             >
               <Link to="/contact">Contact</Link>
             </Button>
             <Button className="bg-primary text-primary-foreground hover:bg-primary/90" asChild>
-              <a href="https://cal.com/boring-tech-solutions/15min" target="_blank" rel="noopener noreferrer">Book a Coffee Chat</a>
+              <a href="https://cal.com/boring-tech-solutions/15min" target="_blank" rel="noopener noreferrer">
+                Book a Coffee Chat
+              </a>
             </Button>
           </div>
 
@@ -95,9 +87,7 @@ const Header = () => {
                   to={link.href}
                   className={cn(
                     "transition-colors text-2xl font-medium",
-                    location.pathname === link.href
-                      ? "text-primary"
-                      : "text-foreground hover:text-primary"
+                    location.pathname === link.href ? "text-primary" : "text-foreground hover:text-primary",
                   )}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -105,18 +95,22 @@ const Header = () => {
                 </Link>
               ))}
               <div className="pt-8 flex flex-col gap-4 w-full max-w-xs">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className={cn(
                     "w-full text-lg py-6",
-                    location.pathname === "/contact" && "border-primary text-primary"
-                  )} 
+                    location.pathname === "/contact" && "border-primary text-primary",
+                  )}
                   asChild
                 >
-                  <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
+                  <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                    Contact
+                  </Link>
                 </Button>
                 <Button className="w-full bg-primary text-primary-foreground text-lg py-6" asChild>
-                  <a href="https://cal.com/boring-tech-solutions/15min" target="_blank" rel="noopener noreferrer">Book a Coffee Chat</a>
+                  <a href="https://cal.com/boring-tech-solutions/15min" target="_blank" rel="noopener noreferrer">
+                    Book a Coffee Chat
+                  </a>
                 </Button>
               </div>
             </div>
