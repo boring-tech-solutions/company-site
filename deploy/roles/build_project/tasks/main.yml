@@ -1,0 +1,61 @@
+---
+- name: Gather facts (ensure we know we're on macOS)
+  setup:
+
+# Optional: install Node via Homebrew on macOS
+- name: Ensure Node.js is installed via Homebrew (macOS)
+  community.general.homebrew:
+    name: node
+    state: present
+  when:
+    - ensure_node_with_brew
+    - ansible_facts['system'] == "Darwin"
+
+# Check for package-lock.json to decide between npm ci/install
+- name: Check for package-lock.json
+  ansible.builtin.stat:
+    path: "{{ project_dir }}/package-lock.json"
+  register: lockfile
+
+# Install deps (prefer npm ci when lockfile exists and use_npm_ci is true)
+- name: Install project dependencies with npm ci
+  ansible.builtin.command: npm ci
+  args:
+    chdir: "{{ project_dir }}"
+  register: npm_install_ci
+  when:
+    - use_npm_ci
+    - lockfile.stat.exists
+  failed_when: npm_install_ci.rc != 0
+  changed_when: true
+
+- name: Install project dependencies with npm install (fallback)
+  ansible.builtin.command: npm install
+  args:
+    chdir: "{{ project_dir }}"
+  register: npm_install
+  when:
+    - not (use_npm_ci and lockfile.stat.exists)
+  failed_when: npm_install.rc != 0
+  changed_when: true
+
+# Show install output if something failed
+- name: Show npm output if install failed
+  ansible.builtin.debug:
+    msg: |
+      npm ci stdout:    {{ npm_install_ci.stdout  | default('') }}
+      npm ci stderr:    {{ npm_install_ci.stderr  | default('') }}
+      npm install stdout: {{ npm_install.stdout   | default('') }}
+      npm install stderr: {{ npm_install.stderr   | default('') }}
+  when:
+    - (npm_install_ci is defined and npm_install_ci.rc is defined and npm_install_ci.rc != 0) or
+      (npm_install     is defined and npm_install.rc     is defined and npm_install.rc     != 0)
+
+# Build only if deps step succeeded
+- name: Build project
+  ansible.builtin.command: npm run build
+  args:
+    chdir: "{{ project_dir }}"
+  when:
+    - (npm_install_ci is defined and npm_install_ci.rc == 0) or
+      (npm_install     is defined and npm_install.rc     == 0)

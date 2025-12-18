@@ -1,0 +1,3 @@
+project_dir: "{{ ansible_tmp_dir }}/{{ repo_name }}"
+use_npm_ci: true          # set false to force `npm install`
+ensure_node_with_brew: false  # set true to auto-install Node via Homebrew

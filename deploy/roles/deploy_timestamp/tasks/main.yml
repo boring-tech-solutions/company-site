@@ -1,0 +1,8 @@
+---
+
+- name: Get Timestamp
+  set_fact: deploy_timestamp="{{ ansible_date_time.epoch }}"
+
+- name: Display timestamp
+  debug:
+    var: deploy_timestamp

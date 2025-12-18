@@ -1,18 +1,10 @@
-# Welcome to your Lovable project
-
 ## Project info
-
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+This is the boring website as created by loveable ai
 
 ## How can I edit this code?
 
 There are several ways of editing your application.
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
 
 **Use your preferred IDE**
 
@@ -60,14 +52,19 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+## Deploy
+This assumes you already in deploy directory
+`$ ansible-playbook --vault-password-file ./keys/vault_password_file -i inventories/prod playbook.yml`
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+**To view an encrypted file:**
 
-## Can I connect a custom domain to my Lovable project?
+- `ansible-vault view --vault-password-file ./keys/vault_password_file <file>`
 
-Yes, you can!
+**To edit an ecrypted file:**
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- `ansible-vault edit --vault-password-file ./keys/vault_password_file <file>`
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+**To decrypt an ecrypted file:**
+
+- `ansible-vault decrypt --vault-password-file ./keys/vault_password_file <file>`
+

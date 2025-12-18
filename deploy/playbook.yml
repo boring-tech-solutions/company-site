@@ -1,0 +1,20 @@
+# This is the main playbook to be run for deploys
+- name: Get Deploy Timestamp
+  hosts: localhost
+  roles:
+    - deploy_timestamp
+
+- name: Fetch Upstream
+  hosts: localhost
+  roles:
+    - fetch_latest_changes
+
+- name: Build local project
+  hosts: localhost
+  roles:
+    - build_project
+
+- name: Publish changes
+  hosts: localhost
+  roles:
+    - publish_changes

@@ -1,0 +1,13 @@
+---
+all:
+  vars:
+    aws_access_key: '{{ vault_aws_access_key }}'
+    aws_secret_key: '{{ vault_aws_secret_key }}'
+    cloudfront_domain_id: 'E1CFFLR6DXININ'
+    upload_bucket: 'boringtechsolutions-com'
+  hosts:
+    localhost:
+      ansible_connection: 'local'
+      ansible_python_interpreter: 'python3'
+
+

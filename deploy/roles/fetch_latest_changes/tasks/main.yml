@@ -1,0 +1,14 @@
+- name: Ensure temp directory exists
+  file: path={{ ansible_tmp_dir }} state=directory mode=0755
+
+- name: Ensure directory does not exist
+  file:
+    path: '{{ ansible_tmp_dir }}/{{ repo_name }}/'
+    state: absent
+
+- name: Fetch git source
+  git: repo={{ repo_base }}/{{ repo_name }}.git dest={{ ansible_tmp_dir }}/{{ repo_name }} version={{ repo_version }} accept_hostkey=True
+
+- name: display repo name
+  debug:
+    msg: "Fetched latest changes for {{repo_base}}/{{ repo_name }}"

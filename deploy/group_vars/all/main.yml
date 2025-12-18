@@ -1,0 +1,4 @@
+repo_base: 'git@github.com:boring-tech-solutions'
+repo_name: 'company-site'
+repo_version: 'main'
+ansible_tmp_dir: '/tmp/personal-workspace'

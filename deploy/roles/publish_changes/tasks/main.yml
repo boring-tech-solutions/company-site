@@ -1,0 +1,23 @@
+---
+- name: Upload project to s3
+  s3_sync:
+    aws_access_key: '{{ aws_access_key }}'
+    aws_secret_key: '{{ aws_secret_key }}'
+    bucket: '{{ upload_bucket }}'
+    file_root: '{{ ansible_tmp_dir }}/{{ repo_name }}/dist'
+    key_prefix: '{{ deploy_timestamp }}'
+
+- name: Upload build to bucket root
+  s3_sync:
+    aws_access_key: '{{ aws_access_key }}'
+    aws_secret_key: '{{ aws_secret_key }}'
+    bucket: '{{ upload_bucket }}'
+    file_root: '{{ ansible_tmp_dir }}/{{ repo_name }}/dist'
+    key_prefix: 'public'
+
+- name: Invalidate cache
+  cloudfront_invalidation:
+    aws_access_key: '{{ aws_access_key }}'
+    aws_secret_key: '{{ aws_secret_key }}'
+    distribution_id: '{{ cloudfront_domain_id }}'
+    target_paths: ['/*']
