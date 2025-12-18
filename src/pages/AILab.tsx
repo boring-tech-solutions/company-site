@@ -10,44 +10,40 @@ const AILab = () => {
   return (
     <div className="min-h-screen bg-background relative">
       <Header />
-      <main className="relative z-10 pt-20">
-        {/* Hero Section */}
-        <section className="py-24 relative overflow-hidden">
-          <div className="section-container relative">
-            <div className="relative rounded-3xl overflow-hidden min-h-[500px]">
-              <div className="absolute inset-0">
-                <img 
-                  src={lionInLab} 
-                  alt="AI Lab" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/85 to-background/50" />
-              </div>
-              
-              <div className="relative z-10 p-8 md:p-16 flex flex-col justify-center h-full min-h-[500px]">
-                <div className="max-w-2xl">
-                  <span className="text-primary text-sm font-medium uppercase tracking-widest">AI Lab</span>
-                  <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 mt-2">
-                    Applied AI.
-                    <br />
-                    <span className="text-primary">Built Responsibly.</span>
-                  </h1>
-                  <p className="text-muted-foreground text-lg md:text-xl mb-8 leading-relaxed">
-                    Practical AI systems that solve real operational problems—not experimental hype, but applied intelligence built to reduce manual work and strengthen trust.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <Button size="lg" className="group" asChild>
-                      <Link to="/contact">
-                        Talk to Us About an AI Use Case
-                        <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
-                      </Link>
-                    </Button>
-                    <Button size="lg" variant="outline" asChild>
-                      <a href="#projects">Explore Active Projects</a>
-                    </Button>
-                  </div>
-                </div>
-              </div>
+      <main className="relative z-10">
+        {/* Hero Section - Full Bleed */}
+        <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0">
+            <img 
+              src={lionInLab} 
+              alt="AI Lab" 
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-background/85" />
+          </div>
+          
+          {/* Content */}
+          <div className="section-container relative z-10 pt-32 pb-20 text-center">
+            <span className="text-primary text-sm font-medium uppercase tracking-widest">AI Lab</span>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 mt-2">
+              Applied AI.
+              <br />
+              <span className="text-primary">Built Responsibly.</span>
+            </h1>
+            <p className="text-muted-foreground text-lg md:text-xl mb-8 leading-relaxed max-w-2xl mx-auto">
+              Practical AI systems that solve real operational problems—not experimental hype, but applied intelligence built to reduce manual work and strengthen trust.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="group" asChild>
+                <Link to="/contact">
+                  Talk to Us About an AI Use Case
+                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <a href="#projects">Explore Active Projects</a>
+              </Button>
             </div>
           </div>
         </section>
