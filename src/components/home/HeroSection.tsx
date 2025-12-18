@@ -21,7 +21,7 @@ const HeroSection = () => {
       <div className="section-container relative z-10 flex-1 flex items-center justify-center px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h1
-            className="text-3xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-6 animate-fade-in delay-100"
+            className="text-3xl md:text-6xl lg:text-7xl leading-tight font-bold mb-4 md:mb-6 animate-fade-in delay-100 font-sans"
             style={{ lineHeight: "1.4" }}
           >
             Calm Precision in a <span className="text-gradient">Noisy Tech World</span>
