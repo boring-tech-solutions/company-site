@@ -21,7 +21,7 @@ const WhoWeAre = () => {
       <img src={lionsAtWork} alt="The Boring Tech Collective - Lions at work" className="absolute inset-0 w-full h-full object-cover" />
       
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-charcoal-deep/90" />
+      <div className="absolute inset-0 bg-surface-dark/90" />
       
       {/* Content */}
       <div className="relative z-10 section-container py-24 flex flex-col items-center justify-center min-h-[600px] md:min-h-[700px] text-center">

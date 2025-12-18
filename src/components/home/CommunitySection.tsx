@@ -21,9 +21,9 @@ const initiatives = [
 
 const CommunitySection = () => {
   return (
-    <section id="community" className="py-24 relative">
+    <section id="community" className="py-24 relative bg-surface-navy">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-card/50 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-surface-navy via-surface-teal/30 to-surface-navy" />
       
       <div className="section-container relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">

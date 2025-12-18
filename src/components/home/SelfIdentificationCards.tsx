@@ -21,7 +21,7 @@ const cards = [{
   color: "from-accent/15 to-accent/5"
 }];
 const SelfIdentificationCards = () => {
-  return <section className="relative py-[75px]">
+  return <section className="relative py-[75px] bg-surface-navy">
       <div className="section-container">
         {/* Section Header */}
         <div className="text-center mb-16">

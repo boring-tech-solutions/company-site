@@ -12,7 +12,7 @@ const Footer = ({ hideCTA = false }: FooterProps) => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-card border-t border-border">
+    <footer className="bg-surface-dark border-t border-border">
       {/* CTA Section */}
       {!hideCTA && <div className="section-container py-20">
         <div className="text-center max-w-3xl mx-auto">
