@@ -13,19 +13,18 @@ const About = () => {
   return (
     <div className="min-h-screen bg-background relative">
       <Header />
-      <main className="relative z-10 pt-20">
-        {/* Hero Section with Image */}
-        <section className="relative min-h-[70vh] flex items-end overflow-hidden">
-          <div className="absolute inset-0">
-            <img 
-              src={lionsAtWork} 
-              alt="The Boring Tech Collective - Lions at work" 
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/30" />
-          </div>
+      <main className="relative z-10">
+        {/* Hero Section with Image - Full Bleed Behind Header */}
+        <section className="relative min-h-[70vh] flex items-end pt-32 overflow-hidden">
+          {/* Background Image */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url(${lionsAtWork})` }}
+          />
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-background/85" />
           
-          <div className="relative z-10 section-container pb-16 pt-32">
+          <div className="relative z-10 section-container pb-16">
             <div className="max-w-4xl">
               <span className="inline-block px-4 py-2 bg-primary/20 text-primary rounded-full text-sm font-medium mb-6 animate-fade-in">
                 About Us — The Boring Tech Collective
