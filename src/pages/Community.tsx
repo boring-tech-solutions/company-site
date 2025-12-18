@@ -2,7 +2,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import CommunitySection from "@/components/home/CommunitySection";
 import CollectivePreview from "@/components/home/CollectivePreview";
-import AIChatbot from "@/components/chat/AIChatbot";
+
 
 const Community = () => {
   return (
@@ -13,7 +13,7 @@ const Community = () => {
         <CollectivePreview />
       </main>
       <Footer hideCTA />
-      <AIChatbot />
+      
     </div>
   );
 };

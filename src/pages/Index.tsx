@@ -7,7 +7,7 @@ import CaseStudyPreview from "@/components/home/CaseStudyPreview";
 import AILabTeaser from "@/components/home/AILabTeaser";
 import SelfIdentificationCards from "@/components/home/SelfIdentificationCards";
 import PartnerLogos from "@/components/home/PartnerLogos";
-import AIChatbot from "@/components/chat/AIChatbot";
+
 
 const Index = () => {
   return (
@@ -23,7 +23,7 @@ const Index = () => {
         
       </main>
       <Footer />
-      <AIChatbot />
+      
     </div>
   );
 };
