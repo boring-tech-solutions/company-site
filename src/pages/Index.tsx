@@ -20,7 +20,7 @@ const Index = () => {
         <CaseStudyPreview />
         <AILabTeaser />
         <SelfIdentificationCards />
-        <PartnerLogos />
+        
       </main>
       <Footer />
       <AIChatbot />
