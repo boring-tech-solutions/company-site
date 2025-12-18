@@ -30,7 +30,7 @@ const App = () => (
           <Route path="/community" element={<Community />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/contact/success" element={<ContactSuccess />} />
-          <Route path="/ydgc" element={<YDGC />} />
+          <Route path="/data-compliance" element={<YDGC />} />
           <Route path="/ydgc-sale" element={<YDGCSale />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
