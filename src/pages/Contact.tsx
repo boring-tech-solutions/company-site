@@ -116,15 +116,15 @@ const Contact = () => {
                 </div>
                 <h3 className="font-display text-xl font-bold text-white mb-2">Email Us</h3>
                 <p className="text-white/80 text-sm mb-4">Drop us a line anytime</p>
-                <span className="inline-flex items-center text-white font-medium group-hover:gap-3 gap-2 transition-all">
+                <span className="inline-flex items-center text-white font-medium group-hover:gap-3 gap-2 transition-all text-sm break-all">
                   hello@boringtechsolutions.com
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform flex-shrink-0" />
                 </span>
               </div>
             </a>
 
             {/* Location Card */}
-            <div className="group relative overflow-hidden rounded-2xl bg-[#101A26] p-8">
+            <div className="group relative overflow-hidden rounded-2xl bg-[#101A26] p-8 border border-white/10">
               <div className="absolute top-4 right-4 w-16 h-16 rounded-full bg-[#1B3540]" />
               <div className="absolute bottom-0 left-0 w-24 h-24 rounded-full bg-[#F2C84B]/10 -translate-x-8 translate-y-8" />
               <div className="relative z-10">
