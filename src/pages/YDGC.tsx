@@ -160,12 +160,6 @@ const YDGC = () => {
                     <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
                   </a>
                 </Button>
-                <Button size="lg" variant="outline" className="text-lg px-8 py-6 group" asChild>
-                  <a href="#how-it-works">
-                    See How It Works
-                    <ChevronDown className="ml-2 group-hover:translate-y-1 transition-transform" size={20} />
-                  </a>
-                </Button>
               </div>
             </div>
           </div>
@@ -368,40 +362,6 @@ const YDGC = () => {
               <p className="text-lg font-medium text-foreground max-w-3xl mx-auto px-4 py-6 rounded-2xl bg-card border border-border">
                 YDGC supports organizations that want to stay ahead—by embedding governance into systems early, rather than reacting under pressure later.
               </p>
-            </div>
-          </div>
-        </section>
-
-        {/* What YDGC Does - Features */}
-        <section id="how-it-works" className="py-24 bg-gradient-to-br from-emerald-950/20 via-card to-card border-t border-emerald-500/10">
-          <div className="section-container">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 text-primary text-sm font-medium uppercase tracking-widest mb-6">
-                <Layers size={18} />
-                <span>Core Features</span>
-              </div>
-              
-              <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-                What YDGC Does
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Comprehensive governance tools designed for youth-serving organizations
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {features.map((feature, index) => <div key={index} className="group relative p-8 rounded-3xl bg-background border border-border hover:border-primary/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl overflow-hidden">
-                  {/* Gradient Background */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                  
-                  <div className="relative">
-                    <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
-                      <feature.icon className="text-primary" size={32} />
-                    </div>
-                    <h3 className="font-display text-xl font-semibold mb-3">{feature.title}</h3>
-                    <p className="text-muted-foreground">{feature.description}</p>
-                  </div>
-                </div>)}
             </div>
           </div>
         </section>
