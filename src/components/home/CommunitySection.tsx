@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Heart, Users, GraduationCap, Globe } from "lucide-react";
+import prideOfLions from "@/assets/pride-of-lions.webp";
 
 const initiatives = [
   {
@@ -21,9 +22,14 @@ const initiatives = [
 
 const CommunitySection = () => {
   return (
-    <section id="community" className="py-24 relative bg-surface-navy">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-surface-navy via-surface-teal/30 to-surface-navy" />
+    <section id="community" className="py-24 relative">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${prideOfLions})` }}
+      />
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-background/85" />
       
       <div className="section-container relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
