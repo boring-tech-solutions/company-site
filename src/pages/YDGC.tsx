@@ -23,6 +23,7 @@ import lionPresenting from "@/assets/lion-presenting.webp";
 import lionServerRoom from "@/assets/lion-server-room.webp";
 import lionsCoding from "@/assets/lions-coding.webp";
 import lionsRooftop from "@/assets/lions-rooftop.webp";
+import lionsHuddle from "@/assets/lions-huddle.webp";
 
 const YDGC = () => {
   const features = [
@@ -224,108 +225,98 @@ const YDGC = () => {
         </div>
       </section>
 
-      {/* Why Now Section with Image */}
-      <section className="py-20">
-        <div className="section-container">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Content */}
-            <div>
-              <div className="inline-flex items-center gap-2 text-primary mb-4">
-                <Clock className="w-5 h-5" />
-                <span className="text-sm font-medium uppercase tracking-wider">Why Now</span>
-              </div>
-              
-              <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
-                A New Data <span className="text-gradient">Reality</span>
-              </h2>
+      {/* Why Now Section - Background Image */}
+      <section className="relative py-24 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src={lionsRooftop} 
+            alt="" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-background/85" />
+        </div>
 
-              <p className="text-muted-foreground text-lg mb-8">
-                Youth-serving organizations are operating in a fundamentally different data environment. Today, organizations must demonstrate:
-              </p>
+        <div className="section-container relative z-10">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 text-primary mb-4">
+              <Clock className="w-5 h-5" />
+              <span className="text-sm font-medium uppercase tracking-wider">Why Now</span>
+            </div>
+            
+            <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
+              A New Data <span className="text-gradient">Reality</span>
+            </h2>
 
-              <div className="space-y-4">
-                {[
-                  "Clear consent and purpose for data collection",
-                  "Controlled access to sensitive information",
-                  "Defined retention and deletion practices",
-                  "Accountability during audits and funding reviews",
-                ].map((item, index) => (
-                  <div key={index} className="flex items-start gap-3">
-                    <CheckCircle2 className="text-primary mt-0.5 flex-shrink-0" size={20} />
-                    <span className="text-foreground">{item}</span>
-                  </div>
-                ))}
-              </div>
+            <p className="text-muted-foreground text-lg mb-8">
+              Youth-serving organizations are operating in a fundamentally different data environment. Today, organizations must demonstrate:
+            </p>
 
-              <div className="mt-8 p-6 rounded-2xl bg-primary/10 border border-primary/20">
-                <p className="text-foreground font-medium">
-                  YDGC replaces uncertainty with structure—helping organizations meet modern expectations without slowing down service delivery.
-                </p>
-              </div>
+            <div className="grid sm:grid-cols-2 gap-4 mb-8">
+              {[
+                "Clear consent and purpose for data collection",
+                "Controlled access to sensitive information",
+                "Defined retention and deletion practices",
+                "Accountability during audits and funding reviews",
+              ].map((item, index) => (
+                <div key={index} className="flex items-start gap-3">
+                  <CheckCircle2 className="text-primary mt-0.5 flex-shrink-0" size={20} />
+                  <span className="text-foreground">{item}</span>
+                </div>
+              ))}
             </div>
 
-            {/* Image */}
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden">
-                <img 
-                  src={lionsCoding} 
-                  alt="Team working on compliance" 
-                  className="w-full h-auto"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
-              </div>
+            <div className="p-6 rounded-2xl bg-card/80 backdrop-blur-sm border border-primary/20">
+              <p className="text-foreground font-medium">
+                YDGC replaces uncertainty with structure—helping organizations meet modern expectations without slowing down service delivery.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* For Funders Section - Split Layout */}
-      <section className="py-20 bg-muted/30">
-        <div className="section-container">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Image */}
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden">
-                <img 
-                  src={lionsRooftop} 
-                  alt="Partnership celebration" 
-                  className="w-full h-auto"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
-              </div>
+      {/* For Funders Section - Background Image */}
+      <section className="relative py-24 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src={lionsHuddle} 
+            alt="" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-background/90" />
+        </div>
+
+        <div className="section-container relative z-10">
+          <div className="max-w-3xl ml-auto">
+            <div className="inline-flex items-center gap-2 text-primary mb-4">
+              <Building2 className="w-5 h-5" />
+              <span className="text-sm font-medium uppercase tracking-wider">For Funders</span>
             </div>
+            
+            <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
+              Designed With <span className="text-gradient">Funders in Mind</span>
+            </h2>
+            
+            <p className="text-muted-foreground text-lg mb-8">
+              YDGC helps organizations demonstrate governance maturity to stakeholders
+            </p>
 
-            {/* Content */}
-            <div>
-              <div className="inline-flex items-center gap-2 text-primary mb-4">
-                <Building2 className="w-5 h-5" />
-                <span className="text-sm font-medium uppercase tracking-wider">For Funders</span>
-              </div>
-              
-              <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
-                Designed With <span className="text-gradient">Funders in Mind</span>
-              </h2>
-              
-              <p className="text-muted-foreground text-lg mb-8">
-                YDGC helps organizations demonstrate governance maturity to stakeholders
-              </p>
-
-              <div className="grid sm:grid-cols-2 gap-4">
-                {[
-                  { icon: Shield, text: "Strong data governance maturity" },
-                  { icon: Scale, text: "Reduced compliance and reputational risk" },
-                  { icon: Eye, text: "Operational readiness for audits" },
-                  { icon: Heart, text: "Responsible stewardship of funding" },
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex items-start gap-3 p-4 rounded-xl bg-card border border-border"
-                  >
-                    <item.icon className="text-primary flex-shrink-0 mt-0.5" size={20} strokeWidth={1.5} />
-                    <p className="text-foreground text-sm">{item.text}</p>
-                  </div>
-                ))}
-              </div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {[
+                { icon: Shield, text: "Strong data governance maturity" },
+                { icon: Scale, text: "Reduced compliance and reputational risk" },
+                { icon: Eye, text: "Operational readiness for audits" },
+                { icon: Heart, text: "Responsible stewardship of funding" },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="flex items-start gap-3 p-4 rounded-xl bg-card/80 backdrop-blur-sm border border-border"
+                >
+                  <item.icon className="text-primary flex-shrink-0 mt-0.5" size={20} strokeWidth={1.5} />
+                  <p className="text-foreground text-sm">{item.text}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
