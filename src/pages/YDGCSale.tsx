@@ -32,7 +32,7 @@ import {
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
-const YDGC2 = () => {
+const YDGCSale = () => {
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
 
   const toggleCard = (index: number) => {
@@ -570,4 +570,4 @@ const YDGC2 = () => {
   );
 };
 
-export default YDGC2;
+export default YDGCSale;
