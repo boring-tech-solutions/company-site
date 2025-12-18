@@ -184,50 +184,41 @@ const YDGC = () => {
         </div>
       </section>
 
-      {/* Features Section with Image */}
-      <section className="py-20 bg-[#1B3540]">
+      {/* Features Section - Text Focused */}
+      <section className="py-24 bg-[#1B3540]">
         <div className="section-container">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Image */}
-            <div className="relative order-2 lg:order-1">
-              <div className="relative rounded-2xl overflow-hidden">
-                <img 
-                  src={lionServerRoom} 
-                  alt="Data Security" 
-                  className="w-full h-auto"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#101A26]/60 to-transparent" />
-              </div>
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 text-primary mb-4">
+              <Lock className="w-5 h-5" />
+              <span className="text-sm font-medium uppercase tracking-wider">Core Features</span>
             </div>
+            
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-white">
+              What YDGC <span className="text-primary">Does</span>
+            </h2>
+          </div>
 
-            {/* Content */}
-            <div className="order-1 lg:order-2">
-              <div className="inline-flex items-center gap-2 text-primary mb-4">
-                <Lock className="w-5 h-5" />
-                <span className="text-sm font-medium uppercase tracking-wider">Core Features</span>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16 max-w-6xl mx-auto">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="group text-center"
+              >
+                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl border-2 border-primary/30 flex items-center justify-center transition-all duration-500 group-hover:border-primary group-hover:bg-primary/10 group-hover:scale-110 group-hover:rotate-3">
+                  <feature.icon 
+                    className="text-primary transition-all duration-500 group-hover:scale-110" 
+                    size={28} 
+                    strokeWidth={1.5}
+                  />
+                </div>
+                <h3 className="font-display text-2xl font-bold text-white mb-3 tracking-tight">
+                  {feature.title}
+                </h3>
+                <p className="text-white/70 text-lg leading-relaxed max-w-sm mx-auto">
+                  {feature.description}
+                </p>
               </div>
-              
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-8">
-                What YDGC <span className="text-primary">Does</span>
-              </h2>
-
-              <div className="space-y-4">
-                {features.map((feature, index) => (
-                  <div
-                    key={index}
-                    className="flex items-start gap-4 p-4 rounded-xl bg-[#101A26] border border-white/10"
-                  >
-                    <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
-                      <feature.icon className="text-primary" size={20} />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-white mb-1">{feature.title}</h3>
-                      <p className="text-white/60 text-sm">{feature.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
