@@ -77,7 +77,7 @@ const Footer = ({ hideCTA = false }: FooterProps) => {
               <ul className="space-y-3 text-muted-foreground text-sm">
                 <li><Link to="/about" className="hover:text-foreground transition-colors">About Us</Link></li>
                 <li><Link to="/ai-lab" className="hover:text-foreground transition-colors">AI Lab</Link></li>
-                <li><Link to="/our-past-work" className="hover:text-foreground transition-colors">Our Past Work</Link></li>
+                <li><Link to="/our-past-work" className="hover:text-foreground transition-colors">Our Projects</Link></li>
                 <li><Link to="/community" className="hover:text-foreground transition-colors">Community</Link></li>
               </ul>
             </div>

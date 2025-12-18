@@ -68,7 +68,7 @@ const CaseStudyPreview = () => {
         {/* Section Header */}
         <div className="mb-16">
           <div>
-            <span className="text-primary text-sm font-medium uppercase tracking-widest">Our Past Work</span>
+            <span className="text-primary text-sm font-medium uppercase tracking-widest">Our Projects</span>
             <h2 className="font-display text-3xl md:text-4xl font-bold mt-2">
               Challenge → Approach →{" "}
               <span className="text-gradient">Transformation</span>
