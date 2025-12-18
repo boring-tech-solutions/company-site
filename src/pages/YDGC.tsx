@@ -358,7 +358,7 @@ const YDGC = () => {
                     <AccordionTrigger className="text-left font-medium hover:no-underline py-6">
                       <div className="flex items-start gap-3">
                         <span className="text-primary font-bold">Q{index + 1}.</span>
-                        <span className="font-sans text-md">{faq.question}</span>
+                        <span>{faq.question}</span>
                       </div>
                     </AccordionTrigger>
                     <AccordionContent className="text-muted-foreground pb-6 pl-8">{faq.answer}</AccordionContent>
@@ -416,7 +416,7 @@ const YDGC = () => {
                       <div className={`flex-1 ${item.side === "right" ? "md:text-right md:pr-12" : "md:pl-12"}`}>
                         <div className="p-6 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
                           <h3 className="font-display text-xl font-semibold mb-2">{item.title}</h3>
-                          <p className="text-muted-foreground">{item.desc}</p>
+                          <p className="text-muted-foreground px-1">{item.desc}</p>
                         </div>
                       </div>
                       <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background" />
