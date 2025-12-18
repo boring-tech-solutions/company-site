@@ -22,25 +22,25 @@ const initiatives = [
 
 const CommunitySection = () => {
   return (
-    <section id="community" className="py-24 relative">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${prideOfLions})` }}
-      />
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-background/85" />
-      
-      <div className="section-container relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Content */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
+    <>
+      {/* Hero Section with Background Image */}
+      <section id="community" className="py-24 relative">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${prideOfLions})` }}
+        />
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-background/85" />
+        
+        <div className="section-container relative">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="flex items-center justify-center gap-2 mb-4">
               <Heart className="text-primary" size={20} />
               <span className="text-primary text-sm font-medium uppercase tracking-widest">Community</span>
             </div>
             
-            <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
               Technology With <span className="text-gradient">Purpose</span>
             </h2>
             
@@ -48,7 +48,7 @@ const CommunitySection = () => {
               We believe in building technology that serves communities. Beyond our client work, we invest in initiatives that create lasting positive impact.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
                 Partner With Us for Impact
               </Button>
@@ -57,27 +57,29 @@ const CommunitySection = () => {
               </Button>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Initiatives Grid */}
-          <div className="space-y-4">
+      {/* Initiatives Section with Solid Background */}
+      <section className="py-20 bg-surface-teal">
+        <div className="section-container">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {initiatives.map((initiative, index) => (
               <div
                 key={index}
-                className="card-premium flex items-start gap-4"
+                className="card-premium flex flex-col items-center text-center p-6"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
-                  <initiative.icon className="text-primary" size={22} />
+                <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4">
+                  <initiative.icon className="text-primary" size={24} />
                 </div>
-                <div>
-                  <h3 className="font-display font-semibold mb-1">{initiative.title}</h3>
-                  <p className="text-muted-foreground text-sm">{initiative.description}</p>
-                </div>
+                <h3 className="font-display font-semibold text-lg mb-2">{initiative.title}</h3>
+                <p className="text-muted-foreground text-sm">{initiative.description}</p>
               </div>
             ))}
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
