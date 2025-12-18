@@ -112,11 +112,10 @@ const CommunitySection = () => {
               <div
                 key={index}
                 className="group cursor-pointer"
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
+                onClick={() => setHoveredIndex(index)}
               >
                 {/* Geometric Art Card */}
-                <div className={`${initiative.bgColor} aspect-[4/5] rounded-2xl overflow-hidden relative transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-xl`}>
+                <div className={`${initiative.bgColor} aspect-[4/5] rounded-2xl overflow-hidden relative transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl`}>
                   {initiative.shapes}
                 </div>
                 
@@ -134,12 +133,12 @@ const CommunitySection = () => {
           {/* Expanded Card Overlay */}
           {hoveredIndex !== null && (
             <div 
-              className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm transition-opacity duration-300"
-              onMouseLeave={() => setHoveredIndex(null)}
+              className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm animate-fade-in cursor-pointer"
+              onClick={() => setHoveredIndex(null)}
             >
               <div 
-                className="w-[90vw] max-w-md animate-scale-in"
-                onMouseLeave={() => setHoveredIndex(null)}
+                className="w-[90vw] max-w-md animate-scale-in cursor-default"
+                onClick={(e) => e.stopPropagation()}
               >
                 <div className={`${initiatives[hoveredIndex].bgColor} aspect-[4/5] rounded-2xl overflow-hidden relative shadow-2xl`}>
                   {initiatives[hoveredIndex].shapes}
