@@ -8,7 +8,7 @@ const Community = () => {
   return (
     <div className="min-h-screen bg-background relative">
       <Header />
-      <main className="relative z-10 pt-20">
+      <main className="relative z-10">
         <CommunitySection />
         <CollectivePreview />
       </main>
