@@ -31,7 +31,6 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import ydgcHero from "@/assets/ydgc-hero.webp";
 import ydgcCompliance from "@/assets/ydgc-compliance.webp";
 import ydgcEthics from "@/assets/ydgc-ethics.webp";
-import DemoRequestForm from "@/components/ydgc/DemoRequestForm";
 const YDGC = () => {
   const features = [
     {
@@ -188,7 +187,7 @@ const YDGC = () => {
         <section className="relative min-h-screen flex items-center overflow-hidden">
           {/* Background Image with Overlay */}
           <div className="absolute inset-0">
-            <img src={ydgcHero} alt="Data protection illustration" className="w-full h-full object-cover opacity-40" />
+            <img src={ydgcHero} alt="Data protection illustration" className="w-full h-full object-cover opacity-30" />
             <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
           </div>
 
@@ -236,7 +235,22 @@ const YDGC = () => {
                   animationDelay: "0.2s",
                 }}
               >
-                <DemoRequestForm />
+                <Button
+                  size="lg"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 group text-lg px-8 py-6"
+                  asChild
+                >
+                  <a href="https://cal.com/boring-tech-solutions/15min" target="_blank" rel="noopener noreferrer">
+                    Book a Demo
+                    <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+                  </a>
+                </Button>
+                <Button size="lg" variant="outline" className="text-lg px-8 py-6 group" asChild>
+                  <a href="#how-it-works">
+                    See How It Works
+                    <ChevronDown className="ml-2 group-hover:translate-y-1 transition-transform" size={20} />
+                  </a>
+                </Button>
               </div>
             </div>
           </div>
@@ -402,7 +416,7 @@ const YDGC = () => {
                       <div className={`flex-1 ${item.side === "right" ? "md:text-right md:pr-12" : "md:pl-12"}`}>
                         <div className="p-6 rounded-2xl bg-background border border-border hover:border-primary/30 transition-colors">
                           <h3 className="font-display text-xl font-semibold mb-2">{item.title}</h3>
-                          <p className="text-muted-foreground px-1">{item.desc}</p>
+                          <p className="text-muted-foreground">{item.desc}</p>
                         </div>
                       </div>
                       <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background" />
