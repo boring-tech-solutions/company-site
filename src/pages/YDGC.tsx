@@ -22,6 +22,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import lionPresenting from "@/assets/lion-presenting.webp";
 import lionServerRoom from "@/assets/lion-server-room.webp";
 import lionsCoding from "@/assets/lions-coding.webp";
+import lionsRooftop from "@/assets/lions-rooftop.webp";
 
 const YDGC = () => {
   const features = [
@@ -278,38 +279,53 @@ const YDGC = () => {
         </div>
       </section>
 
-      {/* For Funders Section */}
+      {/* For Funders Section - Split Layout */}
       <section className="py-20 bg-muted/30">
         <div className="section-container">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 text-primary mb-4">
-              <Building2 className="w-5 h-5" />
-              <span className="text-sm font-medium uppercase tracking-wider">For Funders</span>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Image */}
+            <div className="relative">
+              <div className="relative rounded-2xl overflow-hidden">
+                <img 
+                  src={lionsRooftop} 
+                  alt="Partnership celebration" 
+                  className="w-full h-auto"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+              </div>
             </div>
-            
-            <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
-              Designed With <span className="text-gradient">Funders in Mind</span>
-            </h2>
-            
-            <p className="text-muted-foreground text-lg mb-12">
-              YDGC helps organizations demonstrate governance maturity to stakeholders
-            </p>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                { icon: Shield, text: "Strong data governance maturity" },
-                { icon: Scale, text: "Reduced compliance and reputational risk" },
-                { icon: Eye, text: "Operational readiness for audits" },
-                { icon: Heart, text: "Responsible stewardship of funding" },
-              ].map((item, index) => (
-                <div
-                  key={index}
-                  className="p-6 rounded-2xl bg-card border border-border transition-transform duration-300 hover:scale-[1.02]"
-                >
-                  <item.icon className="text-primary mx-auto mb-4" size={32} />
-                  <p className="text-muted-foreground text-sm">{item.text}</p>
-                </div>
-              ))}
+            {/* Content */}
+            <div>
+              <div className="inline-flex items-center gap-2 text-primary mb-4">
+                <Building2 className="w-5 h-5" />
+                <span className="text-sm font-medium uppercase tracking-wider">For Funders</span>
+              </div>
+              
+              <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
+                Designed With <span className="text-gradient">Funders in Mind</span>
+              </h2>
+              
+              <p className="text-muted-foreground text-lg mb-8">
+                YDGC helps organizations demonstrate governance maturity to stakeholders
+              </p>
+
+              <div className="grid sm:grid-cols-2 gap-4">
+                {[
+                  { icon: Shield, text: "Strong data governance maturity" },
+                  { icon: Scale, text: "Reduced compliance and reputational risk" },
+                  { icon: Eye, text: "Operational readiness for audits" },
+                  { icon: Heart, text: "Responsible stewardship of funding" },
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start gap-3 p-4 rounded-xl bg-card border border-border"
+                  >
+                    <item.icon className="text-primary flex-shrink-0 mt-0.5" size={20} strokeWidth={1.5} />
+                    <p className="text-foreground text-sm">{item.text}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
