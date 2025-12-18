@@ -62,7 +62,7 @@ const CommunitySection = () => {
   return (
     <>
       {/* Hero Section with Background Image */}
-      <section id="community" className="py-24 relative">
+      <section id="community" className="pt-32 pb-24 relative">
         {/* Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
