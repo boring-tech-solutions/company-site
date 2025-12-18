@@ -31,6 +31,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import ydgcHero from "@/assets/ydgc-hero.webp";
 import ydgcCompliance from "@/assets/ydgc-compliance.webp";
 import ydgcEthics from "@/assets/ydgc-ethics.webp";
+import DemoRequestForm from "@/components/ydgc/DemoRequestForm";
 const YDGC = () => {
   const features = [
     {
@@ -235,16 +236,7 @@ const YDGC = () => {
                   animationDelay: "0.2s",
                 }}
               >
-                <Button
-                  size="lg"
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 group text-lg px-8 py-6"
-                  asChild
-                >
-                  <a href="https://cal.com/boring-tech-solutions/15min" target="_blank" rel="noopener noreferrer">
-                    Book a Demo
-                    <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
-                  </a>
-                </Button>
+                <DemoRequestForm />
               </div>
             </div>
           </div>
