@@ -226,16 +226,7 @@ const YDGC = () => {
       </section>
 
       {/* Why Now Section - Text Focused */}
-      <section className="relative py-28 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <img 
-            src={lionsRooftop} 
-            alt="" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-background/90" />
-        </div>
+      <section className="relative py-28 overflow-hidden bg-surface-teal">
 
         <div className="section-container relative z-10">
           <div className="max-w-4xl mx-auto text-center">
