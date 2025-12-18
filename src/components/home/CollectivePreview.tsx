@@ -19,6 +19,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import lionsAtWork from "@/assets/lions-at-work.webp";
 
 const CollectivePreview = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -90,9 +91,12 @@ const CollectivePreview = () => {
   };
 
   return (
-    <section id="about" className="py-24 relative overflow-hidden bg-surface-teal">
-      {/* Background */}
-      <div className="absolute inset-0 bg-surface-teal" />
+    <section id="about" className="py-24 relative overflow-hidden">
+      {/* Background Image */}
+      <img src={lionsAtWork} alt="The Boring Tech Collective" className="absolute inset-0 w-full h-full object-cover" />
+      
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-surface-dark/90" />
       
       <div className="section-container relative">
         <div className="max-w-4xl mx-auto text-center">
