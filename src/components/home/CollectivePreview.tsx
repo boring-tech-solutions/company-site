@@ -90,9 +90,9 @@ const CollectivePreview = () => {
   };
 
   return (
-    <section id="about" className="py-24 relative overflow-hidden">
+    <section id="about" className="py-24 relative overflow-hidden bg-surface-teal">
       {/* Background */}
-      <div className="absolute inset-0 bg-card" />
+      <div className="absolute inset-0 bg-surface-teal" />
       
       <div className="section-container relative">
         <div className="max-w-4xl mx-auto text-center">

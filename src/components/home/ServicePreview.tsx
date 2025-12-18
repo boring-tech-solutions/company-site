@@ -92,7 +92,7 @@ const ServicePreview = () => {
   const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
 
   return (
-    <section id="services" className="py-24 bg-background">
+    <section id="services" className="py-24 bg-surface-teal">
       <div className="section-container">
         {/* Section Header */}
         <div className="mb-16">

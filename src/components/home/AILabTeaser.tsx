@@ -5,7 +5,7 @@ import lionInLab from "@/assets/lion-in-lab.webp";
 
 const AILabTeaser = () => {
   return (
-    <section id="ai-lab" className="py-24 relative overflow-hidden">
+    <section id="ai-lab" className="py-24 relative overflow-hidden bg-surface-teal">
       <div className="section-container relative">
         <div className="relative rounded-3xl overflow-hidden min-h-[500px] md:min-h-[550px]">
           {/* Background Image with Dark Overlay */}

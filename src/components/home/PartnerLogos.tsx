@@ -9,7 +9,7 @@ const partners = [
 
 const PartnerLogos = () => {
   return (
-    <section className="py-16 border-y border-border bg-card/30">
+    <section className="py-16 border-y border-border bg-surface-dark">
       <div className="section-container">
         <div className="text-center mb-10">
           <p className="text-muted-foreground text-sm uppercase tracking-widest">

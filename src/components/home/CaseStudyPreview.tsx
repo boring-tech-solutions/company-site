@@ -63,7 +63,7 @@ const caseStudies = [{
 }];
 const CaseStudyPreview = () => {
   const [selectedStudy, setSelectedStudy] = useState<typeof caseStudies[0] | null>(null);
-  return <section id="case-studies" className="relative py-[75px]">
+  return <section id="case-studies" className="relative py-[75px] bg-surface-navy">
       <div className="section-container">
         {/* Section Header */}
         <div className="mb-16">
