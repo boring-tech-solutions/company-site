@@ -225,8 +225,8 @@ const YDGC = () => {
         </div>
       </section>
 
-      {/* Why Now Section - Background Image */}
-      <section className="relative py-24 overflow-hidden">
+      {/* Why Now Section - Text Focused */}
+      <section className="relative py-28 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
           <img 
@@ -234,40 +234,40 @@ const YDGC = () => {
             alt="" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-background/85" />
+          <div className="absolute inset-0 bg-background/90" />
         </div>
 
         <div className="section-container relative z-10">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 text-primary mb-4">
-              <Clock className="w-5 h-5" />
-              <span className="text-sm font-medium uppercase tracking-wider">Why Now</span>
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 text-primary mb-6">
+              <Clock className="w-6 h-6" />
+              <span className="text-base font-semibold uppercase tracking-wider">Why Now</span>
             </div>
             
-            <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
               A New Data <span className="text-gradient">Reality</span>
             </h2>
 
-            <p className="text-muted-foreground text-lg mb-8">
-              Youth-serving organizations are operating in a fundamentally different data environment. Today, organizations must demonstrate:
+            <p className="text-foreground text-xl md:text-2xl mb-12 leading-relaxed">
+              Youth-serving organizations are operating in a fundamentally different data environment.
             </p>
 
-            <div className="grid sm:grid-cols-2 gap-4 mb-8">
+            <div className="grid sm:grid-cols-2 gap-6 mb-12 text-left max-w-3xl mx-auto">
               {[
                 "Clear consent and purpose for data collection",
                 "Controlled access to sensitive information",
                 "Defined retention and deletion practices",
                 "Accountability during audits and funding reviews",
               ].map((item, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <CheckCircle2 className="text-primary mt-0.5 flex-shrink-0" size={20} />
-                  <span className="text-foreground">{item}</span>
+                <div key={index} className="flex items-start gap-4 p-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50">
+                  <CheckCircle2 className="text-primary mt-1 flex-shrink-0" size={24} strokeWidth={2} />
+                  <span className="text-foreground text-lg font-medium">{item}</span>
                 </div>
               ))}
             </div>
 
-            <div className="p-6 rounded-2xl bg-card/80 backdrop-blur-sm border border-primary/20">
-              <p className="text-foreground font-medium">
+            <div className="p-8 rounded-2xl bg-primary/10 border border-primary/30 max-w-3xl mx-auto">
+              <p className="text-foreground text-xl font-semibold leading-relaxed">
                 YDGC replaces uncertainty with structure—helping organizations meet modern expectations without slowing down service delivery.
               </p>
             </div>
