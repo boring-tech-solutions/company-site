@@ -275,6 +275,40 @@ const YDGC = () => {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-20">
+        <div className="section-container">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 text-primary mb-4">
+                <HelpCircle className="w-5 h-5" />
+                <span className="text-sm font-medium uppercase tracking-wider">FAQ</span>
+              </div>
+              <h2 className="font-display text-3xl md:text-4xl font-bold">
+                Frequently Asked <span className="text-gradient">Questions</span>
+              </h2>
+            </div>
+
+            <Accordion type="single" collapsible className="space-y-4">
+              {faqs.map((faq, index) => (
+                <AccordionItem
+                  key={index}
+                  value={`item-${index}`}
+                  className="bg-card border border-border rounded-2xl px-6 data-[state=open]:border-primary/30 transition-colors"
+                >
+                  <AccordionTrigger className="text-left font-medium hover:no-underline py-6">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground pb-6">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </div>
+      </section>
+
       {/* For Funders Section - Background Image */}
       <section className="relative py-24 overflow-hidden">
         {/* Background Image */}
@@ -318,40 +352,6 @@ const YDGC = () => {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-20">
-        <div className="section-container">
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 text-primary mb-4">
-                <HelpCircle className="w-5 h-5" />
-                <span className="text-sm font-medium uppercase tracking-wider">FAQ</span>
-              </div>
-              <h2 className="font-display text-3xl md:text-4xl font-bold">
-                Frequently Asked <span className="text-gradient">Questions</span>
-              </h2>
-            </div>
-
-            <Accordion type="single" collapsible className="space-y-4">
-              {faqs.map((faq, index) => (
-                <AccordionItem
-                  key={index}
-                  value={`item-${index}`}
-                  className="bg-card border border-border rounded-2xl px-6 data-[state=open]:border-primary/30 transition-colors"
-                >
-                  <AccordionTrigger className="text-left font-medium hover:no-underline py-6">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pb-6">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
           </div>
         </div>
       </section>
