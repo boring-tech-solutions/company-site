@@ -53,18 +53,22 @@ const DemoRequestForm = ({ trigger }: DemoRequestFormProps) => {
     try {
       const webhookUrl = "https://hooks.airtable.com/workflows/YOUR_YDGC_DEMO_WEBHOOK_ID";
 
-      await fetch(webhookUrl, {
+      const response = await fetch(webhookUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Accept": "application/json",
         },
-        mode: "no-cors",
         body: JSON.stringify({
           ...formData,
           source: "YDGC Demo Request",
           timestamp: new Date().toISOString(),
         }),
       });
+      if (!response.ok) {
+        const errorText = await response.text().catch(() => "");
+        throw new Error(`Request failed (${response.status})${errorText ? `: ${errorText}` : ""}`);
+      }
 
       toast({
         title: "Request Submitted",

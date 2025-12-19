@@ -50,15 +50,17 @@ const CollectivePreview = () => {
     setIsSubmitting(true);
     
     try {
-      // TODO: Replace with actual Airtable webhook URL
-      const AIRTABLE_WEBHOOK_URL = "https://hooks.airtable.com/workflows/v1/YOUR_COLLECTIVE_WEBHOOK_ID";
-      
-      await fetch(AIRTABLE_WEBHOOK_URL, {
+      const serverUrl = import.meta.env.VITE_SERVER_URL + "/collective/join";
+      if (!serverUrl) {
+        throw new Error("Missing VITE_SERVER_URL");
+      }
+
+      const response = await fetch(serverUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Accept": "application/json",
         },
-        mode: "no-cors",
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
@@ -67,9 +69,12 @@ const CollectivePreview = () => {
           website: formData.website,
           message: formData.message,
           role: formData.role,
-          submitted_at: new Date().toISOString(),
         }),
       });
+      if (!response.ok) {
+        const errorText = await response.text().catch(() => "");
+        throw new Error(`Request failed (${response.status})${errorText ? `: ${errorText}` : ""}`);
+      }
 
       toast({
         title: "Application submitted!",
@@ -200,7 +205,7 @@ const CollectivePreview = () => {
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="linkedin">LinkedIn</Label>
+              <Label htmlFor="linkedin">LinkedIn *</Label>
               <Input
                 id="linkedin"
                 type="url"
@@ -208,6 +213,7 @@ const CollectivePreview = () => {
                 value={formData.linkedin}
                 onChange={(e) => setFormData(prev => ({ ...prev, linkedin: e.target.value }))}
                 className="bg-background"
+                required
               />
             </div>
             
@@ -240,13 +246,14 @@ const CollectivePreview = () => {
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="message">Message</Label>
+              <Label htmlFor="message">Message *</Label>
               <Textarea
                 id="message"
                 placeholder="Tell us about yourself..."
                 value={formData.message}
                 onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
                 className="bg-background min-h-[100px]"
+                required
               />
             </div>
             

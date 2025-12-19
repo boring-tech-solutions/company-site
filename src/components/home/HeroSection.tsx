@@ -18,12 +18,12 @@ const HeroSection = () => {
       <div className="section-container relative z-10 flex-1 flex items-center justify-center px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h1
-            className="text-3xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-6 animate-fade-in delay-100 font-sans"
+            className="text-4xl md:text-6xl lg:text-8xl font-bold mb-4 md:mb-6 animate-fade-in delay-100 font-sans"
             style={{ lineHeight: "1.4" }}
           >
             Calm Precision in a <span className="text-gradient">Noisy Tech World</span>
           </h1>
-          <p className="text-xl md:text-3xl text-gray-50 text-center my-8 leading-relaxed text-muted-foreground max-w-2xl mx-auto animate-fade-in delay-200">
+          <p className="text-2xl md:text-4xl text-gray-50 text-center my-8 leading-relaxed text-muted-foreground max-w-2xl mx-auto animate-fade-in delay-200">
             Your starting point for real-world AI — no hype, just impact.
           </p>
         </div>
@@ -48,7 +48,7 @@ const HeroSection = () => {
             className="text-base md:text-lg px-6 md:px-8 py-5 md:py-6 group border-border hover:border-primary/50 w-full sm:w-auto"
             asChild
           >
-            <Link to="/contact">
+            <Link to="">
               Show Me What's Possible
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
             </Link>

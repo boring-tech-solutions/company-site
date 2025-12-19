@@ -13,12 +13,13 @@ import lionsAtWorkContact from "@/assets/lions-at-work-contact.webp";
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
   email: z.string().trim().email("Please enter a valid email").max(255, "Email must be less than 255 characters"),
+  phone: z.string().trim().max(30, "Phone must be less than 30 characters").optional(),
   message: z.string().trim().min(1, "Message is required").max(2000, "Message must be less than 2000 characters"),
 });
 
 const Contact = () => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -48,21 +49,29 @@ const Contact = () => {
     }
 
     try {
-      const AIRTABLE_WEBHOOK_URL = "https://hooks.airtable.com/workflows/v1/YOUR_WEBHOOK_ID";
-      
-      await fetch(AIRTABLE_WEBHOOK_URL, {
+      const baseUrl = import.meta.env.VITE_SERVER_URL;
+      if (!baseUrl) {
+        throw new Error("Missing VITE_SERVER_URL");
+      }
+      const serverUrl = `${baseUrl}/leads`;
+
+      const response = await fetch(serverUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Accept": "application/json",
         },
-        mode: "no-cors",
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
+          phone: formData.phone,
           message: formData.message,
-          submitted_at: new Date().toISOString(),
         }),
       });
+      if (!response.ok) {
+        const errorText = await response.text().catch(() => "");
+        throw new Error(`Request failed (${response.status})${errorText ? `: ${errorText}` : ""}`);
+      }
 
       navigate("/contact/success");
     } catch (error) {
@@ -209,6 +218,22 @@ const Contact = () => {
                     <p className="text-destructive text-sm">{errors.email}</p>
                   )}
                 </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="phone" className="text-white/90 text-base">Phone</Label>
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  placeholder="(555) 123-4567"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className={`bg-[#101A26] border-[#101A26] text-white placeholder:text-white/40 h-14 text-base focus:border-primary ${errors.phone ? "border-destructive" : ""}`}
+                />
+                {errors.phone && (
+                  <p className="text-destructive text-sm">{errors.phone}</p>
+                )}
               </div>
 
               <div className="space-y-2">
