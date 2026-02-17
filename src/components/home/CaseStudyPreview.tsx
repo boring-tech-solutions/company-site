@@ -32,15 +32,15 @@ const caseStudies = [{
   textColor: "text-charcoal-deep",
   mutedColor: "text-charcoal-deep/70"
 }, {
-  title: "YDCS",
+  title: "Govora",
   category: "Data Compliance",
   description: "Comprehensive data compliance solution for youth-serving organizations.",
   challenge: "Compliance complexity",
   transformation: "Automated workflows",
-  fullDescription: "Youth Data Compliance System (YDCS) was developed to address the critical need for PIPEDA and FOIP compliance in youth-serving organizations. These organizations handle sensitive data but often lack the resources to manage complex regulatory requirements.",
+  fullDescription: "Govora was developed to address the critical need for PIPEDA and FOIP compliance in youth-serving organizations. These organizations handle sensitive data but often lack the resources to manage complex regulatory requirements.",
   approach: "We created an end-to-end compliance management system featuring automated consent tracking, intelligent data retention policies, comprehensive audit logging, and easy-to-use dashboards for compliance officers.",
   results: ["100% compliance with PIPEDA & FOIP requirements", "80% reduction in manual compliance tasks", "Automated consent renewal workflows", "Complete audit trail for regulatory inspections"],
-  technologies: ["TypeScript", "React", "Supabase", "Edge Functions", "Encryption"],
+  technologies: ["Python", "VueJs", "AWS", "Edge Functions", "Encryption"],
   timeline: "5 months",
   bgColor: "bg-charcoal",
   textColor: "text-white",
@@ -59,7 +59,7 @@ const caseStudies = [{
   bgColor: "bg-blue-600",
   textColor: "text-white",
   mutedColor: "text-white/70",
-  image: "https://image-cdn.quizapp.ca/quizapp_portfolio_screenshot_tablet.webp"
+  image: "https://images.boringtechsolutions.com/quizapp_portfolio_screenshot_tablet.webp"
 }];
 const CaseStudyPreview = () => {
   const [selectedStudy, setSelectedStudy] = useState<typeof caseStudies[0] | null>(null);

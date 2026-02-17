@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail, MapPin, Linkedin } from "lucide-react";
 
-const logo = "https://image-cdn.quizapp.ca/logo.webp";
+const logo = "https://images.boringtechsolutions.com/logo.webp";
 
 interface FooterProps {
   hideCTA?: boolean;

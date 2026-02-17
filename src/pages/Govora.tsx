@@ -25,7 +25,7 @@ import lionsCoding from "@/assets/lions-coding.webp";
 import lionsRooftop from "@/assets/lions-rooftop.webp";
 import lionsHuddle from "@/assets/lions-huddle.webp";
 
-const YDGC = () => {
+const Govora = () => {
   const features = [
     {
       icon: CheckCircle2,
@@ -76,11 +76,11 @@ const YDGC = () => {
     },
     {
       question: "Can't we fix this with policies or staff training?",
-      answer: "Policies and training are important, but they do not scale on their own. Most governance gaps appear when staff turnover occurs, volunteers rotate, or data lives longer than expected. YDGC turns policy into practice by enforcing governance automatically.",
+      answer: "Policies and training are important, but they do not scale on their own. Most governance gaps appear when staff turnover occurs, volunteers rotate, or data lives longer than expected. Govora turns policy into practice by enforcing governance automatically.",
     },
     {
-      question: "Is YDGC difficult to adopt?",
-      answer: "No. YDGC is designed for lean teams and real-world constraints. Most organizations find that automating governance reduces administrative burden, simplifies reporting, and frees staff to focus on service delivery.",
+      question: "Is Govora difficult to adopt?",
+      answer: "No. Govora is designed for lean teams and real-world constraints. Most organizations find that automating governance reduces administrative burden, simplifies reporting, and frees staff to focus on service delivery.",
     },
   ];
 
@@ -130,7 +130,7 @@ const YDGC = () => {
         </div>
       </section>
 
-      {/* What Is YDGC - Cards Section */}
+      {/* What Is Govora - Cards Section */}
       <section className="py-20">
         <div className="section-container">
           <div className="text-center mb-16">
@@ -196,7 +196,7 @@ const YDGC = () => {
             </div>
             
             <h2 className="font-display text-4xl md:text-5xl font-bold text-white">
-              What YDGC <span className="text-primary">Does</span>
+              What Govora <span className="text-primary">Does</span>
             </h2>
           </div>
 
@@ -259,7 +259,7 @@ const YDGC = () => {
 
             <div className="p-8 rounded-2xl bg-primary/10 border border-primary/30 max-w-3xl mx-auto">
               <p className="text-foreground text-xl font-semibold leading-relaxed">
-                YDGC replaces uncertainty with structure—helping organizations meet modern expectations without slowing down service delivery.
+                Govora replaces uncertainty with structure—helping organizations meet modern expectations without slowing down service delivery.
               </p>
             </div>
           </div>
@@ -324,7 +324,7 @@ const YDGC = () => {
             </h2>
             
             <p className="text-muted-foreground text-lg mb-8">
-              YDGC helps organizations demonstrate governance maturity to stakeholders
+              Govora helps organizations demonstrate governance maturity to stakeholders
             </p>
 
             <div className="grid sm:grid-cols-2 gap-4">
@@ -388,4 +388,4 @@ const YDGC = () => {
   );
 };
 
-export default YDGC;
+export default Govora;
