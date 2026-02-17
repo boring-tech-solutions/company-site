@@ -10,33 +10,36 @@ import About from "./pages/About";
 import Community from "./pages/Community";
 import Contact from "./pages/Contact";
 import ContactSuccess from "./pages/ContactSuccess";
-import YDGC from "./pages/YDGC";
-import YDGCSale from "./pages/YDGCSale";
+import Govora from "./pages/Govora";
+import GovoraSales from "./pages/GovoraSales";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/ai-lab" element={<AILab />} />
-          <Route path="/our-past-work" element={<CaseStudies />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/community" element={<Community />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/contact/success" element={<ContactSuccess />} />
-          <Route path="/data-compliance" element={<YDGC />} />
-          <Route path="/ydgc-sale" element={<YDGCSale />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Index />} />
+                    <Route path="/ai-lab" element={<AILab />} />
+                    <Route path="/our-past-work" element={<CaseStudies />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/community" element={<Community />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route
+                        path="/contact/success"
+                        element={<ContactSuccess />}
+                    />
+                    <Route path="/data-compliance" element={<Govora />} />
+                    <Route path="/govora-sales" element={<GovoraSales />} />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+            </BrowserRouter>
+        </TooltipProvider>
+    </QueryClientProvider>
 );
 
 export default App;

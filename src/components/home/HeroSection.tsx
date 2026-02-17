@@ -7,7 +7,7 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex flex-col overflow-hidden pt-20">
       {/* Video as background - all screen sizes */}
       <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover md:object-contain">
-        <source src="https://image-cdn.quizapp.ca/boring-team-hero-video.mp4?ref=12222" type="video/mp4" />
+        <source src="https://images.boringtechsolutions.com/boring-team-hero-video.mp4?ref=12222" type="video/mp4" />
       </video>
 
       {/* Video Overlay */}

@@ -28,7 +28,7 @@ const teamMembers: TeamMember[] = [
     linkedIn: "https://linkedin.com/in/creigphiri",
     cardColor: "from-amber-400 to-amber-300",
     initials: "CP",
-    image: "https://image-cdn.quizapp.ca/creig-linkedin-profile.webp"
+    image: "https://images.boringtechsolutions.com/creig-linkedin-profile.webp"
   },
   {
     name: "Shradha Maira",
@@ -41,7 +41,7 @@ const teamMembers: TeamMember[] = [
     linkedIn: "https://linkedin.com/in/shradhamaira",
     cardColor: "from-violet-300 to-indigo-200",
     initials: "SM",
-    image: "https://image-cdn.quizapp.ca/shradha-linkedin-profile.webp"
+    image: "https://images.boringtechsolutions.com/shradha-linkedin-profile.webp"
   },
   {
     name: "Nomatter Anderson",
@@ -55,7 +55,7 @@ const teamMembers: TeamMember[] = [
     linkedIn: "https://linkedin.com/in/nomatteranderson",
     cardColor: "from-blue-200 to-slate-200",
     initials: "NA",
-    image: "https://image-cdn.quizapp.ca/anderson_linkedin_image.webp"
+    image: "https://images.boringtechsolutions.com/anderson_linkedin_image.webp"
   },
   {
     name: "Watson",
@@ -69,7 +69,7 @@ const teamMembers: TeamMember[] = [
     linkedIn: "https://linkedin.com/in/watson",
     cardColor: "from-slate-300 to-gray-200",
     initials: "W",
-    image: "https://image-cdn.quizapp.ca/watson-linkedin-profile.webp"
+    image: "https://images.boringtechsolutions.com/watson-linkedin-profile.webp"
   },
   {
     name: "Thando Ncube",
