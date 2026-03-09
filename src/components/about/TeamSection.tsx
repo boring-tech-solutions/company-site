@@ -58,20 +58,6 @@ const teamMembers: TeamMember[] = [
     image: "https://images.boringtechsolutions.com/anderson_linkedin_image.webp"
   },
   {
-    name: "Watson",
-    role: "Software Engineer & Creative Technologist",
-    shortRole: "Full-Stack • Cloud Architecture",
-    bio: [
-      "Watson is the engineer who turns ideas into clean, scalable systems. With experience across full-stack development, microservices, Google Cloud infrastructure, DevOps, VR prototyping, and agile environments, he brings a rare blend of creativity and discipline.",
-      "He's known for building user-centric applications, optimizing system performance, and bringing a sense of joy and curiosity into every engineering challenge.",
-      "A true inventor at heart — capable of turning abstract vision into something real, fast."
-    ],
-    linkedIn: "https://linkedin.com/in/watson",
-    cardColor: "from-slate-300 to-gray-200",
-    initials: "W",
-    image: "https://images.boringtechsolutions.com/watson-linkedin-profile.webp"
-  },
-  {
     name: "Thando Ncube",
     role: "Senior Software Architect",
     shortRole: "Distributed Systems • ML Platforms",
