@@ -13,6 +13,12 @@ export const siteChrome = {
         linkType: "router",
         children: [
           {
+            label: "About AI Lab",
+            href: "/ai-lab",
+            linkType: "router",
+            description: "Explore how BTS applies AI responsibly to real operational challenges.",
+          },
+          {
             label: "AI Workflow Automation",
             href: "/services/ai-workflow-automation",
             linkType: "router",
