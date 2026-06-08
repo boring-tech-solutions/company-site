@@ -140,8 +140,8 @@ test("sitemaps, robots, and edge rewrites expose case study URLs", async () => {
     );
   }
 
-  assert.match(robots, /Sitemap:\s*https:\/\/boringtechsolutions\.com\/sitemap\.xml/);
-  assert.match(robots, /Sitemap:\s*https:\/\/boringtechsolutions\.com\/blog\/sitemap\.xml/);
+  assert.match(robots, /Sitemap:\s*https:\/\/www\.boringtechsolutions\.com\/sitemap\.xml/);
+  assert.match(robots, /Sitemap:\s*https:\/\/www\.boringtechsolutions\.com\/blog\/sitemap\.xml/);
 
   assert.equal(rewriteUri("/blog"), "/blog/index.html");
   assert.equal(rewriteUri("/blog/"), "/blog/index.html");

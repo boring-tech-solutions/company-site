@@ -47,7 +47,7 @@ test("case study shared data exposes the four canonical project stories", async 
     assert.equal(study.path, `/case-studies/${study.slug}`);
     assert.equal(
       study.canonicalUrl,
-      `https://boringtechsolutions.com/case-studies/${study.slug}`,
+      `https://www.boringtechsolutions.com/case-studies/${study.slug}`,
     );
 
     for (const field of [
