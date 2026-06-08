@@ -12,6 +12,8 @@ import Contact from "./pages/Contact";
 import ContactSuccess from "./pages/ContactSuccess";
 import Govora from "./pages/Govora";
 import GovoraSales from "./pages/GovoraSales";
+import AIWorkflowAutomation from "./pages/AIWorkflowAutomation";
+import ResponsibleAIConsulting from "./pages/ResponsibleAIConsulting";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -35,6 +37,8 @@ const App = () => (
                     />
                     <Route path="/data-compliance" element={<Govora />} />
                     <Route path="/govora-sales" element={<GovoraSales />} />
+                    <Route path="/services/ai-workflow-automation" element={<AIWorkflowAutomation />} />
+                    <Route path="/services/responsible-ai-consulting" element={<ResponsibleAIConsulting />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </BrowserRouter>
