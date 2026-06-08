@@ -1,93 +1,8 @@
-/* Import Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&?family=Sniglet:wght@400;800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
+@import "../shared/site-theme.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-  :root {
-    /* New Color Palette from reference */
-    /* #101A26 - Dark Navy */
-    --navy: 213 43% 11%;
-    /* #1B3540 - Teal/Dark Green-Blue */
-    --teal: 196 40% 18%;
-    /* #F2C84B - Bright Yellow (CTA) */
-    --yellow: 46 87% 62%;
-    /* #D9B343 - Muted Gold */
-    --gold: 46 65% 56%;
-    /* #D93D3D - Red (sparingly) */
-    --red: 0 68% 55%;
-    
-    /* Core tokens mapped to new palette */
-    --background: 213 43% 11%;
-    --foreground: 0 0% 98%;
-    --card: 196 40% 18%;
-    --card-foreground: 0 0% 98%;
-    --popover: 196 40% 14%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 46 87% 62%;
-    --primary-foreground: 213 43% 11%;
-    --secondary: 196 40% 22%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 196 30% 25%;
-    --muted-foreground: 0 0% 70%;
-    --accent: 46 65% 56%;
-    --accent-foreground: 213 43% 11%;
-    --destructive: 0 68% 55%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 196 30% 28%;
-    --input: 196 35% 20%;
-    --ring: 46 87% 62%;
-    --radius: 0.75rem;
-    
-    /* Extended palette for section backgrounds */
-    --surface-navy: 213 43% 11%;
-    --surface-teal: 196 40% 18%;
-    --surface-teal-light: 196 35% 22%;
-    --surface-dark: 213 45% 8%;
-    
-    /* Legacy tokens (mapped to new) */
-    --gold-muted: 46 65% 56%;
-    --charcoal: 196 40% 18%;
-    --charcoal-deep: 213 43% 11%;
-    --charcoal-light: 196 30% 25%;
-    
-    /* Sidebar */
-    --sidebar-background: 196 40% 14%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 46 87% 62%;
-    --sidebar-primary-foreground: 213 43% 11%;
-    --sidebar-accent: 196 35% 22%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 196 30% 28%;
-    --sidebar-ring: 46 87% 62%;
-  }
-  .dark {
-    --background: 213 43% 11%;
-    --foreground: 0 0% 98%;
-    --card: 196 40% 18%;
-    --card-foreground: 0 0% 98%;
-    --popover: 196 40% 14%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 46 87% 62%;
-    --primary-foreground: 213 43% 11%;
-    --secondary: 196 40% 22%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 196 30% 25%;
-    --muted-foreground: 0 0% 70%;
-    --accent: 46 65% 56%;
-    --accent-foreground: 213 43% 11%;
-    --destructive: 0 68% 55%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 196 30% 28%;
-    --input: 196 35% 20%;
-    --ring: 46 87% 62%;
-  }
-}
 
 @layer base {
   * {
@@ -95,25 +10,10 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: "Inter", sans-serif;
-  }
-  h1,
-  h2,
-  h3 {
-    font-family: "Source Sans 3", sans-serif;
-  }
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: "play-fair", serif;
   }
 }
 
 @layer components {
-  .section-container {
-    @apply max-w-7xl mx-auto px-6 lg:px-8;
-  }
   .card-premium {
     @apply bg-card border border-border rounded-2xl p-6 transition-all duration-500;
   }
@@ -142,19 +42,6 @@
     animation: icon-bounce 0.6s ease-out;
   }
   
-  /* Section background utilities */
-  .bg-surface-navy {
-    background-color: hsl(213 43% 11%);
-  }
-  .bg-surface-teal {
-    background-color: hsl(196 40% 18%);
-  }
-  .bg-surface-teal-light {
-    background-color: hsl(196 35% 22%);
-  }
-  .bg-surface-dark {
-    background-color: hsl(213 45% 8%);
-  }
 }
 
 @keyframes icon-bounce {

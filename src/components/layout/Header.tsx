@@ -2,8 +2,24 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-const logo = "https://images.boringtechsolutions.com/logo.webp";
 import { cn } from "@/lib/utils";
+import { siteChrome } from "../../../shared/site-chrome.js";
+
+const renderHeaderLink = (link, className, onClick) => {
+  if (link.linkType === "router") {
+    return (
+      <Link to={link.href} className={className} onClick={onClick}>
+        {link.label}
+      </Link>
+    );
+  }
+
+  return (
+    <a href={link.href} className={className} onClick={onClick}>
+      {link.label}
+    </a>
+  );
+};
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,14 +33,7 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const navLinks = [
-    { name: "About Us", href: "/about" },
-    { name: "AI Lab", href: "/ai-lab" },
-    { name: "Our Projects", href: "/our-past-work" },
-    { name: "Data Compliance", href: "/data-compliance" },
-    { name: "Community", href: "/community" },
-  ];
+  const { header, logo } = siteChrome;
 
   return (
     <header
@@ -34,22 +43,23 @@ const Header = () => {
     >
       <div className="section-container">
         <div className="flex items-center justify-between h-20">
-          <Link to="/" className="flex items-center group">
-            <img src={logo} alt="Boring Tech Solutions" className="h-24 w-auto" />
+          <Link to={logo.href} className="flex items-center group">
+            <img src={logo.src} alt={logo.alt} className="h-24 w-auto" />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                className={cn(
-                  "transition-colors text-md font-medium",
-                  location.pathname === link.href ? "text-primary" : "text-muted-foreground hover:text-foreground",
+            {header.primaryNav.map((link) => (
+              <div key={link.href}>
+                {renderHeaderLink(
+                  link,
+                  cn(
+                    "transition-colors text-md font-medium",
+                    link.linkType === "router" && location.pathname === link.href
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-foreground",
+                  ),
                 )}
-              >
-                {link.name}
-              </Link>
+              </div>
             ))}
           </nav>
 
@@ -57,15 +67,17 @@ const Header = () => {
             <Button
               variant="ghost"
               className={cn(
-                location.pathname === "/contact" ? "text-primary" : "text-muted-foreground hover:text-foreground",
+                location.pathname === header.secondaryCta.href
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-foreground",
               )}
               asChild
             >
-              <Link to="/contact">Contact</Link>
+              <Link to={header.secondaryCta.href}>{header.secondaryCta.label}</Link>
             </Button>
             <Button className="bg-primary text-primary-foreground hover:bg-primary/90" asChild>
-              <a href="https://cal.com/boring-tech-solutions/15min" target="_blank" rel="noopener noreferrer">
-                Book a Coffee Chat
+              <a href={header.primaryCta.href} target="_blank" rel="noopener noreferrer">
+                {header.primaryCta.label}
               </a>
             </Button>
           </div>
@@ -81,35 +93,36 @@ const Header = () => {
         {isMobileMenuOpen && (
           <div className="lg:hidden fixed inset-0 w-screen h-screen bg-background z-40 animate-fade-in">
             <div className="flex flex-col items-center justify-center min-h-screen gap-8 px-6">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  className={cn(
-                    "transition-colors text-2xl font-medium",
-                    location.pathname === link.href ? "text-primary" : "text-foreground hover:text-primary",
+              {header.primaryNav.map((link) => (
+                <div key={link.href}>
+                  {renderHeaderLink(
+                    link,
+                    cn(
+                      "transition-colors text-2xl font-medium",
+                      link.linkType === "router" && location.pathname === link.href
+                        ? "text-primary"
+                        : "text-foreground hover:text-primary",
+                    ),
+                    () => setIsMobileMenuOpen(false),
                   )}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </Link>
+                </div>
               ))}
               <div className="pt-8 flex flex-col gap-4 w-full max-w-xs">
                 <Button
                   variant="outline"
                   className={cn(
                     "w-full text-lg py-6",
-                    location.pathname === "/contact" && "border-primary text-primary",
+                    location.pathname === header.secondaryCta.href && "border-primary text-primary",
                   )}
                   asChild
                 >
-                  <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                    Contact
+                  <Link to={header.secondaryCta.href} onClick={() => setIsMobileMenuOpen(false)}>
+                    {header.secondaryCta.label}
                   </Link>
                 </Button>
                 <Button className="w-full bg-primary text-primary-foreground text-lg py-6" asChild>
-                  <a href="https://cal.com/boring-tech-solutions/15min" target="_blank" rel="noopener noreferrer">
-                    Book a Coffee Chat
+                  <a href={header.primaryCta.href} target="_blank" rel="noopener noreferrer">
+                    {header.primaryCta.label}
                   </a>
                 </Button>
               </div>

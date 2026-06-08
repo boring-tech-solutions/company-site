@@ -1,0 +1,396 @@
+---
+import { getCollection } from 'astro:content';
+import BlogSeo from '../components/BlogSeo.astro';
+import BlogShellLayout from '../layouts/BlogShellLayout.astro';
+
+const allPosts = await getCollection('posts');
+const posts = allPosts
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => new Date(b.data.datePublished).getTime() - new Date(a.data.datePublished).getTime());
+
+const canonicalUrl = 'https://boringtechsolutions.com/blog/';
+
+function readTime(post: typeof posts[number]): number {
+  return Math.ceil((post.data.description?.split(' ').length ?? 100) / 200) + 3;
+}
+
+function fmtDate(dateStr: string): string {
+  return new Date(dateStr).toLocaleDateString('en-CA', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  });
+}
+
+const featuredPost = posts[0];
+const indexPosts = posts.slice(1);
+---
+
+<BlogShellLayout>
+  <BlogSeo
+    slot="head"
+    title="Blog | Boring Tech Solutions"
+    description="AI automation insights and practical technology guidance for growing organizations."
+    canonicalUrl={canonicalUrl}
+    type="website"
+  />
+
+  <section class="bi section-container">
+
+    <!-- ─── Hero ─── -->
+    <div class="bi__hero">
+      <div class="bi__hero-left">
+        <p class="bi__eyebrow">Practical AI Notes From The Field</p>
+        <h1 class="bi__headline">
+          <span class="bi__headline-white">Field</span><br />
+          <span class="bi__headline-yellow">Notes.</span>
+        </h1>
+      </div>
+    </div>
+
+    {posts.length === 0 ? (
+      <p class="bi__empty">No posts published yet. Check back soon.</p>
+    ) : (
+      <>
+        <!-- ─── Featured card ─── -->
+        {featuredPost && (
+          <div class="bi__featured">
+            <div class="bi__featured-inner">
+              <div class="bi__featured-body">
+                <span class="bi__featured-badge">★ Featured</span>
+                <h2 class="bi__featured-title">
+                  <a href={`/blog/${featuredPost.data.slug}/`}>{featuredPost.data.title}</a>
+                </h2>
+                <p class="bi__featured-meta">
+                  {featuredPost.data.category} &bull; {fmtDate(featuredPost.data.datePublished)} &bull; {readTime(featuredPost)} min read
+                </p>
+                {featuredPost.data.tags && featuredPost.data.tags.length > 0 && (
+                  <p class="bi__featured-tags">
+                    [ {featuredPost.data.tags.join(' · ')} ]
+                  </p>
+                )}
+              </div>
+              <a href={`/blog/${featuredPost.data.slug}/`} class="bi__featured-arrow" aria-label={`Read ${featuredPost.data.title}`}>
+                →
+              </a>
+            </div>
+          </div>
+        )}
+
+        <!-- ─── The Index ─── -->
+        {indexPosts.length > 0 && (
+          <div class="bi__index-section">
+            <div class="bi__index-label">
+              <span class="bi__index-label-text">The Index</span>
+              <hr class="bi__index-rule" />
+            </div>
+
+            <ul class="bi__index-list">
+              {indexPosts.map((post, i) => (
+                <li class="bi__index-row">
+                  <span class="bi__index-num">{String(i + 1).padStart(2, '0')}</span>
+                  <div class="bi__index-content">
+                    {post.data.category && (
+                      <span class="bi__index-cat">{post.data.category}</span>
+                    )}
+                    <h3 class="bi__index-title">
+                      <a href={`/blog/${post.data.slug}/`}>{post.data.title}</a>
+                    </h3>
+                    <p class="bi__index-desc">{post.data.description}</p>
+                  </div>
+                  <div class="bi__index-right">
+                    <time class="bi__index-date" datetime={post.data.datePublished}>
+                      {fmtDate(post.data.datePublished)}
+                    </time>
+                    <span class="bi__index-read">{readTime(post)} min read</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </>
+    )}
+  </section>
+</BlogShellLayout>
+
+<style>
+  /* ── Layout wrapper ── */
+  .bi {
+    padding-block: 3rem 4rem;
+  }
+
+  /* ── Hero ── */
+  .bi__hero {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .bi__hero-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .bi__eyebrow {
+    margin: 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: hsl(var(--primary));
+  }
+
+  .bi__headline {
+    margin: 0;
+    font-size: clamp(4rem, 8vw, 7rem);
+    font-weight: 800;
+    line-height: 0.9;
+  }
+
+  .bi__headline-white {
+    color: hsl(var(--foreground));
+  }
+
+  .bi__headline-yellow {
+    color: hsl(var(--primary));
+  }
+
+/* ── Featured card ── */
+  .bi__featured {
+    margin-bottom: 3rem;
+    padding: 2.5rem;
+    border: 1px solid hsl(var(--border));
+    border-radius: 1.75rem;
+    background: hsl(var(--surface-dark));
+  }
+
+  .bi__featured-inner {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .bi__featured-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .bi__featured-badge {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 1.1rem;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid hsl(var(--border));
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: hsl(var(--primary));
+  }
+
+  .bi__featured-title {
+    margin: 0 0 0.75rem;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+  }
+
+  .bi__featured-title a {
+    color: hsl(var(--foreground));
+    text-decoration: none;
+  }
+
+  .bi__featured-title a:hover {
+    color: hsl(var(--primary));
+  }
+
+  .bi__featured-meta {
+    margin: 0 0 1rem;
+    font-size: 0.9rem;
+    color: hsl(var(--muted-foreground));
+  }
+
+  .bi__featured-tags {
+    margin: 0;
+    font-size: 0.85rem;
+    color: hsl(var(--muted-foreground));
+    letter-spacing: 0.04em;
+  }
+
+  .bi__featured-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 999px;
+    background: hsl(var(--primary));
+    color: hsl(var(--background));
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: opacity 0.15s;
+  }
+
+  .bi__featured-arrow:hover {
+    opacity: 0.85;
+  }
+
+  /* ── The Index section ── */
+  .bi__index-label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0;
+  }
+
+  .bi__index-label-text {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: hsl(var(--muted-foreground));
+    white-space: nowrap;
+  }
+
+  .bi__index-rule {
+    flex: 1;
+    border: none;
+    border-top: 1px solid hsl(var(--border));
+    margin: 0;
+  }
+
+  .bi__index-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .bi__index-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid hsl(var(--border));
+  }
+
+  .bi__index-num {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1;
+    color: hsl(var(--muted-foreground) / 0.4);
+    min-width: 4rem;
+    flex-shrink: 0;
+    padding-top: 0.15rem;
+  }
+
+  .bi__index-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .bi__index-cat {
+    display: inline-flex;
+    margin-bottom: 0.5rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: hsl(var(--primary) / 0.14);
+    color: hsl(var(--primary));
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .bi__index-title {
+    margin: 0 0 0.4rem;
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    font-weight: 700;
+    line-height: 1.15;
+  }
+
+  .bi__index-title a {
+    color: hsl(var(--foreground));
+    text-decoration: none;
+  }
+
+  .bi__index-title a:hover {
+    color: hsl(var(--primary));
+  }
+
+  .bi__index-desc {
+    margin: 0;
+    font-size: 0.95rem;
+    color: hsl(var(--muted-foreground));
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .bi__index-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+    flex-shrink: 0;
+    padding-top: 0.25rem;
+  }
+
+  .bi__index-date,
+  .bi__index-read {
+    font-size: 0.85rem;
+    color: hsl(var(--muted-foreground));
+    white-space: nowrap;
+  }
+
+  /* ── Empty state ── */
+  .bi__empty {
+    color: hsl(var(--muted-foreground));
+    padding: 1.5rem 0;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 719px) {
+    .bi {
+      padding-block: 2rem 3rem;
+    }
+
+    .bi__hero {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+
+    .bi__featured-inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .bi__featured-arrow {
+      align-self: flex-end;
+    }
+
+    .bi__index-row {
+      flex-wrap: wrap;
+    }
+
+    .bi__index-right {
+      width: 100%;
+      flex-direction: row;
+      justify-content: flex-end;
+      gap: 0.5rem;
+    }
+
+    .bi__index-num {
+      font-size: 2.5rem;
+      min-width: 3rem;
+    }
+  }
+</style>

@@ -1,4 +1,14 @@
 ---
+- name: Verify blog build output exists
+  stat:
+    path: '{{ ansible_tmp_dir }}/{{ repo_name }}/dist/blog/index.html'
+  register: blog_index
+
+- name: Fail if blog index not found
+  fail:
+    msg: 'Blog build output missing: dist/blog/index.html not found. Run npm run build first.'
+  when: not blog_index.stat.exists
+
 - name: Upload project to s3
   s3_sync:
     aws_access_key: '{{ aws_access_key }}'
@@ -7,13 +17,104 @@
     file_root: '{{ ansible_tmp_dir }}/{{ repo_name }}/dist'
     key_prefix: '{{ deploy_timestamp }}'
 
-- name: Upload build to bucket root
-  s3_sync:
-    aws_access_key: '{{ aws_access_key }}'
-    aws_secret_key: '{{ aws_secret_key }}'
-    bucket: '{{ upload_bucket }}'
-    file_root: '{{ ansible_tmp_dir }}/{{ repo_name }}/dist'
-    key_prefix: 'public'
+- name: Verify aws CLI is available
+  ansible.builtin.command: aws --version
+  changed_when: false
+
+- name: Sync hashed assets to S3 (long cache)
+  ansible.builtin.command: >
+    aws s3 sync
+    {{ ansible_tmp_dir }}/{{ repo_name }}/dist/
+    s3://{{ upload_bucket }}/public/
+    --delete
+    --cache-control "public,max-age=31536000,immutable"
+    --exclude "*.html"
+    --exclude "*.xml"
+    --exclude "*.txt"
+    --exclude "*.json"
+  environment:
+    AWS_ACCESS_KEY_ID: '{{ aws_access_key }}'
+    AWS_SECRET_ACCESS_KEY: '{{ aws_secret_key }}'
+
+- name: Sync HTML and metadata files to S3 (no cache)
+  ansible.builtin.command: >
+    aws s3 sync
+    {{ ansible_tmp_dir }}/{{ repo_name }}/dist/
+    s3://{{ upload_bucket }}/public/
+    --cache-control "public,max-age=0,must-revalidate"
+    --exclude "*"
+    --include "*.html"
+    --include "*.xml"
+    --include "*.txt"
+    --include "*.json"
+  environment:
+    AWS_ACCESS_KEY_ID: '{{ aws_access_key }}'
+    AWS_SECRET_ACCESS_KEY: '{{ aws_secret_key }}'
+
+- name: Check if CloudFront Function already exists
+  ansible.builtin.command: >
+    aws cloudfront describe-function
+    --name bts-rewrite-index
+    --stage DEVELOPMENT
+  register: cf_function_describe
+  failed_when: false
+  changed_when: false
+  environment:
+    AWS_ACCESS_KEY_ID: '{{ aws_access_key }}'
+    AWS_SECRET_ACCESS_KEY: '{{ aws_secret_key }}'
+
+- name: Create CloudFront Function (if absent)
+  ansible.builtin.command: >
+    aws cloudfront create-function
+    --name bts-rewrite-index
+    --function-config '{"Comment":"Rewrite directory URIs to index.html","Runtime":"cloudfront-js-1.0"}'
+    --function-code fileb://{{ ansible_tmp_dir }}/{{ repo_name }}/deploy/cloudfront/rewrite-index.js
+  register: cf_function_create
+  when: cf_function_describe.rc != 0
+  environment:
+    AWS_ACCESS_KEY_ID: '{{ aws_access_key }}'
+    AWS_SECRET_ACCESS_KEY: '{{ aws_secret_key }}'
+
+- name: Get current function ETag (if it already existed)
+  ansible.builtin.set_fact:
+    cf_function_etag: "{{ (cf_function_describe.stdout | from_json).ETag }}"
+  when: cf_function_describe.rc == 0
+
+- name: Update CloudFront Function code (if it already existed)
+  ansible.builtin.command: >
+    aws cloudfront update-function
+    --name bts-rewrite-index
+    --if-match {{ cf_function_etag }}
+    --function-config '{"Comment":"Rewrite directory URIs to index.html","Runtime":"cloudfront-js-1.0"}'
+    --function-code fileb://{{ ansible_tmp_dir }}/{{ repo_name }}/deploy/cloudfront/rewrite-index.js
+  register: cf_function_update
+  when: cf_function_describe.rc == 0
+  environment:
+    AWS_ACCESS_KEY_ID: '{{ aws_access_key }}'
+    AWS_SECRET_ACCESS_KEY: '{{ aws_secret_key }}'
+
+- name: Determine ETag to publish
+  ansible.builtin.set_fact:
+    cf_publish_etag: "{{ (cf_function_create.stdout | from_json).ETag if cf_function_describe.rc != 0 else (cf_function_update.stdout | from_json).ETag }}"
+
+- name: Publish CloudFront Function to LIVE
+  ansible.builtin.command: >
+    aws cloudfront publish-function
+    --name bts-rewrite-index
+    --if-match {{ cf_publish_etag }}
+  register: cf_function_publish
+  changed_when: true
+  environment:
+    AWS_ACCESS_KEY_ID: '{{ aws_access_key }}'
+    AWS_SECRET_ACCESS_KEY: '{{ aws_secret_key }}'
+
+- name: Show published function ARN (associate once with distribution default behavior)
+  ansible.builtin.debug:
+    msg: >-
+      Function published. If not yet associated with distribution
+      {{ cloudfront_domain_id }} default cache behavior (viewer-request),
+      run the one-time association documented in
+      docs/superpowers/plans/2026-06-03-deploy-blog-prod.md
 
 - name: Invalidate cache
   cloudfront_invalidation:

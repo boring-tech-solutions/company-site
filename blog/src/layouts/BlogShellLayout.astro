@@ -1,0 +1,55 @@
+---
+import '../../../shared/site-theme.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Boring Tech Solutions Blog RSS Feed"
+      href="/blog/rss.xml"
+    />
+    <slot name="head" />
+  </head>
+  <body>
+    <SiteHeader />
+    <main class="blog-shell__main">
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>
+
+<style is:global>
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    color: hsl(var(--foreground));
+    background:
+      radial-gradient(circle at top, hsl(var(--secondary) / 0.45), transparent 30%),
+      linear-gradient(180deg, hsl(var(--background)), hsl(var(--surface-dark)) 60%, hsl(var(--background)));
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  .blog-shell__main {
+    min-height: 40vh;
+  }
+</style>
