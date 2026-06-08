@@ -159,21 +159,37 @@ const Header = () => {
               {header.primaryNav.map((link) => {
                 if (link.children && link.children.length > 0) {
                   return (
-                    <div key={link.href} className="flex flex-col items-center gap-3 w-full">
-                      <span className="text-muted-foreground text-sm uppercase tracking-wider font-medium">
-                        {link.label}
-                      </span>
-                      {link.children.map((child) => (
-                        <div key={child.href} className="pl-4">
-                          {renderHeaderLink(
-                            child,
-                            cn(
-                              "transition-colors text-xl font-medium text-foreground hover:text-primary",
-                            ),
-                            () => setIsMobileMenuOpen(false),
-                          )}
-                        </div>
-                      ))}
+                    <div key={link.href} className="flex flex-col items-center gap-4 w-full max-w-xs">
+                      {renderHeaderLink(
+                        link,
+                        cn(
+                          "transition-colors text-2xl font-medium",
+                          location.pathname === link.href || link.children.some((c) => location.pathname === c.href)
+                            ? "text-primary"
+                            : "text-foreground hover:text-primary",
+                        ),
+                        () => setIsMobileMenuOpen(false),
+                      )}
+                      <div className="flex flex-col gap-2 w-full border-l-2 border-border pl-4">
+                        {link.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            to={child.href}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="flex flex-col gap-0.5 group"
+                          >
+                            <span className={cn(
+                              "text-base font-medium transition-colors",
+                              location.pathname === child.href ? "text-primary" : "text-foreground group-hover:text-primary",
+                            )}>
+                              {child.label}
+                            </span>
+                            {child.description && (
+                              <span className="text-sm text-muted-foreground">{child.description}</span>
+                            )}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   );
                 }
