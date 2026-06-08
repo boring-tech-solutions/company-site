@@ -305,6 +305,28 @@ const AILab = () => {
           </div>
         </section>
 
+        {/* Service Pages */}
+        <section className="py-20 bg-muted/30">
+          <div className="section-container">
+            <div className="text-center mb-12">
+              <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
+              <p className="text-muted-foreground text-lg">Practical AI built for real organizations.</p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+              <Link to="/services/ai-workflow-automation" className="bg-card border border-border rounded-2xl p-6 hover:shadow-lg transition-shadow group">
+                <h3 className="font-display text-xl font-bold mb-3 group-hover:text-primary transition-colors">AI Workflow Automation</h3>
+                <p className="text-muted-foreground text-sm mb-4">Reduce manual work with practical automation, AI agents, and workflow redesign.</p>
+                <span className="text-primary text-sm font-medium flex items-center gap-1">Learn more <ArrowRight size={14} /></span>
+              </Link>
+              <Link to="/services/responsible-ai-consulting" className="bg-card border border-border rounded-2xl p-6 hover:shadow-lg transition-shadow group">
+                <h3 className="font-display text-xl font-bold mb-3 group-hover:text-primary transition-colors">Responsible AI Consulting</h3>
+                <p className="text-muted-foreground text-sm mb-4">Adopt AI safely, ethically, and practically where trust, privacy, and oversight matter.</p>
+                <span className="text-primary text-sm font-medium flex items-center gap-1">Learn more <ArrowRight size={14} /></span>
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* Final CTA */}
         <section className="py-24">
           <div className="section-container">
