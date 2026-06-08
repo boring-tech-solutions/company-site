@@ -20,18 +20,15 @@ export const caseStudies = [
     techStack: ["Machine Learning", "NLP", "Python", "React", "AWS"],
     industryContext: "Operations, automation, and applied AI for growing teams.",
     ctaLabel: "Discuss an AI workflow",
-    seoTitle: "AIFY Case Study | Practical AI Automation",
+    seoTitle: "ZUCSA All In For Youth Case Study | Practical AI Automation",
     seoDescription:
       "See how Boring Tech Solutions helped AIFY shape practical AI automation around real operational workflows, dashboards, and human oversight.",
-    bgColor: "bg-destructive",
-    textColor: "text-white",
-    mutedColor: "text-white/70",
   },
   {
     slug: "govora",
     path: "/case-studies/govora",
     canonicalUrl: `${siteUrl}/case-studies/govora`,
-    client: "Govora",
+    client: "Govora.ca",
     category: "Data Compliance",
     hero: "Data governance workflows for youth-serving organizations handling sensitive records.",
     summary: "Comprehensive data compliance tooling for consent, retention, audit trails, and reporting.",
@@ -49,9 +46,6 @@ export const caseStudies = [
     seoTitle: "Govora Case Study | Youth Data Compliance Workflows",
     seoDescription:
       "Explore Govora, a Boring Tech Solutions case study focused on consent tracking, retention workflows, audit logs, and youth data governance.",
-    bgColor: "bg-charcoal",
-    textColor: "text-white",
-    mutedColor: "text-white/70",
   },
   {
     slug: "quizapp",
@@ -75,9 +69,6 @@ export const caseStudies = [
     seoTitle: "QuizApp Case Study | Citizenship Learning Platform",
     seoDescription:
       "Read the QuizApp case study about accessible citizenship test preparation, structured quizzes, progress tracking, and newcomer learning support.",
-    bgColor: "bg-blue-600",
-    textColor: "text-white",
-    mutedColor: "text-white/70",
     image: "https://images.boringtechsolutions.com/quizapp_portfolio_screenshot_tablet.webp",
   },
   {
@@ -102,9 +93,6 @@ export const caseStudies = [
     seoTitle: "YACO Case Study | Community Organizing Software",
     seoDescription:
       "See how Boring Tech Solutions approached custom software for YACO, supporting youth advocacy coordination, events, and nonprofit operations.",
-    bgColor: "bg-primary",
-    textColor: "text-charcoal-deep",
-    mutedColor: "text-charcoal-deep/70",
   },
 ];
 

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { getCaseStudyBySlug } from "../../shared/case-studies.js";
 import { usePageSeo } from "@/hooks/usePageSeo";
 import NotFound from "@/pages/NotFound";
+import lionServerRoom from "@/assets/lion-server-room.webp";
 
 const CaseStudyDetail = () => {
   const { slug } = useParams();
@@ -44,32 +45,39 @@ const CaseStudyDetail = () => {
     <div className="min-h-screen bg-background relative">
       <Header />
       <main className="relative z-10">
-        <section className={`relative overflow-hidden ${study.bgColor}`}>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.18),_transparent_45%),radial-gradient(circle_at_bottom_right,_rgba(18,24,33,0.2),_transparent_40%)]" />
+        <section className="relative overflow-hidden min-h-[70vh] bg-background">
+          <img
+            src={lionServerRoom}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-background/85" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.06),_transparent_45%),radial-gradient(circle_at_bottom_right,_rgba(18,24,33,0.3),_transparent_40%)]" />
           <div className="section-container relative z-10 pt-32 pb-20">
             <div className="grid lg:grid-cols-[1.3fr_0.9fr] gap-12 items-end">
-              <div className={study.textColor}>
-                <div className={`inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest ${study.mutedColor} mb-4`}>
+              <div className="text-foreground">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-medium uppercase tracking-widest mb-4">
                   <Sparkles className="w-4 h-4" />
                   <span>{study.category}</span>
                 </div>
-                <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                  {study.client}
+                <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground">
+                  <span className="text-gradient">{study.client}</span>
                 </h1>
-                <p className={`text-lg md:text-xl leading-relaxed max-w-3xl ${study.mutedColor}`}>
+                <p className="text-lg md:text-xl leading-relaxed max-w-3xl text-muted-foreground">
                   {study.hero}
                 </p>
-                <p className={`mt-6 text-base md:text-lg max-w-2xl ${study.mutedColor}`}>
+                <p className="mt-6 text-base md:text-lg max-w-2xl text-muted-foreground">
                   {study.summary}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 mt-8">
-                  <Button size="lg" className="bg-background text-foreground hover:bg-background/90 group" asChild>
+                  <Button size="lg" className="group" asChild>
                     <Link to="/contact">
                       {study.ctaLabel}
                       <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
                     </Link>
                   </Button>
-                  <Button size="lg" variant="outline" className="border-current text-current hover:bg-current/10" asChild>
+                  <Button size="lg" variant="outline" asChild>
                     <Link to="/our-past-work">
                       <ArrowLeft className="mr-2" size={18} />
                       Back to Projects
@@ -78,13 +86,13 @@ const CaseStudyDetail = () => {
                 </div>
               </div>
 
-              <div className="card-premium-no-glow bg-background/10 border-white/10 backdrop-blur-sm">
+              <div className="card-premium-no-glow bg-card/50 border-border backdrop-blur-sm">
                 <div className="space-y-5">
                   <div>
-                    <p className={`text-xs uppercase tracking-widest ${study.mutedColor} mb-2`}>At a glance</p>
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">At a glance</p>
                     <ul className="space-y-3">
                       {summaryPoints.map((point) => (
-                        <li key={point} className={`flex items-start gap-3 ${study.mutedColor}`}>
+                        <li key={point} className="flex items-start gap-3 text-muted-foreground">
                           <CheckCircle2 className="mt-0.5 flex-shrink-0" size={18} />
                           <span>{point}</span>
                         </li>
@@ -92,17 +100,13 @@ const CaseStudyDetail = () => {
                     </ul>
                   </div>
 
-                  <div className="border-t border-white/15 pt-5">
-                    <p className={`text-xs uppercase tracking-widest ${study.mutedColor} mb-3`}>Tech stack</p>
+                  <div className="border-t border-border pt-5">
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Tech stack</p>
                     <div className="flex flex-wrap gap-2">
                       {study.techStack.map((tech) => (
                         <span
                           key={tech}
-                          className={`rounded-full border px-3 py-1 text-sm ${
-                            study.textColor === "text-white"
-                              ? "border-white/20 bg-white/10 text-white"
-                              : "border-charcoal-deep/15 bg-charcoal-deep/10 text-charcoal-deep"
-                          }`}
+                          className="rounded-full border px-3 py-1 text-sm border-white/20 bg-white/10 text-foreground"
                         >
                           {tech}
                         </span>
