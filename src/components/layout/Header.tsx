@@ -24,6 +24,7 @@ const renderHeaderLink = (link, className, onClick) => {
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mobileExpandedItem, setMobileExpandedItem] = useState<string | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -154,62 +155,78 @@ const Header = () => {
         </div>
 
         {isMobileMenuOpen && (
-          <div className="lg:hidden fixed inset-0 w-screen h-screen bg-background z-40 animate-fade-in">
-            <div className="flex flex-col items-center justify-center min-h-screen gap-8 px-6">
-              {header.primaryNav.map((link) => {
-                if (link.children && link.children.length > 0) {
+          <div className="lg:hidden fixed inset-0 w-screen h-screen bg-background z-40 animate-fade-in overflow-y-auto">
+            <div className="flex flex-col min-h-screen pt-24 pb-10 px-6">
+              <nav className="flex flex-col w-full divide-y divide-border">
+                {header.primaryNav.map((link) => {
+                  if (link.children && link.children.length > 0) {
+                    const isExpanded = mobileExpandedItem === link.href;
+                    const isActive =
+                      location.pathname === link.href ||
+                      link.children.some((c) => location.pathname === c.href);
+                    return (
+                      <div key={link.href}>
+                        <button
+                          className="flex items-center justify-between w-full py-4 text-left"
+                          onClick={() => setMobileExpandedItem(isExpanded ? null : link.href)}
+                        >
+                          <span className={cn(
+                            "text-2xl font-medium transition-colors",
+                            isActive ? "text-primary" : "text-foreground",
+                          )}>
+                            {link.label}
+                          </span>
+                          <ChevronDown
+                            size={20}
+                            className={cn(
+                              "text-muted-foreground transition-transform duration-200",
+                              isExpanded && "rotate-180",
+                            )}
+                          />
+                        </button>
+                        {isExpanded && (
+                          <div className="flex flex-col gap-4 border-l-2 border-primary pl-4 pb-4">
+                            {link.children.map((child) => (
+                              <Link
+                                key={child.href}
+                                to={child.href}
+                                onClick={() => { setIsMobileMenuOpen(false); setMobileExpandedItem(null); }}
+                                className="flex flex-col gap-0.5 group"
+                              >
+                                <span className={cn(
+                                  "text-base font-semibold transition-colors",
+                                  location.pathname === child.href ? "text-primary" : "text-foreground group-hover:text-primary",
+                                )}>
+                                  {child.label}
+                                </span>
+                                {child.description && (
+                                  <span className="text-sm text-muted-foreground">{child.description}</span>
+                                )}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  }
+
                   return (
-                    <div key={link.href} className="flex flex-col items-center gap-4 w-full max-w-xs">
+                    <div key={link.href} className="py-4">
                       {renderHeaderLink(
                         link,
                         cn(
                           "transition-colors text-2xl font-medium",
-                          location.pathname === link.href || link.children.some((c) => location.pathname === c.href)
+                          link.linkType === "router" && location.pathname === link.href
                             ? "text-primary"
                             : "text-foreground hover:text-primary",
                         ),
                         () => setIsMobileMenuOpen(false),
                       )}
-                      <div className="flex flex-col gap-2 w-full border-l-2 border-border pl-4">
-                        {link.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            to={child.href}
-                            onClick={() => setIsMobileMenuOpen(false)}
-                            className="flex flex-col gap-0.5 group"
-                          >
-                            <span className={cn(
-                              "text-base font-medium transition-colors",
-                              location.pathname === child.href ? "text-primary" : "text-foreground group-hover:text-primary",
-                            )}>
-                              {child.label}
-                            </span>
-                            {child.description && (
-                              <span className="text-sm text-muted-foreground">{child.description}</span>
-                            )}
-                          </Link>
-                        ))}
-                      </div>
                     </div>
                   );
-                }
-
-                return (
-                  <div key={link.href}>
-                    {renderHeaderLink(
-                      link,
-                      cn(
-                        "transition-colors text-2xl font-medium",
-                        link.linkType === "router" && location.pathname === link.href
-                          ? "text-primary"
-                          : "text-foreground hover:text-primary",
-                      ),
-                      () => setIsMobileMenuOpen(false),
-                    )}
-                  </div>
-                );
-              })}
-              <div className="pt-8 flex flex-col gap-4 w-full max-w-xs">
+                })}
+              </nav>
+              <div className="mt-auto pt-8 flex flex-col gap-4 w-full">
                 <Button
                   variant="outline"
                   className={cn(
