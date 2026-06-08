@@ -1,0 +1,241 @@
+---
+import { siteChrome } from '../../../shared/site-chrome.js';
+
+const { footer, logo } = siteChrome;
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <section class="site-footer__cta">
+    <div class="section-container site-footer__cta-inner">
+      <div class="site-footer__cta-copy">
+        <h2>
+          {footer.cta.titlePrefix}
+          <span>{footer.cta.titleHighlight}</span>
+          {footer.cta.titleSuffix}
+        </h2>
+        <p>{footer.cta.body}</p>
+      </div>
+
+      <div class="site-footer__cta-actions">
+        <a
+          href={footer.cta.primaryAction.href}
+          class="site-footer__primary-action"
+          target="_blank"
+          rel="noopener noreferrer"
+        >{footer.cta.primaryAction.label}</a>
+        <a href={footer.cta.secondaryAction.href} class="site-footer__secondary-action">{footer.cta.secondaryAction.label}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="site-footer__content">
+    <div class="section-container site-footer__grid">
+      <div class="site-footer__brand">
+        <a href={logo.href} class="site-footer__logo" aria-label={logo.alt}>
+          <img src={logo.src} alt={logo.alt} loading="lazy" decoding="async" />
+        </a>
+        <p>{footer.brand.copy}</p>
+        <span class="site-footer__location">{footer.brand.location}</span>
+      </div>
+
+      {footer.sections.map((section) => (
+        <div class="site-footer__section">
+          <h3>{section.heading}</h3>
+          <ul>
+            {section.links.map((link) => (
+              <li>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+
+      <div class="site-footer__section">
+        <h3>{footer.connect.heading}</h3>
+        <ul>
+          <li>
+            <a href={`mailto:${footer.connect.email}`}>{footer.connect.email}</a>
+          </li>
+          <li>
+            <a href={footer.connect.linkedin.href} target="_blank" rel="noopener noreferrer">{footer.connect.linkedin.label}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-container site-footer__bottom">
+      <p>© {currentYear} Boring Tech Solutions. All rights reserved.</p>
+    </div>
+  </section>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: 4rem;
+    border-top: 1px solid hsl(var(--border));
+    background:
+      linear-gradient(180deg, hsl(var(--surface-dark)), hsl(var(--background)));
+  }
+
+  .site-footer__cta {
+    border-bottom: 1px solid hsl(var(--border));
+    background:
+      radial-gradient(circle at top, hsl(var(--primary) / 0.12), transparent 45%);
+  }
+
+  .site-footer__cta-inner {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+    padding-block: 4rem;
+  }
+
+  .site-footer__cta-copy h2 {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.05;
+    color: hsl(var(--foreground));
+  }
+
+  .site-footer__cta-copy h2 span {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .site-footer__cta-copy > p:last-child {
+    max-width: 42rem;
+    margin: 1rem 0 0;
+    font-size: 1.05rem;
+    color: hsl(var(--muted-foreground));
+  }
+
+  .site-footer__cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .site-footer__primary-action,
+  .site-footer__secondary-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    padding: 0 1.25rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .site-footer__primary-action {
+    color: hsl(var(--primary-foreground));
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  }
+
+  .site-footer__secondary-action {
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(var(--border));
+    background: hsl(var(--secondary) / 0.4);
+  }
+
+  .site-footer__content {
+    padding: 3rem 0 2rem;
+  }
+
+  .site-footer__grid {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .site-footer__brand {
+    color: hsl(var(--muted-foreground));
+  }
+
+  .site-footer__logo {
+    display: inline-flex;
+    margin-bottom: 0.75rem;
+  }
+
+  .site-footer__logo img {
+    width: auto;
+    height: 4.75rem;
+  }
+
+  .site-footer__brand p {
+    margin: 0 0 0.75rem;
+    line-height: 1.7;
+  }
+
+  .site-footer__location {
+    color: hsl(var(--foreground));
+    font-weight: 600;
+  }
+
+  .site-footer__section h3 {
+    margin: 0 0 0.9rem;
+    font-size: 1.05rem;
+    color: hsl(var(--foreground));
+  }
+
+  .site-footer__section ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .site-footer__section a {
+    color: hsl(var(--muted-foreground));
+    text-decoration: none;
+  }
+
+  .site-footer__section a:hover {
+    color: hsl(var(--foreground));
+  }
+
+  .site-footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid hsl(var(--border) / 0.7);
+    color: hsl(var(--muted-foreground));
+    font-size: 0.95rem;
+  }
+
+  .site-footer__bottom a {
+    color: hsl(var(--primary));
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  @media (min-width: 960px) {
+    .site-footer__cta-inner {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .site-footer__grid {
+      grid-template-columns: minmax(0, 1.3fr) repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 719px) {
+    .site-footer__cta-actions,
+    .site-footer__bottom {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .site-footer__primary-action,
+    .site-footer__secondary-action {
+      width: 100%;
+    }
+  }
+</style>

@@ -4,11 +4,17 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "concurrently \"npm run dev:main\" \"npm run dev:blog\"",
+    "dev:main": "vite",
+    "dev:blog": "cd blog && npx astro dev --port 4321",
+    "build:blog": "npm install --prefix blog && npx astro build --root blog",
+    "build:main": "vite build",
+    "copy:blog": "node scripts/copy-blog.mjs",
+    "build": "npm run build:blog && npm run build:main && npm run copy:blog",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "preview:prod-shape": "node scripts/preview-prod-shape.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -69,6 +75,7 @@
     "@types/react-dom": "^18.3.7",
     "@vitejs/plugin-react-swc": "^3.11.0",
     "autoprefixer": "^10.4.21",
+    "concurrently": "^10.0.3",
     "eslint": "^9.32.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",

@@ -1,70 +1,103 @@
-## Project info
-This is the boring website as created by loveable ai
+# BTS Company Site
 
-## How can I edit this code?
+Company website for [Boring Tech Solutions](https://boringtechsolutions.com). Built as two co-deployed sub-apps that assemble into a single `dist/` output:
 
-There are several ways of editing your application.
+- **Vite + React + TypeScript** — main marketing site
+- **Astro** — static blog at `/blog/`
 
+## Stack
 
-**Use your preferred IDE**
+- React 18 + TypeScript (marketing site)
+- Astro (blog)
+- Tailwind CSS + shadcn-ui (Radix primitives)
+- React Router DOM v6
+- TanStack React Query v5
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Repository layout
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+company-site/
+  src/           # React/Vite marketing app
+  blog/          # Astro static blog sub-app
+  scripts/       # Build helper scripts (copy-blog.mjs, preview-prod-shape.mjs)
+  deploy/        # Ansible deployment playbook
+  dist/          # Generated production output (gitignored)
 ```
 
-**Edit a file directly in GitHub**
+## Commands
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```sh
+# Install dependencies
+npm install
 
-**Use GitHub Codespaces**
+# Development (starts Vite on :8080 and Astro on :4321 concurrently)
+npm run dev
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# Individual dev servers
+npm run dev:main      # Vite only
+npm run dev:blog      # Astro only
 
-## What technologies are used for this project?
+# Production build (blog → main → copy blog output into dist/)
+npm run build
 
-This project is built with:
+# Build components individually
+npm run build:blog
+npm run build:main
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+# Preview production build
+npm run preview
 
-## Deploy
-This assumes you already in deploy directory
-`$ ansible-playbook --vault-password-file ./keys/vault_password_file -i inventories/prod playbook.yml`
+# Preview assembled prod-shape output (both apps merged)
+npm run preview:prod-shape
 
-**To view an encrypted file:**
+# Lint
+npm run lint
+```
 
-- `ansible-vault view --vault-password-file ./keys/vault_password_file <file>`
+## Architecture
 
-**To edit an ecrypted file:**
+**Routing ownership:**
+- React Router owns `/` and all marketing routes (`/about`, `/ai-lab`, `/contact`, `/community`, `/our-past-work`, `/data-compliance`, `/govora-sales`)
+- Astro owns `/blog/` and all blog article routes
 
-- `ansible-vault edit --vault-password-file ./keys/vault_password_file <file>`
+**Local dev proxy:** Vite proxies `/blog` requests to the Astro dev server on port 4321 so both apps are served from a single origin during development.
 
-**To decrypt an ecrypted file:**
+**Production build:** `npm run build` runs `build:blog` then `build:main` then `copy:blog`, which copies the Astro output into `dist/blog/` so the final `dist/` directory contains both apps under one root.
 
-- `ansible-vault decrypt --vault-password-file ./keys/vault_password_file <file>`
+## Blog authoring
 
+Posts live in `blog/src/content/posts/` as Markdown files with Astro Content Collections frontmatter validation.
+
+Required frontmatter fields:
+
+```yaml
+---
+title: ""
+description: ""
+slug: ""
+author: ""
+datePublished: ""
+dateModified: ""
+category: ""
+tags: []
+seoTitle: ""
+seoDescription: ""
+canonicalUrl: ""
+---
+```
+
+## Deployment
+
+Deployment uses Ansible from the `/deploy` directory. `npm run build` is the build entrypoint; output is uploaded to S3/CloudFront.
+
+```sh
+# Deploy to production (run from /deploy directory)
+ansible-playbook --vault-password-file ./keys/vault_password_file -i inventories/prod playbook.yml
+
+# Ansible vault commands (run from /deploy directory)
+ansible-vault view --vault-password-file ./keys/vault_password_file <file>
+ansible-vault edit --vault-password-file ./keys/vault_password_file <file>
+ansible-vault decrypt --vault-password-file ./keys/vault_password_file <file>
+```
+
+Secrets and configuration are stored in encrypted Ansible vault files; `keys/vault_password_file` is required and is not checked into the repository.

@@ -1,15 +1,31 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail, MapPin, Linkedin } from "lucide-react";
-
-const logo = "https://images.boringtechsolutions.com/logo.webp";
+import { siteChrome } from "../../../shared/site-chrome.js";
 
 interface FooterProps {
   hideCTA?: boolean;
 }
 
+const renderFooterLink = (link) => {
+  if (link.linkType === "router") {
+    return (
+      <Link to={link.href} className="hover:text-foreground transition-colors">
+        {link.label}
+      </Link>
+    );
+  }
+
+  return (
+    <a href={link.href} className="hover:text-foreground transition-colors">
+      {link.label}
+    </a>
+  );
+};
+
 const Footer = ({ hideCTA = false }: FooterProps) => {
   const currentYear = new Date().getFullYear();
+  const { footer, logo } = siteChrome;
 
   return (
     <footer className={`bg-surface-dark ${hideCTA ? '' : 'border-t border-border'}`}>
@@ -17,21 +33,23 @@ const Footer = ({ hideCTA = false }: FooterProps) => {
       {!hideCTA && <div className="section-container py-20">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">
-            Ready to Navigate the <span className="text-gradient">AI Terrain</span>?
+            {footer.cta.titlePrefix}
+            <span className="text-gradient">{footer.cta.titleHighlight}</span>
+            {footer.cta.titleSuffix}
           </h2>
           <p className="text-muted-foreground text-lg mb-8">
-            Start with a conversation. No pressure, no jargon — just practical advice on how AI can help your business.
+            {footer.cta.body}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 py-6 group" asChild>
-              <a href="https://cal.com/boring-tech-solutions/15min" target="_blank" rel="noopener noreferrer">
-                Book a Coffee Chat
+              <a href={footer.cta.primaryAction.href} target="_blank" rel="noopener noreferrer">
+                {footer.cta.primaryAction.label}
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
               </a>
             </Button>
             <Button variant="outline" className="text-lg px-8 py-6" asChild>
-              <Link to="/contact">
-                Tell Us Your Challenge
+              <Link to={footer.cta.secondaryAction.href}>
+                {footer.cta.secondaryAction.label}
               </Link>
             </Button>
           </div>
@@ -46,56 +64,47 @@ const Footer = ({ hideCTA = false }: FooterProps) => {
             <div className="md:col-span-1">
               <div className="flex items-center gap-3 mb-4">
                 <img
-                  src={logo}
-                  alt="Boring Tech Solutions"
+                  src={logo.src}
+                  alt={logo.alt}
                   className="h-24 w-auto"
                 />
               </div>
               <p className="text-muted-foreground text-sm mb-4">
-                Calm precision in a noisy tech world. AI solutions that augment humans, not replace them.
+                {footer.brand.copy}
               </p>
               <div className="flex items-center gap-2 text-muted-foreground text-sm">
                 <MapPin size={16} />
-                <span>Edmonton, Alberta</span>
+                <span>{footer.brand.location}</span>
               </div>
             </div>
 
-            {/* Services */}
-            <div>
-              <h4 className="font-display font-semibold mb-4">Services</h4>
-              <ul className="space-y-3 text-muted-foreground text-sm">
-                <li><Link to="/#services" className="hover:text-foreground transition-colors">AI Implementation</Link></li>
-                <li><Link to="/#services" className="hover:text-foreground transition-colors">Strategic AI Advisory</Link></li>
-                <li><Link to="/#services" className="hover:text-foreground transition-colors">Custom Software</Link></li>
-                <li><Link to="/data-compliance" className="hover:text-foreground transition-colors">Data Compliance</Link></li>
-              </ul>
-            </div>
-
-            {/* Company */}
-            <div>
-              <h4 className="font-display font-semibold mb-4">Company</h4>
-              <ul className="space-y-3 text-muted-foreground text-sm">
-                <li><Link to="/about" className="hover:text-foreground transition-colors">About Us</Link></li>
-                <li><Link to="/ai-lab" className="hover:text-foreground transition-colors">AI Lab</Link></li>
-                <li><Link to="/our-past-work" className="hover:text-foreground transition-colors">Our Projects</Link></li>
-                <li><Link to="/community" className="hover:text-foreground transition-colors">Community</Link></li>
-              </ul>
-            </div>
+            {footer.sections.map((section) => (
+              <div key={section.heading}>
+                <h4 className="font-display font-semibold mb-4">{section.heading}</h4>
+                <ul className="space-y-3 text-muted-foreground text-sm">
+                  {section.links.map((link) => (
+                    <li key={`${section.heading}-${link.label}`}>
+                      {renderFooterLink(link)}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
 
             {/* Contact */}
             <div>
-              <h4 className="font-display font-semibold mb-4">Connect</h4>
+              <h4 className="font-display font-semibold mb-4">{footer.connect.heading}</h4>
               <ul className="space-y-3 text-muted-foreground text-sm">
                 <li>
-                  <a href="mailto:hello@boringtechsolutions.com" className="hover:text-foreground transition-colors flex items-center gap-2">
+                  <a href={`mailto:${footer.connect.email}`} className="hover:text-foreground transition-colors flex items-center gap-2">
                     <Mail size={16} />
-                    hello@boringtechsolutions.com
+                    {footer.connect.email}
                   </a>
                 </li>
                 <li>
-                  <a href="https://linkedin.com/company/boring-tech-solutions" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors flex items-center gap-2">
+                  <a href={footer.connect.linkedin.href} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors flex items-center gap-2">
                     <Linkedin size={16} />
-                    LinkedIn
+                    {footer.connect.linkedin.label}
                   </a>
                 </li>
               </ul>
@@ -107,10 +116,15 @@ const Footer = ({ hideCTA = false }: FooterProps) => {
             <p className="text-muted-foreground text-sm">
               © {currentYear} Boring Tech Solutions. All rights reserved.
             </p>
-            <div className="flex gap-6 text-muted-foreground text-sm">
-              <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-foreground transition-colors">Terms of Service</a>
-            </div>
+            {footer.legal.length > 0 && (
+              <div className="flex gap-6 text-muted-foreground text-sm">
+                {footer.legal.map((link) => (
+                  <a key={link.label} href={link.href} className="hover:text-foreground transition-colors">
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
