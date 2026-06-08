@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { siteChrome } from "../../../shared/site-chrome.js";
@@ -48,19 +48,82 @@ const Header = () => {
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8">
-            {header.primaryNav.map((link) => (
-              <div key={link.href}>
-                {renderHeaderLink(
-                  link,
-                  cn(
-                    "transition-colors text-md font-medium",
-                    link.linkType === "router" && location.pathname === link.href
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground",
-                  ),
-                )}
-              </div>
-            ))}
+            {header.primaryNav.map((link) => {
+              if (link.children && link.children.length > 0) {
+                const isActive =
+                  location.pathname.startsWith(link.href) ||
+                  link.children.some((child) => location.pathname.startsWith(child.href));
+                return (
+                  <div key={link.href} className="relative group">
+                    <button
+                      className={cn(
+                        "flex items-center gap-1 transition-colors text-md font-medium",
+                        isActive
+                          ? "text-primary"
+                          : "text-muted-foreground hover:text-foreground",
+                      )}
+                    >
+                      {link.label}
+                      <ChevronDown
+                        size={16}
+                        className="transition-transform duration-200 group-hover:rotate-180"
+                      />
+                    </button>
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                      <div className="bg-card rounded-lg shadow-lg border border-border p-2 min-w-[220px]">
+                        {link.children.map((child) => {
+                          const childLink =
+                            child.linkType === "router" ? (
+                              <Link
+                                to={child.href}
+                                className="flex flex-col gap-0.5 px-3 py-2.5 rounded-md border-l-2 border-transparent hover:border-primary hover:bg-primary/5 transition-all group/item"
+                              >
+                                <span className="font-medium text-sm text-foreground group-hover/item:text-primary transition-colors">
+                                  {child.label}
+                                </span>
+                                {child.description && (
+                                  <span className="text-xs text-muted-foreground">
+                                    {child.description}
+                                  </span>
+                                )}
+                              </Link>
+                            ) : (
+                              <a
+                                href={child.href}
+                                className="flex flex-col gap-0.5 px-3 py-2.5 rounded-md border-l-2 border-transparent hover:border-primary hover:bg-primary/5 transition-all group/item"
+                              >
+                                <span className="font-medium text-sm text-foreground group-hover/item:text-primary transition-colors">
+                                  {child.label}
+                                </span>
+                                {child.description && (
+                                  <span className="text-xs text-muted-foreground">
+                                    {child.description}
+                                  </span>
+                                )}
+                              </a>
+                            );
+                          return <div key={child.href}>{childLink}</div>;
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+
+              return (
+                <div key={link.href}>
+                  {renderHeaderLink(
+                    link,
+                    cn(
+                      "transition-colors text-md font-medium",
+                      link.linkType === "router" && location.pathname === link.href
+                        ? "text-primary"
+                        : "text-muted-foreground hover:text-foreground",
+                    ),
+                  )}
+                </div>
+              );
+            })}
           </nav>
 
           <div className="hidden lg:flex items-center gap-4">
@@ -93,20 +156,43 @@ const Header = () => {
         {isMobileMenuOpen && (
           <div className="lg:hidden fixed inset-0 w-screen h-screen bg-background z-40 animate-fade-in">
             <div className="flex flex-col items-center justify-center min-h-screen gap-8 px-6">
-              {header.primaryNav.map((link) => (
-                <div key={link.href}>
-                  {renderHeaderLink(
-                    link,
-                    cn(
-                      "transition-colors text-2xl font-medium",
-                      link.linkType === "router" && location.pathname === link.href
-                        ? "text-primary"
-                        : "text-foreground hover:text-primary",
-                    ),
-                    () => setIsMobileMenuOpen(false),
-                  )}
-                </div>
-              ))}
+              {header.primaryNav.map((link) => {
+                if (link.children && link.children.length > 0) {
+                  return (
+                    <div key={link.href} className="flex flex-col items-center gap-3 w-full">
+                      <span className="text-muted-foreground text-sm uppercase tracking-wider font-medium">
+                        {link.label}
+                      </span>
+                      {link.children.map((child) => (
+                        <div key={child.href} className="pl-4">
+                          {renderHeaderLink(
+                            child,
+                            cn(
+                              "transition-colors text-xl font-medium text-foreground hover:text-primary",
+                            ),
+                            () => setIsMobileMenuOpen(false),
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  );
+                }
+
+                return (
+                  <div key={link.href}>
+                    {renderHeaderLink(
+                      link,
+                      cn(
+                        "transition-colors text-2xl font-medium",
+                        link.linkType === "router" && location.pathname === link.href
+                          ? "text-primary"
+                          : "text-foreground hover:text-primary",
+                      ),
+                      () => setIsMobileMenuOpen(false),
+                    )}
+                  </div>
+                );
+              })}
               <div className="pt-8 flex flex-col gap-4 w-full max-w-xs">
                 <Button
                   variant="outline"

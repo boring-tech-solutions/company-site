@@ -7,7 +7,25 @@ export const siteChrome = {
   header: {
     primaryNav: [
       { label: "About Us", href: "/about", linkType: "router" },
-      { label: "AI Lab", href: "/ai-lab", linkType: "router" },
+      {
+        label: "AI Lab",
+        href: "/ai-lab",
+        linkType: "router",
+        children: [
+          {
+            label: "AI Workflow Automation",
+            href: "/services/ai-workflow-automation",
+            linkType: "router",
+            description: "Reduce manual work with practical automation, AI agents, and workflow redesign.",
+          },
+          {
+            label: "Responsible AI Consulting",
+            href: "/services/responsible-ai-consulting",
+            linkType: "router",
+            description: "Adopt AI safely and ethically where trust, privacy, and human oversight matter.",
+          },
+        ],
+      },
       { label: "Our Projects", href: "/our-past-work", linkType: "router" },
       { label: "Data Compliance", href: "/data-compliance", linkType: "router" },
       { label: "Community", href: "/community", linkType: "router" },
