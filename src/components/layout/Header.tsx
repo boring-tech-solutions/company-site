@@ -70,7 +70,7 @@ const Header = () => {
                       />
                     </button>
                     <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                      <div className="bg-card rounded-lg shadow-lg border border-border p-2 min-w-[220px]">
+                      <div className="bg-card rounded-lg shadow-lg border border-border p-[5px] min-w-[440px]">
                         {link.children.map((child) => {
                           const childLink =
                             child.linkType === "router" ? (
