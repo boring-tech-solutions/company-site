@@ -13,4 +13,5 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://boringtechsolutions.com/sitemap.xml
+Sitemap: https://www.boringtechsolutions.com/sitemap.xml
+Sitemap: https://www.boringtechsolutions.com/blog/sitemap.xml

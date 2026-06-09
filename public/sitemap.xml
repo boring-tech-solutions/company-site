@@ -1,48 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://boringtechsolutions.com/</loc>
+    <loc>https://www.boringtechsolutions.com/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://boringtechsolutions.com/ai-lab</loc>
+    <loc>https://www.boringtechsolutions.com/ai-lab</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://boringtechsolutions.com/services/ai-workflow-automation</loc>
+    <loc>https://www.boringtechsolutions.com/services/ai-workflow-automation</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://boringtechsolutions.com/services/responsible-ai-consulting</loc>
+    <loc>https://www.boringtechsolutions.com/services/responsible-ai-consulting</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://boringtechsolutions.com/our-past-work</loc>
+    <loc>https://www.boringtechsolutions.com/our-past-work</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://boringtechsolutions.com/about</loc>
+    <loc>https://www.boringtechsolutions.com/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://boringtechsolutions.com/community</loc>
+    <loc>https://www.boringtechsolutions.com/community</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://boringtechsolutions.com/contact</loc>
+    <loc>https://www.boringtechsolutions.com/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://boringtechsolutions.com/data-compliance</loc>
+    <loc>https://www.boringtechsolutions.com/data-compliance</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.boringtechsolutions.com/contact/success</loc>
+  </url>
+  <url>
+    <loc>https://www.boringtechsolutions.com/govora-sales</loc>
+  </url>
+  <url>
+    <loc>https://www.boringtechsolutions.com/blog/</loc>
+  </url>
+  <url>
+    <loc>https://www.boringtechsolutions.com/case-studies/aify</loc>
+  </url>
+  <url>
+    <loc>https://www.boringtechsolutions.com/case-studies/govora</loc>
+  </url>
+  <url>
+    <loc>https://www.boringtechsolutions.com/case-studies/quizapp</loc>
+  </url>
+  <url>
+    <loc>https://www.boringtechsolutions.com/case-studies/yaco</loc>
   </url>
 </urlset>
