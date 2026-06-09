@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Linkedin, ExternalLink, Sparkles } from "lucide-react";
-import thandoImage from "@/assets/thando-linkedin-profile.webp";
+import thandoImage from "@/assets/thando-original.webp";
 
 interface TeamMember {
   name: string;
