@@ -51,6 +51,31 @@
     - (npm_install_ci is defined and npm_install_ci.rc is defined and npm_install_ci.rc != 0) or
       (npm_install     is defined and npm_install.rc     is defined and npm_install.rc     != 0)
 
+# Install blog subdirectory dependencies (blog/package.json is independent)
+- name: Check for blog/package-lock.json
+  ansible.builtin.stat:
+    path: "{{ project_dir }}/blog/package-lock.json"
+  register: blog_lockfile
+
+- name: Install blog dependencies with npm ci
+  ansible.builtin.command: npm ci
+  args:
+    chdir: "{{ project_dir }}/blog"
+  when:
+    - use_npm_ci
+    - blog_lockfile.stat.exists
+  failed_when: false
+  changed_when: true
+
+- name: Install blog dependencies with npm install (fallback)
+  ansible.builtin.command: npm install
+  args:
+    chdir: "{{ project_dir }}/blog"
+  when:
+    - not (use_npm_ci and blog_lockfile.stat.exists)
+  failed_when: false
+  changed_when: true
+
 # Add environment file
 - name: Create .env file from template
   ansible.builtin.template:
