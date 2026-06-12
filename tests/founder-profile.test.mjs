@@ -14,54 +14,65 @@ const shradhaPagePath = path.join(repoRoot, "src", "pages", "ShradhaMaira.tsx");
 const profileDataPath = path.join(repoRoot, "src", "data", "founderProfiles.ts");
 const profileTemplatePath = path.join(repoRoot, "src", "components", "about", "FounderProfileTemplate.tsx");
 const teamSectionPath = path.join(repoRoot, "src", "components", "about", "TeamSection.tsx");
+const aboutPath = path.join(repoRoot, "src", "pages", "About.tsx");
 const routeSeoPath = path.join(repoRoot, "src", "lib", "routeSeo.ts");
 const sitemapPath = path.join(repoRoot, "public", "sitemap.xml");
 
 const readSource = (filePath) => readFileSync(filePath, "utf8");
 const escapeRegex = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-const creigRoute = "/about/creig-phiri";
-const creigTitle = "Creig Phiri | Founder at Boring Tech Solutions";
-const creigDescription =
-  "Meet Creig Phiri, founder at Boring Tech Solutions and systems architect focused on practical AI, cloud architecture, data governance, and community technology.";
-const shradhaRoute = "/about/shradha-maira";
-const shradhaTitle = "Shradha Maira | Co-Founder at Boring Tech Solutions";
-const shradhaDescription =
-  "Meet Shradha Maira, co-founder at Boring Tech Solutions and strategy director focused on brand clarity, partnerships, product direction, and practical AI adoption.";
+const founderPages = [
+  {
+    name: "Creig Phiri",
+    componentName: "CreigPhiri",
+    pagePath: creigPagePath,
+    route: "/about/creig-phiri",
+    title: "Creig Phiri | Founder at Boring Tech Solutions",
+    description:
+      "Meet Creig Phiri, founder at Boring Tech Solutions and systems architect focused on practical AI, cloud architecture, data governance, and community technology.",
+    reciprocalLink: "/about/shradha-maira",
+  },
+  {
+    name: "Shradha Maira",
+    componentName: "ShradhaMaira",
+    pagePath: shradhaPagePath,
+    route: "/about/shradha-maira",
+    title: "Shradha Maira | Founding Team at Boring Tech Solutions",
+    description:
+      "Meet Shradha Maira, founding team member at Boring Tech Solutions focused on strategy, brand architecture, partnerships, and product direction for practical technology.",
+    reciprocalLink: "/about/creig-phiri",
+  },
+];
 
-test("Creig founder profile page exists and is routed", () => {
-  assert.equal(existsSync(creigPagePath), true, "src/pages/CreigPhiri.tsx should exist");
-
+test("founder profile pages exist and are routed", () => {
   const appSource = readSource(appPath);
-  assert.match(appSource, /import\s+CreigPhiri\s+from\s+["']\.\/pages\/CreigPhiri["'];?/);
-  assert.match(
-    appSource,
-    new RegExp(`<Route\\s+path=["']${escapeRegex(creigRoute)}["']\\s+element=\\{<CreigPhiri\\s*/>\\}\\s*/>`),
-    "App.tsx should route /about/creig-phiri to CreigPhiri",
-  );
+
+  for (const page of founderPages) {
+    assert.equal(existsSync(page.pagePath), true, `${path.relative(repoRoot, page.pagePath)} should exist`);
+    assert.match(
+      appSource,
+      new RegExp(`import\\s+${page.componentName}\\s+from\\s+["']\\.\\/pages\\/${page.componentName}["'];?`),
+    );
+    assert.match(
+      appSource,
+      new RegExp(`<Route\\s+path=["']${escapeRegex(page.route)}["']\\s+element=\\{<${page.componentName}\\s*/>\\}\\s*/>`),
+      `App.tsx should route ${page.route} to ${page.componentName}`,
+    );
+  }
 });
 
-test("Shradha founder profile page exists and is routed", () => {
-  assert.equal(existsSync(shradhaPagePath), true, "src/pages/ShradhaMaira.tsx should exist");
-
-  const appSource = readSource(appPath);
-  assert.match(appSource, /import\s+ShradhaMaira\s+from\s+["']\.\/pages\/ShradhaMaira["'];?/);
-  assert.match(
-    appSource,
-    new RegExp(`<Route\\s+path=["']${escapeRegex(shradhaRoute)}["']\\s+element=\\{<ShradhaMaira\\s*/>\\}\\s*/>`),
-    "App.tsx should route /about/shradha-maira to ShradhaMaira",
-  );
-});
-
-test("profile data defines both founder records, personal sites, and schema ids", () => {
+test("founder profile data pins SEO, links, and schema ids", () => {
   const dataSource = readSource(profileDataPath);
 
-  assert.match(dataSource, /name:\s*"Creig Phiri"/);
-  assert.match(dataSource, /name:\s*"Shradha Maira"/);
-  assert.match(dataSource, new RegExp(`title:\\s*"${escapeRegex(creigTitle)}"`));
-  assert.match(dataSource, new RegExp(`title:\\s*"${escapeRegex(shradhaTitle)}"`));
-  assert.match(dataSource, new RegExp(`description:\\s*\\n\\s*"${escapeRegex(creigDescription)}"`));
-  assert.match(dataSource, new RegExp(`description:\\s*\\n\\s*"${escapeRegex(shradhaDescription)}"`));
+  for (const page of founderPages) {
+    assert.match(dataSource, new RegExp(`name:\\s*"${escapeRegex(page.name)}"`), "profile data should define the H1 name");
+    assert.match(dataSource, new RegExp(`title:\\s*"${escapeRegex(page.title)}"`));
+    assert.match(dataSource, new RegExp(`description:\\s*\\n\\s*"${escapeRegex(page.description)}"`));
+    for (const href of ["/", "/about", "/data-compliance", "/case-studies/quizapp", page.reciprocalLink]) {
+      assert.match(dataSource, new RegExp(`href:\\s*"${escapeRegex(href)}"`), `profile data should link to ${href}`);
+    }
+  }
+
   assert.match(dataSource, /publicLinks:\s*\[\s*\{\s*label:\s*"creigphiri\.ca"/s);
   assert.match(dataSource, /publicLinks:\s*\[\s*\{\s*label:\s*"shradhamaira\.ca"/s);
   assert.match(
@@ -99,6 +110,7 @@ test("profile data defines both founder records, personal sites, and schema ids"
     /https:\/\/github\.com\/boring-tech-solutions/,
     "Organization schema should include the GitHub organization profile",
   );
+  assert.match(dataSource, /Northern Landing/, "Shradha profile should mention Northern Landing");
 });
 
 test("founder profile template renders graph JSON-LD and the public links section", () => {
@@ -122,30 +134,25 @@ test("route SEO and sitemap expose both founder profiles", () => {
   const routeSeoSource = readSource(routeSeoPath);
   const sitemapSource = readSource(sitemapPath);
 
-  assert.match(routeSeoSource, new RegExp(`"${escapeRegex(creigRoute)}"`));
-  assert.match(routeSeoSource, new RegExp(`title:\\s*"${escapeRegex(creigTitle)}"`));
-  assert.match(routeSeoSource, new RegExp(`description:\\s*\\n\\s*"${escapeRegex(creigDescription)}"`));
-  assert.match(routeSeoSource, new RegExp(`"${escapeRegex(shradhaRoute)}"`));
-  assert.match(routeSeoSource, new RegExp(`title:\\s*"${escapeRegex(shradhaTitle)}"`));
-  assert.match(routeSeoSource, new RegExp(`description:\\s*\\n\\s*"${escapeRegex(shradhaDescription)}"`));
-  assert.match(
-    sitemapSource,
-    /https:\/\/www\.boringtechsolutions\.com\/about\/creig-phiri/,
-    "sitemap should include the public Creig profile URL",
-  );
-  assert.match(
-    sitemapSource,
-    /https:\/\/www\.boringtechsolutions\.com\/about\/shradha-maira/,
-    "sitemap should include the public Shradha profile URL",
-  );
+  for (const page of founderPages) {
+    assert.match(routeSeoSource, new RegExp(`"${escapeRegex(page.route)}"`));
+    assert.match(routeSeoSource, new RegExp(`title:\\s*"${escapeRegex(page.title)}"`));
+    assert.match(routeSeoSource, new RegExp(`description:\\s*\\n\\s*"${escapeRegex(page.description)}"`));
+    assert.match(
+      sitemapSource,
+      new RegExp(`https:\\/\\/www\\.boringtechsolutions\\.com${escapeRegex(page.route)}`),
+      `sitemap should include the public ${page.name} profile URL`,
+    );
+  }
 });
 
 test("About team area links to both founder profiles", () => {
   const teamSectionSource = readSource(teamSectionPath);
-  const aboutSource = readSource(path.join(repoRoot, "src", "pages", "About.tsx"));
+  const aboutSource = readSource(aboutPath);
 
   assert.match(teamSectionSource, /profilePath:\s*"\/about\/creig-phiri"/);
   assert.match(teamSectionSource, /profilePath:\s*"\/about\/shradha-maira"/);
+  assert.match(teamSectionSource, /View \$\{member\.name\} profile/, "profile link should be accessible");
   assert.match(aboutSource, /Leadership\s*\/\s*Founders/);
   assert.match(aboutSource, /\/about\/creig-phiri/);
   assert.match(aboutSource, /\/about\/shradha-maira/);

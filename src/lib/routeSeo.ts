@@ -51,9 +51,9 @@ export const routeSeo: Record<string, RouteSeoEntry> = {
     url: `${SITE_URL}/about/creig-phiri`,
   },
   "/about/shradha-maira": {
-    title: "Shradha Maira | Co-Founder at Boring Tech Solutions",
+    title: "Shradha Maira | Founding Team at Boring Tech Solutions",
     description:
-      "Meet Shradha Maira, co-founder at Boring Tech Solutions and strategy director focused on brand clarity, partnerships, product direction, and practical AI adoption.",
+      "Meet Shradha Maira, founding team member at Boring Tech Solutions focused on strategy, brand architecture, partnerships, and product direction for practical technology.",
     url: `${SITE_URL}/about/shradha-maira`,
   },
 };
