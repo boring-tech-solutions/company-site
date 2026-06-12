@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Linkedin, ExternalLink, Sparkles } from "lucide-react";
@@ -13,6 +14,7 @@ interface TeamMember {
   cardColor: string;
   initials: string;
   image?: string;
+  profilePath?: string;
 }
 
 const teamMembers: TeamMember[] = [
@@ -28,7 +30,8 @@ const teamMembers: TeamMember[] = [
     linkedIn: "https://linkedin.com/in/creigphiri",
     cardColor: "from-amber-400 to-amber-300",
     initials: "CP",
-    image: "https://images.boringtechsolutions.com/creig-linkedin-profile.webp"
+    image: "https://images.boringtechsolutions.com/creig-linkedin-profile.webp",
+    profilePath: "/about/creig-phiri"
   },
   {
     name: "Shradha Maira",
@@ -76,6 +79,36 @@ const teamMembers: TeamMember[] = [
 const TeamSection = () => {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
+  const renderMemberCard = (member: TeamMember) => (
+    <div className="w-full sm:w-44 md:w-52 h-80 md:h-96 rounded-[3rem] overflow-hidden transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2">
+      <div className={`h-[45%] bg-gradient-to-b ${member.cardColor} p-4 flex flex-col justify-end items-center text-center`}>
+        <h3 className="font-display text-lg md:text-xl font-bold text-charcoal-deep mb-1">
+          {member.name.split(' ')[0]}
+        </h3>
+        <p className="text-charcoal-deep/70 text-xs md:text-sm font-medium">
+          {member.shortRole.split(' • ')[0]}
+        </p>
+      </div>
+
+      <div className="h-[55%] bg-charcoal-deep flex items-center justify-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20" />
+        {member.image ? (
+          <img
+            src={member.image}
+            alt={member.name}
+            className="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover border-4 border-background/20 shadow-2xl group-hover:scale-110 transition-transform duration-500"
+          />
+        ) : (
+          <div className="w-28 h-28 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center border-4 border-background/20 shadow-2xl group-hover:scale-110 transition-transform duration-500">
+            <span className="font-display text-3xl md:text-4xl font-bold text-foreground">
+              {member.initials}
+            </span>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+
   return (
     <section className="pt-8 pb-24 relative overflow-hidden">
       <div className="absolute inset-0 tech-dots opacity-20" />
@@ -97,42 +130,26 @@ const TeamSection = () => {
         {/* Founders Row */}
         <div className="flex flex-wrap justify-center gap-6 lg:gap-8 mb-6 lg:mb-8">
           {teamMembers.slice(0, 2).map((member, index) => (
-            <button
-              key={member.name}
-              onClick={() => setSelectedMember(member)}
-              className="group focus:outline-none focus:ring-2 focus:ring-primary rounded-[3rem] w-[60%] sm:w-auto"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="w-full sm:w-44 md:w-52 h-80 md:h-96 rounded-[3rem] overflow-hidden transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2">
-                {/* Top colored section with name */}
-                <div className={`h-[45%] bg-gradient-to-b ${member.cardColor} p-4 flex flex-col justify-end items-center text-center`}>
-                  <h3 className="font-display text-lg md:text-xl font-bold text-charcoal-deep mb-1">
-                    {member.name.split(' ')[0]}
-                  </h3>
-                  <p className="text-charcoal-deep/70 text-xs md:text-sm font-medium">
-                    {member.shortRole.split(' • ')[0]}
-                  </p>
-                </div>
-                
-                {/* Bottom section with avatar */}
-                <div className="h-[55%] bg-charcoal-deep flex items-center justify-center relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20" />
-                  {member.image ? (
-                    <img 
-                      src={member.image} 
-                      alt={member.name}
-                      className="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover border-4 border-background/20 shadow-2xl group-hover:scale-110 transition-transform duration-500"
-                    />
-                  ) : (
-                    <div className="w-28 h-28 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center border-4 border-background/20 shadow-2xl group-hover:scale-110 transition-transform duration-500">
-                      <span className="font-display text-3xl md:text-4xl font-bold text-foreground">
-                        {member.initials}
-                      </span>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </button>
+            member.profilePath ? (
+              <Link
+                key={member.name}
+                to={member.profilePath}
+                className="group focus:outline-none focus:ring-2 focus:ring-primary rounded-[3rem] w-[60%] sm:w-auto"
+                style={{ animationDelay: `${index * 0.1}s` }}
+                aria-label={`View ${member.name} profile`}
+              >
+                {renderMemberCard(member)}
+              </Link>
+            ) : (
+              <button
+                key={member.name}
+                onClick={() => setSelectedMember(member)}
+                className="group focus:outline-none focus:ring-2 focus:ring-primary rounded-[3rem] w-[60%] sm:w-auto"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                {renderMemberCard(member)}
+              </button>
+            )
           ))}
         </div>
 
@@ -145,35 +162,7 @@ const TeamSection = () => {
               className="group focus:outline-none focus:ring-2 focus:ring-primary rounded-[3rem] w-[60%] sm:w-auto"
               style={{ animationDelay: `${(index + 2) * 0.1}s` }}
             >
-              <div className="w-full sm:w-44 md:w-52 h-80 md:h-96 rounded-[3rem] overflow-hidden transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2">
-                {/* Top colored section with name */}
-                <div className={`h-[45%] bg-gradient-to-b ${member.cardColor} p-4 flex flex-col justify-end items-center text-center`}>
-                  <h3 className="font-display text-lg md:text-xl font-bold text-charcoal-deep mb-1">
-                    {member.name.split(' ')[0]}
-                  </h3>
-                  <p className="text-charcoal-deep/70 text-xs md:text-sm font-medium">
-                    {member.shortRole.split(' • ')[0]}
-                  </p>
-                </div>
-                
-                {/* Bottom section with avatar */}
-                <div className="h-[55%] bg-charcoal-deep flex items-center justify-center relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20" />
-                  {member.image ? (
-                    <img 
-                      src={member.image} 
-                      alt={member.name}
-                      className="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover border-4 border-background/20 shadow-2xl group-hover:scale-110 transition-transform duration-500"
-                    />
-                  ) : (
-                    <div className="w-28 h-28 md:w-36 md:h-36 rounded-full bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center border-4 border-background/20 shadow-2xl group-hover:scale-110 transition-transform duration-500">
-                      <span className="font-display text-3xl md:text-4xl font-bold text-foreground">
-                        {member.initials}
-                      </span>
-                    </div>
-                  )}
-                </div>
-              </div>
+              {renderMemberCard(member)}
             </button>
           ))}
         </div>
