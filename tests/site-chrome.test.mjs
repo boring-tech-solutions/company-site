@@ -28,6 +28,16 @@ test("site chrome content contract and theme foundation are shared", async () =>
     siteChrome.header.primaryNav.map((item) => item.label),
     ["About Us", "AI Lab", "Our Projects", "Data Compliance", "Community", "Blog"],
   );
+  const ourProjectsNav = siteChrome.header.primaryNav.find((item) => item.label === "Our Projects");
+  assert.ok(ourProjectsNav, "Our Projects should exist in the primary nav");
+  assert.deepEqual(
+    ourProjectsNav.children?.map((item) => item.label),
+    ["AIFY", "Govora", "QuizApp", "YACO", "Northern Landing"],
+  );
+  assert.ok(
+    ourProjectsNav.children?.every((item) => item.linkType === "router"),
+    "Our Projects submenu items should declare router linkType",
+  );
   assert.ok(siteChrome.header.primaryNav.every((item) => item.linkType), "header links should declare linkType");
   assert.equal(siteChrome.header.primaryCta.label, "Book a Coffee Chat");
   assert.equal(siteChrome.header.secondaryCta.href, "/contact");
