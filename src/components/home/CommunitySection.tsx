@@ -55,22 +55,6 @@ const initiatives = [
       </svg>
     ),
   },
-  {
-    icon: Users,
-    title: "Northern Landing",
-    description: "A BTS community project supporting newcomer learning, trusted information, and practical help.",
-    bgColor: "bg-[#1B3540]",
-    href: "/community/northern-landing",
-    shapes: (
-      <svg viewBox="0 0 200 200" className="w-full h-full">
-        <circle cx="60" cy="64" r="34" fill="#101A26" />
-        <circle cx="132" cy="74" r="26" fill="#D9B343" />
-        <path d="M 30 150 C 50 120, 75 120, 95 150 S 145 180, 170 145" fill="none" stroke="#F2C84B" strokeWidth="10" strokeLinecap="round" />
-        <rect x="48" y="118" width="24" height="24" fill="#D93D3D" transform="rotate(45 60 130)" />
-        <circle cx="132" cy="74" r="10" fill="#101A26" />
-      </svg>
-    ),
-  },
 ];
 
 const CommunitySection = () => {

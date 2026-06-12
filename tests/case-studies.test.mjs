@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, "..");
 const caseStudiesPath = path.join(repoRoot, "shared", "case-studies.js");
 
-const expectedSlugs = ["aify", "govora", "quizapp", "yaco"];
+const expectedSlugs = ["aify", "govora", "quizapp", "yaco", "northern-landing"];
 const unsupportedClaimPatterns = [
   /\b70%\b/i,
   /\b45%\b/i,
@@ -27,7 +27,7 @@ function assertNonEmptyString(value, message) {
   assert.ok(value.trim().length > 0, message);
 }
 
-test("case study shared data exposes the four canonical project stories", async () => {
+test("case study shared data exposes the five canonical project stories", async () => {
   assert.equal(existsSync(caseStudiesPath), true, "shared/case-studies.js should exist");
 
   const { caseStudies } = await import(pathToFileURL(caseStudiesPath).href);

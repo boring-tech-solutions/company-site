@@ -56,12 +56,6 @@ export const routeSeo: Record<string, RouteSeoEntry> = {
       "Meet Shradha Maira, founding team member at Boring Tech Solutions focused on strategy, brand architecture, partnerships, and product direction for practical technology.",
     url: `${SITE_URL}/about/shradha-maira`,
   },
-  "/community/northern-landing": {
-    title: "Northern Landing | BTS Community Project",
-    description:
-      "A BTS community project shaped by Creig and Shradha's lived experience arriving in Canada, focused on trusted newcomer information, learning tools, civic participation, and navigation support.",
-    url: `${SITE_URL}/community/northern-landing`,
-  },
 };
 
 export function getRouteSeo(pathname: string): RouteSeoEntry {
