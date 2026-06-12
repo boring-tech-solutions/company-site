@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Heart, Users, GraduationCap, Globe } from "lucide-react";
 import prideOfLions from "@/assets/pride-of-lions.webp";
@@ -51,6 +52,22 @@ const initiatives = [
         <polygon points="150,140 180,140 165,170" fill="#D9B343" />
         <rect x="80" y="130" width="25" height="25" fill="#1B3540" transform="rotate(45 92 142)" />
         <circle cx="60" cy="160" r="6" fill="#D93D3D" />
+      </svg>
+    ),
+  },
+  {
+    icon: Users,
+    title: "Northern Landing",
+    description: "A BTS community project supporting newcomer learning, trusted information, and practical help.",
+    bgColor: "bg-[#1B3540]",
+    href: "/community/northern-landing",
+    shapes: (
+      <svg viewBox="0 0 200 200" className="w-full h-full">
+        <circle cx="60" cy="64" r="34" fill="#101A26" />
+        <circle cx="132" cy="74" r="26" fill="#D9B343" />
+        <path d="M 30 150 C 50 120, 75 120, 95 150 S 145 180, 170 145" fill="none" stroke="#F2C84B" strokeWidth="10" strokeLinecap="round" />
+        <rect x="48" y="118" width="24" height="24" fill="#D93D3D" transform="rotate(45 60 130)" />
+        <circle cx="132" cy="74" r="10" fill="#101A26" />
       </svg>
     ),
   },
@@ -107,7 +124,7 @@ const CommunitySection = () => {
               <span className="text-sm font-medium uppercase tracking-wider">Our Initiatives</span>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 relative">
             {initiatives.map((initiative, index) => (
               <div
                 key={index}
@@ -126,6 +143,13 @@ const CommunitySection = () => {
                 <p className="text-muted-foreground text-sm text-center mt-1">
                   {initiative.description}
                 </p>
+                {"href" in initiative && initiative.href ? (
+                  <div className="mt-4 flex justify-center" onClick={(event) => event.stopPropagation()}>
+                    <Button variant="outline" asChild>
+                      <Link to={initiative.href}>View page</Link>
+                    </Button>
+                  </div>
+                ) : null}
               </div>
             ))}
           </div>
