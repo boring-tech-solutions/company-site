@@ -11,6 +11,7 @@ import CaseStudyDetail from "./pages/CaseStudyDetail";
 import About from "./pages/About";
 import CreigPhiri from "./pages/CreigPhiri";
 import ShradhaMaira from "./pages/ShradhaMaira";
+import NorthernLanding from "./pages/NorthernLanding";
 import Community from "./pages/Community";
 import Contact from "./pages/Contact";
 import ContactSuccess from "./pages/ContactSuccess";
@@ -39,6 +40,7 @@ const App = () => (
                     <Route path="/about/creig-phiri" element={<CreigPhiri />} />
                     <Route path="/about/shradha-maira" element={<ShradhaMaira />} />
                     <Route path="/community" element={<Community />} />
+                    <Route path="/community/northern-landing" element={<NorthernLanding />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route
                         path="/contact/success"
