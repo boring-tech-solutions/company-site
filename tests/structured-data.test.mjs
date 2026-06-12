@@ -68,7 +68,7 @@ test("Govora hero includes a CTA to Govora.ca", () => {
   const source = readSource("src/pages/Govora.tsx");
 
   assert.match(source, /href=["']https:\/\/govora\.ca["']/);
-  assert.match(source, />\s*Govora\.ca\s*</);
+  assert.match(source, />\s*(Visit\s+)?Govora\.ca\s*</);
 });
 
 test("QuizApp case study injects SoftwareApplication schema without inventing a product URL", () => {

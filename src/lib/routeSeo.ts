@@ -27,15 +27,15 @@ export const routeSeo: Record<string, RouteSeoEntry> = {
     url: `${SITE_URL}/ai-lab`,
   },
   "/govora": {
-    title: "Govora | Youth Data Governance",
+    title: "Govora by Boring Tech Solutions | Automated Reporting for Nonprofits",
     description:
-      "Govora helps Alberta youth-serving organizations manage consent, access control, retention, audit logs, and PIPEDA or FOIP data governance requirements.",
+      "Govora helps nonprofits and youth-serving organizations manage participant data, consent, tailored automated reporting, board visibility, funder accountability, and auditor access.",
     url: `${SITE_URL}/govora`,
   },
   "/data-compliance": {
-    title: "Govora | Youth Data Governance",
+    title: "Govora by Boring Tech Solutions | Automated Reporting for Nonprofits",
     description:
-      "Govora helps Alberta youth-serving organizations manage consent, access control, retention, audit logs, and PIPEDA or FOIP data governance requirements.",
+      "Govora helps nonprofits and youth-serving organizations manage participant data, consent, tailored automated reporting, board visibility, funder accountability, and auditor access.",
     url: `${SITE_URL}/govora`,
   },
   "/our-past-work": {
