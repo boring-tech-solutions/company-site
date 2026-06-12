@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
@@ -93,6 +94,44 @@ const About = () => {
                     <span className="text-muted-foreground text-sm">The founding pride</span>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Leadership / Founders Section */}
+        <section className="py-16 relative overflow-hidden">
+          <div className="absolute inset-0 tech-dots opacity-20" />
+
+          <div className="section-container relative z-10">
+            <div className="card-premium p-8 md:p-10">
+              <div className="inline-flex items-center gap-2 text-primary mb-4">
+                <Sparkles className="w-5 h-5" />
+                <span className="text-sm font-medium uppercase tracking-wider">Leadership / Founders</span>
+              </div>
+
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground leading-tight">
+                Meet the founders behind the <span className="text-gradient">Collective</span>
+              </h2>
+
+              <p className="mt-4 text-muted-foreground text-lg leading-relaxed max-w-3xl">
+                The founders lead the direction of Boring Tech Solutions and stay visible across the work we ship.
+                Start with either founder profile below.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Link
+                  to="/about/creig-phiri"
+                  className="inline-flex items-center justify-center rounded-full border border-primary/30 bg-primary/10 px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-primary/20 hover:border-primary/50"
+                >
+                  Creig Phiri
+                </Link>
+                <Link
+                  to="/about/shradha-maira"
+                  className="inline-flex items-center justify-center rounded-full border border-primary/30 bg-primary/10 px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-primary/20 hover:border-primary/50"
+                >
+                  Shradha Maira
+                </Link>
               </div>
             </div>
           </div>

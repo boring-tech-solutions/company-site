@@ -17,15 +17,28 @@ export interface FounderProfile {
   intro: string;
   body: string[];
   focusAreas: string[];
+  publicLinks: FounderProfileLink[];
   relatedLinks: FounderProfileLink[];
   schema: {
+    personId: string;
     jobTitle: string;
-    worksFor: string;
-    sameAs: string[];
+    organizationId: string;
+    organizationName: string;
+    organizationUrl: string;
+    personSameAs: string[];
+    organizationSameAs: string[];
+    founderIds: string[];
   };
 }
 
 const siteUrl = "https://boringtechsolutions.com";
+const organizationId = `${siteUrl}/#organization`;
+const organizationName = "Boring Tech Solutions";
+const organizationUrl = siteUrl;
+const organizationSameAs = [
+  "https://linkedin.com/company/boring-tech-solutions",
+  "https://github.com/boring-tech-solutions",
+];
 
 export const founderProfiles = {
   creigPhiri: {
@@ -53,6 +66,7 @@ export const founderProfiles = {
       "Compliance-focused product design",
       "Community technology programs",
     ],
+    publicLinks: [{ label: "creigphiri.ca", href: "https://creigphiri.ca" }],
     relatedLinks: [
       { label: "Home", href: "/" },
       { label: "About", href: "/about" },
@@ -61,11 +75,66 @@ export const founderProfiles = {
       { label: "Shradha Maira", href: "/about/shradha-maira" },
     ],
     schema: {
+      personId: "https://boringtechsolutions.com/about/creig-phiri#person",
       jobTitle: "Founder",
-      worksFor: "Boring Tech Solutions",
-      sameAs: ["https://linkedin.com/in/creigphiri"],
+      organizationId,
+      organizationName,
+      organizationUrl,
+      personSameAs: ["https://linkedin.com/in/creigphiri", "https://creigphiri.ca"],
+      organizationSameAs,
+      founderIds: [
+        "https://boringtechsolutions.com/about/creig-phiri#person",
+        "https://boringtechsolutions.com/about/shradha-maira#person",
+      ],
+    },
+  },
+  shradhaMaira: {
+    slug: "shradha-maira",
+    path: "/about/shradha-maira",
+    canonicalUrl: `${siteUrl}/about/shradha-maira`,
+    title: "Shradha Maira | Co-Founder at Boring Tech Solutions",
+    description:
+      "Meet Shradha Maira, co-founder at Boring Tech Solutions and strategy director focused on brand clarity, partnerships, product direction, and practical AI adoption.",
+    name: "Shradha Maira",
+    role: "Co-Founder & Strategy Director at Boring Tech Solutions",
+    shortRole: "Brand Architect | Strategist",
+    image: "https://images.boringtechsolutions.com/shradha-linkedin-profile.webp",
+    linkedIn: "https://linkedin.com/in/shradhamaira",
+    intro:
+      "Shradha Maira is the co-founder of Boring Tech Solutions, where she helps organizations turn emerging technology into clear stories, practical offers, and grounded product direction.",
+    body: [
+      "Her work sits at the intersection of brand strategy, partnerships, and user understanding. She brings experience across global agencies and Canadian tech ecosystems, with a focus on helping teams explain complex technology in ways that are useful, credible, and easy to trust.",
+      "At Boring Tech Solutions, Shradha shapes the company's voice, client positioning, and product direction. She helps translate technical capability into offers and experiences that make sense for the organizations adopting them.",
+      "Shradha approaches strategy with the same discipline the team brings to engineering: fewer inflated claims, more clarity about value, constraints, and the path to meaningful adoption.",
+    ],
+    focusAreas: [
+      "Brand strategy and positioning",
+      "Partnership development",
+      "Product direction and user empathy",
+      "Practical AI adoption planning",
+    ],
+    publicLinks: [{ label: "shradhamaira.ca", href: "https://shradhamaira.ca" }],
+    relatedLinks: [
+      { label: "Home", href: "/" },
+      { label: "About", href: "/about" },
+      { label: "Responsible AI Consulting", href: "/services/responsible-ai-consulting" },
+      { label: "Creig Phiri", href: "/about/creig-phiri" },
+    ],
+    schema: {
+      personId: "https://boringtechsolutions.com/about/shradha-maira#person",
+      jobTitle: "Co-Founder & Strategy Director",
+      organizationId,
+      organizationName,
+      organizationUrl,
+      personSameAs: ["https://linkedin.com/in/shradhamaira", "https://shradhamaira.ca"],
+      organizationSameAs,
+      founderIds: [
+        "https://boringtechsolutions.com/about/creig-phiri#person",
+        "https://boringtechsolutions.com/about/shradha-maira#person",
+      ],
     },
   },
 } satisfies Record<string, FounderProfile>;
 
 export const creigPhiriProfile = founderProfiles.creigPhiri;
+export const shradhaMairaProfile = founderProfiles.shradhaMaira;

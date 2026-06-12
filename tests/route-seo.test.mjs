@@ -12,7 +12,15 @@ const routeSeoSource = readFileSync(path.join(repoRoot, "src", "lib", "routeSeo.
 const appSource = readFileSync(path.join(repoRoot, "src", "App.tsx"), "utf8");
 const indexHtml = readFileSync(path.join(repoRoot, "index.html"), "utf8");
 
-const REQUIRED_ROUTES = ["/", "/ai-lab", "/data-compliance", "/our-past-work", "/contact", "/about/creig-phiri"];
+const REQUIRED_ROUTES = [
+  "/",
+  "/ai-lab",
+  "/data-compliance",
+  "/our-past-work",
+  "/contact",
+  "/about/creig-phiri",
+  "/about/shradha-maira",
+];
 const SITE_URL = "https://boringtechsolutions.com";
 
 test("routeSeo.ts contains the required route keys", () => {
@@ -40,6 +48,11 @@ test("each route entry has title, description, and url fields", () => {
     assert.match(segment, /description:/, `route "${route}" should have a description field`);
     assert.match(segment, /url:/, `route "${route}" should have a url field`);
   }
+});
+
+test("founder route SEO entries use the expected canonical URLs", () => {
+  assert.match(routeSeoSource, /"\/about\/creig-phiri":[\s\S]*url:\s*`\$\{SITE_URL\}\/about\/creig-phiri`/);
+  assert.match(routeSeoSource, /"\/about\/shradha-maira":[\s\S]*url:\s*`\$\{SITE_URL\}\/about\/shradha-maira`/);
 });
 
 test("routeSeo.ts SITE_URL is the correct absolute base URL", () => {

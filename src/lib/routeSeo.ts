@@ -50,6 +50,12 @@ export const routeSeo: Record<string, RouteSeoEntry> = {
       "Meet Creig Phiri, founder at Boring Tech Solutions and systems architect focused on practical AI, cloud architecture, data governance, and community technology.",
     url: `${SITE_URL}/about/creig-phiri`,
   },
+  "/about/shradha-maira": {
+    title: "Shradha Maira | Co-Founder at Boring Tech Solutions",
+    description:
+      "Meet Shradha Maira, co-founder at Boring Tech Solutions and strategy director focused on brand clarity, partnerships, product direction, and practical AI adoption.",
+    url: `${SITE_URL}/about/shradha-maira`,
+  },
 };
 
 export function getRouteSeo(pathname: string): RouteSeoEntry {

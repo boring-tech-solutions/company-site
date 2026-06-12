@@ -10,6 +10,7 @@ import CaseStudies from "./pages/CaseStudies";
 import CaseStudyDetail from "./pages/CaseStudyDetail";
 import About from "./pages/About";
 import CreigPhiri from "./pages/CreigPhiri";
+import ShradhaMaira from "./pages/ShradhaMaira";
 import Community from "./pages/Community";
 import Contact from "./pages/Contact";
 import ContactSuccess from "./pages/ContactSuccess";
@@ -36,6 +37,7 @@ const App = () => (
                     <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/about/creig-phiri" element={<CreigPhiri />} />
+                    <Route path="/about/shradha-maira" element={<ShradhaMaira />} />
                     <Route path="/community" element={<Community />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route
