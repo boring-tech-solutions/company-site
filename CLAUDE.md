@@ -88,3 +88,4 @@ Rules:
 2. If commit changes, also create PR
 3. Always clean up worktree after PR created.
 4. Never push to main/master
+5. Aways use subagents for all work
