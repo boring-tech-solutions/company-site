@@ -1,4 +1,4 @@
-export const SITE_URL = "https://boringtechsolutions.com";
+export const SITE_URL = "https://www.boringtechsolutions.com";
 
 interface RouteSeoEntry {
   title: string;

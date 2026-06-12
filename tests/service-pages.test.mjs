@@ -21,7 +21,7 @@ const servicePages = [
     label: "AI Workflow Automation",
     pagePath: path.join(repoRoot, "src", "pages", "AIWorkflowAutomation.tsx"),
     route: "/services/ai-workflow-automation",
-    canonicalUrl: "https://boringtechsolutions.com/services/ai-workflow-automation",
+    canonicalUrl: "https://www.boringtechsolutions.com/services/ai-workflow-automation",
   },
   {
     component: "ResponsibleAIConsulting",
@@ -29,7 +29,7 @@ const servicePages = [
     label: "Responsible AI Consulting",
     pagePath: path.join(repoRoot, "src", "pages", "ResponsibleAIConsulting.tsx"),
     route: "/services/responsible-ai-consulting",
-    canonicalUrl: "https://boringtechsolutions.com/services/responsible-ai-consulting",
+    canonicalUrl: "https://www.boringtechsolutions.com/services/responsible-ai-consulting",
   },
 ];
 
@@ -129,8 +129,8 @@ test("robots.txt points crawlers to the sitemap", () => {
 
   assert.match(
     robotsSource,
-    /^Sitemap:\s*https:\/\/boringtechsolutions\.com\/sitemap\.xml$/m,
-    "public/robots.txt should include Sitemap: https://boringtechsolutions.com/sitemap.xml",
+    /^Sitemap:\s*https:\/\/www\.boringtechsolutions\.com\/sitemap\.xml$/m,
+    "public/robots.txt should include Sitemap: https://www.boringtechsolutions.com/sitemap.xml",
   );
 });
 

@@ -27,7 +27,7 @@ const teamMembers: TeamMember[] = [
       "He leads BTS with his signature philosophy: build slowly, think deeply, and always engineer for integrity.",
       "Creig also serves as Vice President of the ZCUSA, driving technology programs that uplift youth and newcomer communities."
     ],
-    linkedIn: "https://linkedin.com/in/creigphiri",
+    linkedIn: "https://www.linkedin.com/in/creigphiri",
     cardColor: "from-amber-400 to-amber-300",
     initials: "CP",
     image: "https://images.boringtechsolutions.com/creig-linkedin-profile.webp",
@@ -41,7 +41,7 @@ const teamMembers: TeamMember[] = [
       "Shradha shapes the voice, strategy, and impact of Boring Tech Solutions. With 10+ years across global agencies and Canadian tech ecosystems, she brings sharp strategic thinking, deep empathy for users, and a storytelling instinct that translates complex technology into something people actually understand.",
       "She leads the company's marketing, partnerships, and product direction — and holds the operational vision of where Boring Tech is going next."
     ],
-    linkedIn: "https://linkedin.com/in/shradhamaira",
+    linkedIn: "https://www.linkedin.com/in/shradhamaira",
     cardColor: "from-violet-300 to-indigo-200",
     initials: "SM",
     image: "https://images.boringtechsolutions.com/shradha-linkedin-profile.webp",
@@ -56,7 +56,7 @@ const teamMembers: TeamMember[] = [
       "He has engineered secure systems for AWS, Check Point, and enterprise clients across multiple continents.",
       "When Anderson is on a project, clients know their data, infrastructure, and governance are in safe, disciplined hands."
     ],
-    linkedIn: "https://linkedin.com/in/nomatteranderson",
+    linkedIn: "https://www.linkedin.com/in/nomatteranderson",
     cardColor: "from-blue-200 to-slate-200",
     initials: "NA",
     image: "https://images.boringtechsolutions.com/anderson_linkedin_image.webp"
@@ -70,7 +70,7 @@ const teamMembers: TeamMember[] = [
       "With experience across Seismic, Level Ground Creatives, and high-performance API infrastructures, Thando specializes in creating systems that are fault-tolerant, high-speed, and designed for growth.",
       "He brings a strategic mind and engineering precision that elevates every project the Collective touches."
     ],
-    linkedIn: "https://linkedin.com/in/thandoncube",
+    linkedIn: "https://www.linkedin.com/in/thandoncube",
     cardColor: "from-rose-200 to-orange-100",
     initials: "TN",
     image: thandoImage

@@ -43,7 +43,7 @@ export const aiWorkflowAutomation: ServicePageData = {
   title: "AI Workflow Automation",
   description:
     "Workflow design and automation that helps teams reduce repetitive handoffs, keep review points in place, and move work forward with clarity.",
-  canonicalUrl: "https://boringtechsolutions.com/services/ai-workflow-automation",
+  canonicalUrl: "https://www.boringtechsolutions.com/services/ai-workflow-automation",
   h1: "AI Workflow Automation",
   ctaLabel: "Talk through a workflow",
   image: lionAiAutomation,
@@ -151,7 +151,7 @@ export const responsibleAIConsulting: ServicePageData = {
   title: "Responsible AI Consulting",
   description:
     "Advisory support that helps teams choose AI approaches, set guardrails, and align adoption with privacy, policy, and trust.",
-  canonicalUrl: "https://boringtechsolutions.com/services/responsible-ai-consulting",
+  canonicalUrl: "https://www.boringtechsolutions.com/services/responsible-ai-consulting",
   h1: "Responsible AI Consulting",
   ctaLabel: "Start a responsible AI conversation",
   image: lionCompliance,
@@ -254,4 +254,3 @@ export const responsibleAIConsulting: ServicePageData = {
     path: "/contact",
   },
 };
-

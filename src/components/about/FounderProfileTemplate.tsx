@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { usePageSeo } from "@/hooks/usePageSeo";
+import { useJsonLd } from "@/hooks/useJsonLd";
 import type { FounderProfile } from "@/data/founderProfiles";
 
 interface FounderProfileTemplateProps {
@@ -51,6 +52,8 @@ const FounderProfileTemplate = ({ profile }: FounderProfileTemplateProps) => {
       },
     ],
   };
+
+  useJsonLd(`founder-schema-${profile.slug}`, personSchema);
 
   return (
     <div className="min-h-screen bg-background relative">
@@ -169,7 +172,6 @@ const FounderProfileTemplate = ({ profile }: FounderProfileTemplateProps) => {
         </section>
       </main>
       <Footer />
-      <script type="application/ld+json">{JSON.stringify(personSchema)}</script>
     </div>
   );
 };
