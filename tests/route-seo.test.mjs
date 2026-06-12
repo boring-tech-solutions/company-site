@@ -55,6 +55,21 @@ test("founder route SEO entries use the expected canonical URLs", () => {
   assert.match(routeSeoSource, /"\/about\/shradha-maira":[\s\S]*url:\s*`\$\{SITE_URL\}\/about\/shradha-maira`/);
 });
 
+test("Govora route SEO highlights automated reporting and BTS branding", () => {
+  assert.match(
+    routeSeoSource,
+    /"\/govora":[\s\S]*title:\s*"Govora by Boring Tech Solutions \| Automated Reporting for Nonprofits"/,
+  );
+  assert.match(
+    routeSeoSource,
+    /"\/govora":[\s\S]*description:\s*"Govora helps nonprofits and youth-serving organizations manage participant data, consent, tailored automated reporting, board visibility, funder accountability, and auditor access\."/,
+  );
+  assert.match(
+    routeSeoSource,
+    /"\/data-compliance":[\s\S]*title:\s*"Govora by Boring Tech Solutions \| Automated Reporting for Nonprofits"/,
+  );
+});
+
 test("routeSeo.ts SITE_URL is the correct absolute base URL", () => {
   assert.ok(
     routeSeoSource.includes(`"${SITE_URL}"`),
