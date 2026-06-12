@@ -66,6 +66,46 @@ export const founderProfiles = {
       sameAs: ["https://linkedin.com/in/creigphiri"],
     },
   },
+  shradhaMaira: {
+    slug: "shradha-maira",
+    path: "/about/shradha-maira",
+    canonicalUrl: `${siteUrl}/about/shradha-maira`,
+    title: "Shradha Maira | Founding Team at Boring Tech Solutions",
+    description:
+      "Meet Shradha Maira, founding team member at Boring Tech Solutions focused on strategy, brand architecture, partnerships, and product direction for practical technology.",
+    name: "Shradha Maira",
+    role: "Founding Team at Boring Tech Solutions",
+    shortRole: "Brand Architect | Strategist",
+    image: "https://images.boringtechsolutions.com/shradha-linkedin-profile.webp",
+    linkedIn: "https://linkedin.com/in/shradhamaira",
+    intro:
+      "Shradha Maira helps shape the voice, strategy, and impact of Boring Tech Solutions.",
+    body: [
+      "With more than 10 years across global agencies and Canadian tech ecosystems, Shradha brings strategic thinking, user empathy, and a storytelling instinct that helps translate complex technology into language people can understand.",
+      "At Boring Tech Solutions, she supports marketing, partnerships, and product direction, connecting the company's practical AI, data governance, and learning platform work to the needs of the people using it.",
+      "Through Northern Landing and related community initiatives, she has supported programs focused on newcomer success, youth engagement, and community development.",
+      "Her work helps keep products and client conversations grounded in clear positioning, useful communication, and operational choices that fit real teams.",
+    ],
+    focusAreas: [
+      "Brand architecture and market positioning",
+      "Product direction and user communication",
+      "Partnership strategy",
+      "Practical technology storytelling",
+    ],
+    relatedLinks: [
+      { label: "Home", href: "/" },
+      { label: "About", href: "/about" },
+      { label: "Govora", href: "/data-compliance" },
+      { label: "QuizApp", href: "/case-studies/quizapp" },
+      { label: "Creig Phiri", href: "/about/creig-phiri" },
+    ],
+    schema: {
+      jobTitle: "Founding Team",
+      worksFor: "Boring Tech Solutions",
+      sameAs: ["https://linkedin.com/in/shradhamaira"],
+    },
+  },
 } satisfies Record<string, FounderProfile>;
 
 export const creigPhiriProfile = founderProfiles.creigPhiri;
+export const shradhaMairaProfile = founderProfiles.shradhaMaira;

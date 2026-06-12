@@ -44,7 +44,8 @@ const teamMembers: TeamMember[] = [
     linkedIn: "https://linkedin.com/in/shradhamaira",
     cardColor: "from-violet-300 to-indigo-200",
     initials: "SM",
-    image: "https://images.boringtechsolutions.com/shradha-linkedin-profile.webp"
+    image: "https://images.boringtechsolutions.com/shradha-linkedin-profile.webp",
+    profilePath: "/about/shradha-maira"
   },
   {
     name: "Nomatter Anderson",

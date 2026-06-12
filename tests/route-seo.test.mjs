@@ -12,7 +12,15 @@ const routeSeoSource = readFileSync(path.join(repoRoot, "src", "lib", "routeSeo.
 const appSource = readFileSync(path.join(repoRoot, "src", "App.tsx"), "utf8");
 const indexHtml = readFileSync(path.join(repoRoot, "index.html"), "utf8");
 
-const REQUIRED_ROUTES = ["/", "/ai-lab", "/data-compliance", "/our-past-work", "/contact", "/about/creig-phiri"];
+const REQUIRED_ROUTES = [
+  "/",
+  "/ai-lab",
+  "/data-compliance",
+  "/our-past-work",
+  "/contact",
+  "/about/creig-phiri",
+  "/about/shradha-maira",
+];
 const SITE_URL = "https://boringtechsolutions.com";
 
 test("routeSeo.ts contains the required route keys", () => {
