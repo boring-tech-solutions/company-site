@@ -83,6 +83,7 @@ export const founderProfiles = {
     body: [
       "With more than 10 years across global agencies and Canadian tech ecosystems, Shradha brings strategic thinking, user empathy, and a storytelling instinct that helps translate complex technology into language people can understand.",
       "At Boring Tech Solutions, she supports marketing, partnerships, and product direction, connecting the company's practical AI, data governance, and learning platform work to the needs of the people using it.",
+      "Through Northern Landing and related community initiatives, she has supported programs focused on newcomer success, youth engagement, and community development.",
       "Her work helps keep products and client conversations grounded in clear positioning, useful communication, and operational choices that fit real teams.",
     ],
     focusAreas: [

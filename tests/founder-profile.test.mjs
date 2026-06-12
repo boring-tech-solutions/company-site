@@ -75,6 +75,14 @@ test("founder profile data pins SEO, H1 source, copy, and required internal link
     assert.match(dataSource, new RegExp(`title:\\s*"${escapeRegex(page.title)}"`));
     assert.match(dataSource, new RegExp(`description:\\s*\\n\\s*"${escapeRegex(page.description)}"`));
 
+    if (page.name === "Shradha Maira") {
+      assert.match(
+        dataSource,
+        /Northern Landing/,
+        "Shradha profile data should mention Northern Landing as a connected initiative",
+      );
+    }
+
     for (const href of ["/", "/about", "/data-compliance", "/case-studies/quizapp", page.reciprocalLink]) {
       assert.match(dataSource, new RegExp(`href:\\s*"${escapeRegex(href)}"`), `profile data should link to ${href}`);
     }
