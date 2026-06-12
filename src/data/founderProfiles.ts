@@ -76,7 +76,7 @@ export const founderProfiles = {
     relatedLinks: [
       { label: "Home", href: "/" },
       { label: "About", href: "/about" },
-      { label: "Govora", href: "/data-compliance" },
+      { label: "Govora", href: "/govora" },
       { label: "QuizApp", href: "/case-studies/quizapp" },
       { label: "Shradha Maira", href: "/about/shradha-maira" },
     ],
@@ -121,7 +121,7 @@ export const founderProfiles = {
     relatedLinks: [
       { label: "Home", href: "/" },
       { label: "About", href: "/about" },
-      { label: "Govora", href: "/data-compliance" },
+      { label: "Govora", href: "/govora" },
       { label: "QuizApp", href: "/case-studies/quizapp" },
       { label: "Creig Phiri", href: "/about/creig-phiri" },
     ],

@@ -70,7 +70,7 @@ const services = [
   },
   {
     icon: Shield,
-    title: "Youth Data Compliance System",
+    title: "Govora",
     description: "PIPEDA & FOIP workflows, consent tracking, automated retention, and audit logs for youth-serving organizations.",
     image: serviceSecurity,
     expandedDescription: "Protect the young people you serve while meeting regulatory requirements. Our compliance system automates the complex workflows required by PIPEDA and FOIP.",

@@ -26,7 +26,7 @@ test("site chrome content contract and theme foundation are shared", async () =>
 
   assert.deepEqual(
     siteChrome.header.primaryNav.map((item) => item.label),
-    ["About Us", "AI Lab", "Our Projects", "Data Compliance", "Community", "Blog"],
+    ["About Us", "AI Lab", "Our Projects", "Govora", "Community", "Blog"],
   );
   const ourProjectsNav = siteChrome.header.primaryNav.find((item) => item.label === "Our Projects");
   assert.ok(ourProjectsNav, "Our Projects should exist in the primary nav");

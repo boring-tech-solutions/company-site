@@ -29,9 +29,9 @@ export const caseStudies = [
     path: "/case-studies/govora",
     canonicalUrl: `${siteUrl}/case-studies/govora`,
     client: "Govora.ca",
-    category: "Data Compliance",
+    category: "Govora",
     hero: "Data governance workflows for youth-serving organizations handling sensitive records.",
-    summary: "Comprehensive data compliance tooling for consent, retention, audit trails, and reporting.",
+    summary: "Comprehensive Govora tooling for consent, retention, audit trails, and reporting.",
     cardChallenge: "Compliance complexity",
     cardOutcome: "Governed workflows",
     problem:
@@ -43,7 +43,7 @@ export const caseStudies = [
     techStack: ["Python", "Vue.js", "AWS", "Edge Functions", "Encryption"],
     industryContext: "Youth services, nonprofit operations, Canadian privacy, and data governance.",
     ctaLabel: "Talk about data governance",
-    seoTitle: "Govora Case Study | Youth Data Compliance Workflows",
+    seoTitle: "Govora Case Study | Youth Data Governance Workflows",
     seoDescription:
       "Explore Govora, a Boring Tech Solutions case study focused on consent tracking, retention workflows, audit logs, and youth data governance.",
   },

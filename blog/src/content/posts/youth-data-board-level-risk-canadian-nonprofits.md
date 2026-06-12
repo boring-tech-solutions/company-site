@@ -14,7 +14,7 @@ tags:
   - audit logs
   - data retention
   - funder trust
-seoTitle: "Youth Data Compliance for Canadian Nonprofits | Boring Tech Solutions"
+seoTitle: "Youth Data Governance for Canadian Nonprofits | Govora"
 seoDescription: "Youth data is becoming a board-level governance risk. Learn how Govora helps nonprofits manage access, retention, deletion, and audit-ready proof."
 canonicalUrl: "https://boringtechsolutions.com/blog/youth-data-board-level-risk-canadian-nonprofits/"
 summary: "Youth-serving nonprofits increasingly need to prove how sensitive youth data is collected, accessed, retained, and deleted. Govora was created by Boring Tech Solutions to help organizations move from policy-only compliance to system-enforced governance."
@@ -303,4 +303,4 @@ If those questions are difficult to answer, that is the starting point.
 
 Boring Tech Solutions can help organizations map that landscape, understand the governance gap, and move toward practical infrastructure that supports compliance without overwhelming already stretched teams.
 
-You can reach us at [hello@boringtechsolutions.com](mailto:hello@boringtechsolutions.com) or learn more about Govora at [boringtechsolutions.com/data-compliance](/data-compliance).
+You can reach us at [hello@boringtechsolutions.com](mailto:hello@boringtechsolutions.com) or learn more about Govora at [boringtechsolutions.com/govora](/govora).

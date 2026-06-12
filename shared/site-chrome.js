@@ -69,7 +69,7 @@ export const siteChrome = {
           },
         ],
       },
-      { label: "Data Compliance", href: "/data-compliance", linkType: "router" },
+      { label: "Govora", href: "/govora", linkType: "router" },
       { label: "Community", href: "/community", linkType: "router" },
       { label: "Blog", href: "/blog/", linkType: "anchor" },
     ],
@@ -112,7 +112,7 @@ export const siteChrome = {
           { label: "AI Implementation", href: "/#services", linkType: "router" },
           { label: "Strategic AI Advisory", href: "/#services", linkType: "router" },
           { label: "Custom Software", href: "/#services", linkType: "router" },
-          { label: "Data Compliance", href: "/data-compliance", linkType: "router" },
+          { label: "Govora", href: "/govora", linkType: "router" },
         ],
       },
       {

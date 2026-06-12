@@ -48,7 +48,8 @@ const App = () => (
                         path="/contact/success"
                         element={<ContactSuccess />}
                     />
-                    <Route path="/data-compliance" element={<Govora />} />
+                    <Route path="/govora" element={<Govora />} />
+                    <Route path="/data-compliance" element={<Navigate replace to="/govora" />} />
                     <Route path="/govora-sales" element={<GovoraSales />} />
                     <Route path="/services/ai-workflow-automation" element={<AIWorkflowAutomation />} />
                     <Route path="/services/responsible-ai-consulting" element={<ResponsibleAIConsulting />} />

@@ -26,11 +26,17 @@ export const routeSeo: Record<string, RouteSeoEntry> = {
       "Explore Boring Tech Solutions' AI Lab for practical agents, workflow automation, decision support, and responsible AI systems built for real operational problems.",
     url: `${SITE_URL}/ai-lab`,
   },
-  "/data-compliance": {
-    title: "Data Compliance | Govora Youth Data Governance",
+  "/govora": {
+    title: "Govora | Youth Data Governance",
     description:
       "Govora helps Alberta youth-serving organizations manage consent, access control, retention, audit logs, and PIPEDA or FOIP data governance requirements.",
-    url: `${SITE_URL}/data-compliance`,
+    url: `${SITE_URL}/govora`,
+  },
+  "/data-compliance": {
+    title: "Govora | Youth Data Governance",
+    description:
+      "Govora helps Alberta youth-serving organizations manage consent, access control, retention, audit logs, and PIPEDA or FOIP data governance requirements.",
+    url: `${SITE_URL}/govora`,
   },
   "/our-past-work": {
     title: "Our Past Work | Boring Tech Solutions Case Studies",

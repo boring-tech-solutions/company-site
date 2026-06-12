@@ -30,9 +30,9 @@ import { ORGANIZATION_ID, SITE_URL } from "@/lib/schema";
 const govoraSoftwareApplicationSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "@id": `${SITE_URL}/data-compliance#softwareapplication`,
+  "@id": `${SITE_URL}/govora#softwareapplication`,
   name: "Govora",
-  url: `${SITE_URL}/data-compliance`,
+  url: `${SITE_URL}/govora`,
   description:
     "Data governance and compliance infrastructure for Alberta organizations working with children and youth.",
   applicationCategory: "BusinessApplication",
@@ -122,7 +122,7 @@ const Govora = () => {
           <div className="max-w-3xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 text-primary mb-6">
               <Shield className="w-5 h-5" />
-              <span className="text-sm font-medium uppercase tracking-wider">Data Compliance</span>
+              <span className="text-sm font-medium uppercase tracking-wider">Govora</span>
             </div>
             
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
@@ -146,6 +146,11 @@ const Govora = () => {
               </Button>
               <Button size="lg" variant="outline" className="text-lg px-8 py-6" asChild>
                 <a href="/contact">Learn More</a>
+              </Button>
+              <Button size="lg" variant="secondary" className="text-lg px-8 py-6" asChild>
+                <a href="https://govora.ca" target="_blank" rel="noopener noreferrer">
+                  Govora.ca
+                </a>
               </Button>
             </div>
           </div>
