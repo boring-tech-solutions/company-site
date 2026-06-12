@@ -25,18 +25,31 @@ const FounderProfileTemplate = ({ profile }: FounderProfileTemplateProps) => {
 
   const personSchema = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: profile.name,
-    jobTitle: profile.schema.jobTitle,
-    description: profile.description,
-    image: profile.image,
-    url: profile.canonicalUrl,
-    sameAs: profile.schema.sameAs,
-    worksFor: {
-      "@type": "Organization",
-      name: profile.schema.worksFor,
-      url: "https://boringtechsolutions.com",
-    },
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": profile.schema.personId,
+        name: profile.name,
+        jobTitle: profile.schema.jobTitle,
+        description: profile.description,
+        image: profile.image,
+        url: profile.canonicalUrl,
+        sameAs: profile.schema.personSameAs,
+        worksFor: {
+          "@id": profile.schema.organizationId,
+        },
+      },
+      {
+        "@type": "Organization",
+        "@id": profile.schema.organizationId,
+        name: profile.schema.organizationName,
+        url: profile.schema.organizationUrl,
+        sameAs: profile.schema.organizationSameAs,
+        founder: profile.schema.founderIds.map((personId) => ({
+          "@id": personId,
+        })),
+      },
+    ],
   };
 
   return (
@@ -90,6 +103,23 @@ const FounderProfileTemplate = ({ profile }: FounderProfileTemplateProps) => {
                     </a>
                   </Button>
                 </div>
+
+                {profile.publicLinks.length > 0 && (
+                  <div className="mt-8">
+                    <p className="text-primary text-xs font-medium uppercase tracking-widest mb-4">
+                      Personal sites
+                    </p>
+                    <div className="flex flex-wrap gap-3">
+                      {profile.publicLinks.map((link) => (
+                        <Button key={link.href} variant="outline" asChild>
+                          <a href={link.href} target="_blank" rel="noopener noreferrer">
+                            {link.label}
+                          </a>
+                        </Button>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>

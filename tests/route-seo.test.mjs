@@ -50,6 +50,11 @@ test("each route entry has title, description, and url fields", () => {
   }
 });
 
+test("founder route SEO entries use the expected canonical URLs", () => {
+  assert.match(routeSeoSource, /"\/about\/creig-phiri":[\s\S]*url:\s*`\$\{SITE_URL\}\/about\/creig-phiri`/);
+  assert.match(routeSeoSource, /"\/about\/shradha-maira":[\s\S]*url:\s*`\$\{SITE_URL\}\/about\/shradha-maira`/);
+});
+
 test("routeSeo.ts SITE_URL is the correct absolute base URL", () => {
   assert.ok(
     routeSeoSource.includes(`"${SITE_URL}"`),

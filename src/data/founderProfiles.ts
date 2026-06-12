@@ -17,15 +17,28 @@ export interface FounderProfile {
   intro: string;
   body: string[];
   focusAreas: string[];
+  publicLinks: FounderProfileLink[];
   relatedLinks: FounderProfileLink[];
   schema: {
+    personId: string;
     jobTitle: string;
-    worksFor: string;
-    sameAs: string[];
+    organizationId: string;
+    organizationName: string;
+    organizationUrl: string;
+    personSameAs: string[];
+    organizationSameAs: string[];
+    founderIds: string[];
   };
 }
 
 const siteUrl = "https://boringtechsolutions.com";
+const organizationId = `${siteUrl}/#organization`;
+const organizationName = "Boring Tech Solutions";
+const organizationUrl = siteUrl;
+const organizationSameAs = [
+  "https://linkedin.com/company/boring-tech-solutions",
+  "https://github.com/boring-tech-solutions",
+];
 
 export const founderProfiles = {
   creigPhiri: {
@@ -53,6 +66,7 @@ export const founderProfiles = {
       "Compliance-focused product design",
       "Community technology programs",
     ],
+    publicLinks: [{ label: "creigphiri.ca", href: "https://creigphiri.ca" }],
     relatedLinks: [
       { label: "Home", href: "/" },
       { label: "About", href: "/about" },
@@ -61,9 +75,17 @@ export const founderProfiles = {
       { label: "Shradha Maira", href: "/about/shradha-maira" },
     ],
     schema: {
+      personId: "https://boringtechsolutions.com/about/creig-phiri#person",
       jobTitle: "Founder",
-      worksFor: "Boring Tech Solutions",
-      sameAs: ["https://linkedin.com/in/creigphiri"],
+      organizationId,
+      organizationName,
+      organizationUrl,
+      personSameAs: ["https://linkedin.com/in/creigphiri", "https://creigphiri.ca"],
+      organizationSameAs,
+      founderIds: [
+        "https://boringtechsolutions.com/about/creig-phiri#person",
+        "https://boringtechsolutions.com/about/shradha-maira#person",
+      ],
     },
   },
   shradhaMaira: {
@@ -92,6 +114,7 @@ export const founderProfiles = {
       "Partnership strategy",
       "Practical technology storytelling",
     ],
+    publicLinks: [{ label: "shradhamaira.ca", href: "https://shradhamaira.ca" }],
     relatedLinks: [
       { label: "Home", href: "/" },
       { label: "About", href: "/about" },
@@ -100,9 +123,17 @@ export const founderProfiles = {
       { label: "Creig Phiri", href: "/about/creig-phiri" },
     ],
     schema: {
+      personId: "https://boringtechsolutions.com/about/shradha-maira#person",
       jobTitle: "Founding Team",
-      worksFor: "Boring Tech Solutions",
-      sameAs: ["https://linkedin.com/in/shradhamaira"],
+      organizationId,
+      organizationName,
+      organizationUrl,
+      personSameAs: ["https://linkedin.com/in/shradhamaira", "https://shradhamaira.ca"],
+      organizationSameAs,
+      founderIds: [
+        "https://boringtechsolutions.com/about/creig-phiri#person",
+        "https://boringtechsolutions.com/about/shradha-maira#person",
+      ],
     },
   },
 } satisfies Record<string, FounderProfile>;

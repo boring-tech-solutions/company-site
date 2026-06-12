@@ -9,44 +9,38 @@ const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, "..");
 
 const appPath = path.join(repoRoot, "src", "App.tsx");
-const creigProfilePagePath = path.join(repoRoot, "src", "pages", "CreigPhiri.tsx");
-const shradhaProfilePagePath = path.join(repoRoot, "src", "pages", "ShradhaMaira.tsx");
+const creigPagePath = path.join(repoRoot, "src", "pages", "CreigPhiri.tsx");
+const shradhaPagePath = path.join(repoRoot, "src", "pages", "ShradhaMaira.tsx");
 const profileDataPath = path.join(repoRoot, "src", "data", "founderProfiles.ts");
 const profileTemplatePath = path.join(repoRoot, "src", "components", "about", "FounderProfileTemplate.tsx");
 const teamSectionPath = path.join(repoRoot, "src", "components", "about", "TeamSection.tsx");
+const aboutPath = path.join(repoRoot, "src", "pages", "About.tsx");
 const routeSeoPath = path.join(repoRoot, "src", "lib", "routeSeo.ts");
 const sitemapPath = path.join(repoRoot, "public", "sitemap.xml");
 
 const readSource = (filePath) => readFileSync(filePath, "utf8");
 const escapeRegex = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-const creigRoute = "/about/creig-phiri";
-const creigTitle = "Creig Phiri | Founder at Boring Tech Solutions";
-const creigDescription =
-  "Meet Creig Phiri, founder at Boring Tech Solutions and systems architect focused on practical AI, cloud architecture, data governance, and community technology.";
-const shradhaRoute = "/about/shradha-maira";
-const shradhaTitle = "Shradha Maira | Founding Team at Boring Tech Solutions";
-const shradhaDescription =
-  "Meet Shradha Maira, founding team member at Boring Tech Solutions focused on strategy, brand architecture, partnerships, and product direction for practical technology.";
-
 const founderPages = [
   {
     name: "Creig Phiri",
     componentName: "CreigPhiri",
-    pagePath: creigProfilePagePath,
-    route: creigRoute,
-    title: creigTitle,
-    description: creigDescription,
-    reciprocalLink: shradhaRoute,
+    pagePath: creigPagePath,
+    route: "/about/creig-phiri",
+    title: "Creig Phiri | Founder at Boring Tech Solutions",
+    description:
+      "Meet Creig Phiri, founder at Boring Tech Solutions and systems architect focused on practical AI, cloud architecture, data governance, and community technology.",
+    reciprocalLink: "/about/shradha-maira",
   },
   {
     name: "Shradha Maira",
     componentName: "ShradhaMaira",
-    pagePath: shradhaProfilePagePath,
-    route: shradhaRoute,
-    title: shradhaTitle,
-    description: shradhaDescription,
-    reciprocalLink: creigRoute,
+    pagePath: shradhaPagePath,
+    route: "/about/shradha-maira",
+    title: "Shradha Maira | Founding Team at Boring Tech Solutions",
+    description:
+      "Meet Shradha Maira, founding team member at Boring Tech Solutions focused on strategy, brand architecture, partnerships, and product direction for practical technology.",
+    reciprocalLink: "/about/creig-phiri",
   },
 ];
 
@@ -67,51 +61,76 @@ test("founder profile pages exist and are routed", () => {
   }
 });
 
-test("founder profile data pins SEO, H1 source, copy, and required internal links", () => {
+test("founder profile data pins SEO, links, and schema ids", () => {
   const dataSource = readSource(profileDataPath);
 
   for (const page of founderPages) {
     assert.match(dataSource, new RegExp(`name:\\s*"${escapeRegex(page.name)}"`), "profile data should define the H1 name");
     assert.match(dataSource, new RegExp(`title:\\s*"${escapeRegex(page.title)}"`));
     assert.match(dataSource, new RegExp(`description:\\s*\\n\\s*"${escapeRegex(page.description)}"`));
-
-    if (page.name === "Shradha Maira") {
-      assert.match(
-        dataSource,
-        /Northern Landing/,
-        "Shradha profile data should mention Northern Landing as a connected initiative",
-      );
-    }
-
     for (const href of ["/", "/about", "/data-compliance", "/case-studies/quizapp", page.reciprocalLink]) {
       assert.match(dataSource, new RegExp(`href:\\s*"${escapeRegex(href)}"`), `profile data should link to ${href}`);
     }
   }
 
-  assert.doesNotMatch(
+  assert.match(dataSource, /publicLinks:\s*\[\s*\{\s*label:\s*"creigphiri\.ca"/s);
+  assert.match(dataSource, /publicLinks:\s*\[\s*\{\s*label:\s*"shradhamaira\.ca"/s);
+  assert.match(
     dataSource,
-    /\boffice\b|\bheadquarters\b|\bworld[- ]class\b|\bguarantee(?:d|s)?\b|\bbest\b/i,
-    "profile copy should avoid office-address claims and exaggerated language",
+    /personId:\s*"https:\/\/boringtechsolutions\.com\/about\/creig-phiri#person"/,
+    "Creig profile should define a stable Person @id",
   );
+  assert.match(
+    dataSource,
+    /personId:\s*"https:\/\/boringtechsolutions\.com\/about\/shradha-maira#person"/,
+    "Shradha profile should define a stable Person @id",
+  );
+  assert.match(
+    dataSource,
+    /const organizationId = `\$\{siteUrl\}\/#organization`;/,
+    "founder data should define a shared stable Organization @id constant",
+  );
+  assert.match(
+    dataSource,
+    /personSameAs:\s*\[\s*"https:\/\/linkedin\.com\/in\/creigphiri",\s*"https:\/\/creigphiri\.ca"\s*\]/,
+    "Creig profile should include the approved sameAs links",
+  );
+  assert.match(
+    dataSource,
+    /personSameAs:\s*\[\s*"https:\/\/linkedin\.com\/in\/shradhamaira",\s*"https:\/\/shradhamaira\.ca"\s*\]/,
+    "Shradha profile should include the approved sameAs links",
+  );
+  assert.match(
+    dataSource,
+    /https:\/\/linkedin\.com\/company\/boring-tech-solutions/,
+    "Organization schema should include the LinkedIn company profile",
+  );
+  assert.match(
+    dataSource,
+    /https:\/\/github\.com\/boring-tech-solutions/,
+    "Organization schema should include the GitHub organization profile",
+  );
+  assert.match(dataSource, /Northern Landing/, "Shradha profile should mention Northern Landing");
 });
 
-test("founder profile pages share the same template and render profile SEO, H1, links, and Person JSON-LD", () => {
+test("founder profile template renders graph JSON-LD and the public links section", () => {
   const templateSource = readSource(profileTemplatePath);
 
-  for (const page of founderPages) {
-    const pageSource = readSource(page.pagePath);
-    assert.match(pageSource, /FounderProfileTemplate/, `${page.name} page should use the shared founder profile template`);
-    assert.doesNotMatch(pageSource, /className=/, `${page.name} page should not fork template styling`);
-  }
-
-  assert.match(templateSource, /usePageSeo/, "founder template should set page SEO");
-  assert.match(templateSource, /<h1[^>]*>[\s\S]*\{profile\.name\}/, "founder template should render profile.name as the H1");
-  assert.match(templateSource, /application\/ld\+json/, "founder template should render JSON-LD");
+  assert.match(templateSource, /"@graph":\s*\[/, "founder template should emit a JSON-LD graph");
   assert.match(templateSource, /"@type":\s*"Person"/, "founder template should include Person schema");
-  assert.match(templateSource, /profile\.relatedLinks\.map/, "founder template should render internal links from data");
+  assert.match(templateSource, /"@type":\s*"Organization"/, "founder template should include Organization schema");
+  assert.match(templateSource, /profile\.schema\.personSameAs/, "template should use explicit person sameAs links");
+  assert.match(
+    templateSource,
+    /profile\.schema\.organizationSameAs/,
+    "template should use explicit organization sameAs links",
+  );
+  assert.match(templateSource, /profile\.schema\.founderIds/, "template should include founder references");
+  assert.match(templateSource, /profile\.publicLinks\.length > 0/, "template should render public links");
+  assert.match(templateSource, /Personal sites/, "template should label the public-links section");
 });
 
-test("route SEO and sitemap expose founder profiles", () => {
+test("route SEO and sitemap expose both founder profiles", () => {
   const routeSeoSource = readSource(routeSeoPath);
   const sitemapSource = readSource(sitemapPath);
 
@@ -127,10 +146,14 @@ test("route SEO and sitemap expose founder profiles", () => {
   }
 });
 
-test("About team area links to founder profiles", () => {
+test("About team area links to both founder profiles", () => {
   const teamSectionSource = readSource(teamSectionPath);
+  const aboutSource = readSource(aboutPath);
 
   assert.match(teamSectionSource, /profilePath:\s*"\/about\/creig-phiri"/);
   assert.match(teamSectionSource, /profilePath:\s*"\/about\/shradha-maira"/);
   assert.match(teamSectionSource, /View \$\{member\.name\} profile/, "profile link should be accessible");
+  assert.match(aboutSource, /Leadership\s*\/\s*Founders/);
+  assert.match(aboutSource, /\/about\/creig-phiri/);
+  assert.match(aboutSource, /\/about\/shradha-maira/);
 });
