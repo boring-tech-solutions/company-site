@@ -54,7 +54,7 @@ Tools that improve accountability.
 
 And tools that give leaders more capacity to focus on the communities they serve.
 
-Govora is built specifically for organizations managing sensitive participant and youth data. Learn more about [Govora's data compliance features](/data-compliance) or explore how we approach [youth data governance for nonprofits](/blog/youth-data-board-level-risk-canadian-nonprofits/).
+Govora is built specifically for organizations managing sensitive participant and youth data. Learn more about [Govora's data governance features](/govora) or explore how we approach [youth data governance for nonprofits](/blog/youth-data-board-level-risk-canadian-nonprofits/).
 
 Ready to see how Govora can reduce your reporting burden? [Get in touch](/govora-sales) or [book a 15-minute call](https://cal.com/boring-tech-solutions/15min).
 

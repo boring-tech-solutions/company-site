@@ -285,4 +285,4 @@ If those questions are difficult to answer, you have a governance gap.
 
 Govora was built to help close it.
 
-You can learn more about Govora at [boringtechsolutions.com/data-compliance](/data-compliance) or reach us at [hello@boringtechsolutions.com](mailto:hello@boringtechsolutions.com).
+You can learn more about Govora at [boringtechsolutions.com/govora](/govora) or reach us at [hello@boringtechsolutions.com](mailto:hello@boringtechsolutions.com).

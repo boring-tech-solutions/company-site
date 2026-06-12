@@ -55,13 +55,20 @@ test("Govora page injects SoftwareApplication schema on the existing canonical r
 
   assert.match(source, /useJsonLd\("govora-software-schema",\s*govoraSoftwareApplicationSchema\)/);
   assert.match(source, /"@type":\s*"SoftwareApplication"/);
-  assert.match(source, /"@id":\s*`\$\{SITE_URL\}\/data-compliance#softwareapplication`/);
-  assert.match(source, /url:\s*`\$\{SITE_URL\}\/data-compliance`/);
+  assert.match(source, /"@id":\s*`\$\{SITE_URL\}\/govora#softwareapplication`/);
+  assert.match(source, /url:\s*`\$\{SITE_URL\}\/govora`/);
   assert.match(source, /publisher:\s*\{\s*"@id":\s*ORGANIZATION_ID\s*\}/);
   assert.match(source, /applicationCategory:\s*"BusinessApplication"/);
   assert.match(source, /operatingSystem:\s*"Web"/);
   assert.match(source, /priceCurrency:\s*"CAD"/);
   assert.doesNotMatch(source, /\bprice:\s*["']/);
+});
+
+test("Govora hero includes a CTA to Govora.ca", () => {
+  const source = readSource("src/pages/Govora.tsx");
+
+  assert.match(source, /href=["']https:\/\/govora\.ca["']/);
+  assert.match(source, />\s*Govora\.ca\s*</);
 });
 
 test("QuizApp case study injects SoftwareApplication schema without inventing a product URL", () => {

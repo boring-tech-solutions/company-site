@@ -70,7 +70,7 @@ test("founder profile data pins SEO, links, and schema ids", () => {
     assert.match(dataSource, new RegExp(`name:\\s*"${escapeRegex(page.name)}"`), "profile data should define the H1 name");
     assert.match(dataSource, new RegExp(`title:\\s*"${escapeRegex(page.title)}"`));
     assert.match(dataSource, new RegExp(`description:\\s*\\n\\s*"${escapeRegex(page.description)}"`));
-    for (const href of ["/", "/about", "/data-compliance", "/case-studies/quizapp", page.reciprocalLink]) {
+    for (const href of ["/", "/about", "/govora", "/case-studies/quizapp", page.reciprocalLink]) {
       assert.match(dataSource, new RegExp(`href:\\s*"${escapeRegex(href)}"`), `profile data should link to ${href}`);
     }
   }

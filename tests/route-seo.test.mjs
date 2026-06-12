@@ -15,7 +15,7 @@ const indexHtml = readFileSync(path.join(repoRoot, "index.html"), "utf8");
 const REQUIRED_ROUTES = [
   "/",
   "/ai-lab",
-  "/data-compliance",
+  "/govora",
   "/our-past-work",
   "/contact",
   "/about/creig-phiri",
@@ -78,6 +78,14 @@ test("App.tsx imports and mounts RouteSeo inside BrowserRouter before Routes", (
   assert.ok(
     browserRouterIdx < routeSeoIdx && routeSeoIdx < routesIdx,
     "<RouteSeo /> should appear after <BrowserRouter> and before <Routes>",
+  );
+});
+
+test("App.tsx redirects the legacy data-compliance route to Govora", () => {
+  assert.match(
+    appSource,
+    /<Route\s+path=["']\/data-compliance["']\s+element=\{<Navigate\s+replace\s+to=["']\/govora["']\s*\/>\s*\}\s*\/>/,
+    "App.tsx should redirect /data-compliance to /govora",
   );
 });
 

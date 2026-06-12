@@ -57,7 +57,7 @@ npm run lint
 ## Architecture
 
 **Routing ownership:**
-- React Router owns `/` and all marketing routes (`/about`, `/ai-lab`, `/contact`, `/community`, `/our-past-work`, `/data-compliance`, `/govora-sales`)
+- React Router owns `/` and all marketing routes (`/about`, `/ai-lab`, `/contact`, `/community`, `/our-past-work`, `/govora`, `/govora-sales`)
 - Astro owns `/blog/` and all blog article routes
 
 **Local dev proxy:** Vite proxies `/blog` requests to the Astro dev server on port 4321 so both apps are served from a single origin during development.
