@@ -16,6 +16,7 @@ const profileTemplatePath = path.join(repoRoot, "src", "components", "about", "F
 const teamSectionPath = path.join(repoRoot, "src", "components", "about", "TeamSection.tsx");
 const aboutPath = path.join(repoRoot, "src", "pages", "About.tsx");
 const routeSeoPath = path.join(repoRoot, "src", "lib", "routeSeo.ts");
+const schemaPath = path.join(repoRoot, "src", "lib", "schema.ts");
 const sitemapPath = path.join(repoRoot, "public", "sitemap.xml");
 
 const readSource = (filePath) => readFileSync(filePath, "utf8");
@@ -63,6 +64,7 @@ test("founder profile pages exist and are routed", () => {
 
 test("founder profile data pins SEO, links, and schema ids", () => {
   const dataSource = readSource(profileDataPath);
+  const schemaSource = readSource(schemaPath);
 
   for (const page of founderPages) {
     assert.match(dataSource, new RegExp(`name:\\s*"${escapeRegex(page.name)}"`), "profile data should define the H1 name");
@@ -76,37 +78,40 @@ test("founder profile data pins SEO, links, and schema ids", () => {
   assert.match(dataSource, /publicLinks:\s*\[\s*\{\s*label:\s*"creigphiri\.ca"/s);
   assert.match(dataSource, /publicLinks:\s*\[\s*\{\s*label:\s*"shradhamaira\.ca"/s);
   assert.match(
-    dataSource,
-    /personId:\s*"https:\/\/boringtechsolutions\.com\/about\/creig-phiri#person"/,
+    schemaSource,
+    /CREIG_PERSON_ID\s*=\s*`\$\{SITE_URL\}\/about\/creig-phiri#person`/,
     "Creig profile should define a stable Person @id",
   );
+  assert.match(dataSource, /personId:\s*CREIG_PERSON_ID/);
   assert.match(
-    dataSource,
-    /personId:\s*"https:\/\/boringtechsolutions\.com\/about\/shradha-maira#person"/,
+    schemaSource,
+    /SHRADHA_PERSON_ID\s*=\s*`\$\{SITE_URL\}\/about\/shradha-maira#person`/,
     "Shradha profile should define a stable Person @id",
   );
+  assert.match(dataSource, /personId:\s*SHRADHA_PERSON_ID/);
   assert.match(
-    dataSource,
-    /const organizationId = `\$\{siteUrl\}\/#organization`;/,
+    schemaSource,
+    /ORGANIZATION_ID\s*=\s*`\$\{SITE_URL\}\/#organization`/,
     "founder data should define a shared stable Organization @id constant",
   );
+  assert.match(dataSource, /const organizationId = ORGANIZATION_ID;/);
   assert.match(
     dataSource,
-    /personSameAs:\s*\[\s*"https:\/\/linkedin\.com\/in\/creigphiri",\s*"https:\/\/creigphiri\.ca"\s*\]/,
+    /personSameAs:\s*\[\s*"https:\/\/www\.linkedin\.com\/in\/creigphiri",\s*"https:\/\/creigphiri\.ca"\s*\]/,
     "Creig profile should include the approved sameAs links",
   );
   assert.match(
     dataSource,
-    /personSameAs:\s*\[\s*"https:\/\/linkedin\.com\/in\/shradhamaira",\s*"https:\/\/shradhamaira\.ca"\s*\]/,
+    /personSameAs:\s*\[\s*"https:\/\/www\.linkedin\.com\/in\/shradhamaira",\s*"https:\/\/shradhamaira\.ca"\s*\]/,
     "Shradha profile should include the approved sameAs links",
   );
   assert.match(
-    dataSource,
-    /https:\/\/linkedin\.com\/company\/boring-tech-solutions/,
+    schemaSource,
+    /https:\/\/www\.linkedin\.com\/company\/boring-tech-solutions/,
     "Organization schema should include the LinkedIn company profile",
   );
   assert.match(
-    dataSource,
+    schemaSource,
     /https:\/\/github\.com\/boring-tech-solutions/,
     "Organization schema should include the GitHub organization profile",
   );

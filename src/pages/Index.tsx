@@ -7,9 +7,13 @@ import CaseStudyPreview from "@/components/home/CaseStudyPreview";
 import AILabTeaser from "@/components/home/AILabTeaser";
 import SelfIdentificationCards from "@/components/home/SelfIdentificationCards";
 import PartnerLogos from "@/components/home/PartnerLogos";
+import { useJsonLd } from "@/hooks/useJsonLd";
+import { organizationSchema } from "@/lib/schema";
 
 
 const Index = () => {
+  useJsonLd("organization-schema", organizationSchema);
+
   return (
     <div className="min-h-screen bg-background relative">
       <Header />

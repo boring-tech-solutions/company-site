@@ -70,6 +70,20 @@ export const caseStudies = [
     seoDescription:
       "Read the QuizApp case study about accessible citizenship test preparation, structured quizzes, progress tracking, and newcomer learning support.",
     image: "https://images.boringtechsolutions.com/quizapp_portfolio_screenshot_tablet.webp",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "@id": `${siteUrl}/case-studies/quizapp#softwareapplication`,
+      name: "QuizApp",
+      url: `${siteUrl}/case-studies/quizapp`,
+      description:
+        "A focused learning platform for Canadian citizenship test preparation, practice quizzes, progress tracking, and self-paced review.",
+      applicationCategory: "EducationalApplication",
+      operatingSystem: "Web",
+      publisher: {
+        "@id": "https://www.boringtechsolutions.com/#organization",
+      },
+    },
   },
   {
     slug: "yaco",

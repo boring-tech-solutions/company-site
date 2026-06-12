@@ -1,3 +1,11 @@
+import {
+  CREIG_PERSON_ID,
+  ORGANIZATION_ID,
+  SHRADHA_PERSON_ID,
+  SITE_URL,
+  organizationSchema,
+} from "@/lib/schema";
+
 export interface FounderProfileLink {
   label: string;
   href: string;
@@ -31,14 +39,12 @@ export interface FounderProfile {
   };
 }
 
-const siteUrl = "https://boringtechsolutions.com";
-const organizationId = `${siteUrl}/#organization`;
+const siteUrl = SITE_URL;
+const organizationId = ORGANIZATION_ID;
 const organizationName = "Boring Tech Solutions";
 const organizationUrl = siteUrl;
-const organizationSameAs = [
-  "https://linkedin.com/company/boring-tech-solutions",
-  "https://github.com/boring-tech-solutions",
-];
+const organizationSameAs = organizationSchema.sameAs;
+const founderIds = [CREIG_PERSON_ID, SHRADHA_PERSON_ID];
 
 export const founderProfiles = {
   creigPhiri: {
@@ -52,7 +58,7 @@ export const founderProfiles = {
     role: "Founder at Boring Tech Solutions",
     shortRole: "Systems Architect | AI Strategist",
     image: "https://images.boringtechsolutions.com/creig-linkedin-profile.webp",
-    linkedIn: "https://linkedin.com/in/creigphiri",
+    linkedIn: "https://www.linkedin.com/in/creigphiri",
     intro:
       "Creig Phiri is the founder of Boring Tech Solutions, where he helps organizations turn complex technical environments into clear, practical systems.",
     body: [
@@ -75,17 +81,14 @@ export const founderProfiles = {
       { label: "Shradha Maira", href: "/about/shradha-maira" },
     ],
     schema: {
-      personId: "https://boringtechsolutions.com/about/creig-phiri#person",
+      personId: CREIG_PERSON_ID,
       jobTitle: "Founder",
       organizationId,
       organizationName,
       organizationUrl,
-      personSameAs: ["https://linkedin.com/in/creigphiri", "https://creigphiri.ca"],
+      personSameAs: ["https://www.linkedin.com/in/creigphiri", "https://creigphiri.ca"],
       organizationSameAs,
-      founderIds: [
-        "https://boringtechsolutions.com/about/creig-phiri#person",
-        "https://boringtechsolutions.com/about/shradha-maira#person",
-      ],
+      founderIds,
     },
   },
   shradhaMaira: {
@@ -99,7 +102,7 @@ export const founderProfiles = {
     role: "Founding Team at Boring Tech Solutions",
     shortRole: "Brand Architect | Strategist",
     image: "https://images.boringtechsolutions.com/shradha-linkedin-profile.webp",
-    linkedIn: "https://linkedin.com/in/shradhamaira",
+    linkedIn: "https://www.linkedin.com/in/shradhamaira",
     intro:
       "Shradha Maira helps shape the voice, strategy, and impact of Boring Tech Solutions.",
     body: [
@@ -123,17 +126,14 @@ export const founderProfiles = {
       { label: "Creig Phiri", href: "/about/creig-phiri" },
     ],
     schema: {
-      personId: "https://boringtechsolutions.com/about/shradha-maira#person",
+      personId: SHRADHA_PERSON_ID,
       jobTitle: "Founding Team",
       organizationId,
       organizationName,
       organizationUrl,
-      personSameAs: ["https://linkedin.com/in/shradhamaira", "https://shradhamaira.ca"],
+      personSameAs: ["https://www.linkedin.com/in/shradhamaira", "https://shradhamaira.ca"],
       organizationSameAs,
-      founderIds: [
-        "https://boringtechsolutions.com/about/creig-phiri#person",
-        "https://boringtechsolutions.com/about/shradha-maira#person",
-      ],
+      founderIds,
     },
   },
 } satisfies Record<string, FounderProfile>;

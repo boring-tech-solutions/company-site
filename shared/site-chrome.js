@@ -95,7 +95,7 @@ export const siteChrome = {
       email: "hello@boringtechsolutions.com",
       linkedin: {
         label: "LinkedIn",
-        href: "https://linkedin.com/company/boring-tech-solutions",
+        href: "https://www.linkedin.com/company/boring-tech-solutions",
         linkType: "external",
       },
     },

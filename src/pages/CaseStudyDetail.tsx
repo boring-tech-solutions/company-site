@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { getCaseStudyBySlug } from "../../shared/case-studies.js";
 import { usePageSeo } from "@/hooks/usePageSeo";
+import { useJsonLd } from "@/hooks/useJsonLd";
 import NotFound from "@/pages/NotFound";
 import lionServerRoom from "@/assets/lion-server-room.webp";
 
@@ -27,9 +28,10 @@ const CaseStudyDetail = () => {
       : {
           title: "Case Study Not Found | Boring Tech Solutions",
           description: "The requested case study could not be found.",
-          canonicalUrl: "https://boringtechsolutions.com/case-studies/",
-        },
+          canonicalUrl: "https://www.boringtechsolutions.com/case-studies/",
+      },
   );
+  useJsonLd(`case-study-schema-${study?.slug}`, study?.schema);
 
   if (!study) {
     return <NotFound />;

@@ -24,8 +24,30 @@ import lionServerRoom from "@/assets/lion-server-room.webp";
 import lionsCoding from "@/assets/lions-coding.webp";
 import lionsRooftop from "@/assets/lions-rooftop.webp";
 import lionsHuddle from "@/assets/lions-huddle.webp";
+import { useJsonLd } from "@/hooks/useJsonLd";
+import { ORGANIZATION_ID, SITE_URL } from "@/lib/schema";
+
+const govoraSoftwareApplicationSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": `${SITE_URL}/data-compliance#softwareapplication`,
+  name: "Govora",
+  url: `${SITE_URL}/data-compliance`,
+  description:
+    "Data governance and compliance infrastructure for Alberta organizations working with children and youth.",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  publisher: { "@id": ORGANIZATION_ID },
+  offers: {
+    "@type": "Offer",
+    priceCurrency: "CAD",
+    availability: "https://schema.org/InStock",
+  },
+};
 
 const Govora = () => {
+  useJsonLd("govora-software-schema", govoraSoftwareApplicationSchema);
+
   const features = [
     {
       icon: CheckCircle2,

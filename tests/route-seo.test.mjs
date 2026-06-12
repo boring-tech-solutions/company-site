@@ -21,7 +21,7 @@ const REQUIRED_ROUTES = [
   "/about/creig-phiri",
   "/about/shradha-maira",
 ];
-const SITE_URL = "https://boringtechsolutions.com";
+const SITE_URL = "https://www.boringtechsolutions.com";
 
 test("routeSeo.ts contains the required route keys", () => {
   for (const route of REQUIRED_ROUTES) {
@@ -62,8 +62,8 @@ test("routeSeo.ts SITE_URL is the correct absolute base URL", () => {
   );
   assert.doesNotMatch(
     routeSeoSource,
-    /SITE_URL\s*=\s*["']https?:\/\/(?!boringtechsolutions\.com)/,
-    "SITE_URL should point to boringtechsolutions.com",
+    /SITE_URL\s*=\s*["']https?:\/\/(?!www\.boringtechsolutions\.com)/,
+    "SITE_URL should point to www.boringtechsolutions.com",
   );
 });
 
