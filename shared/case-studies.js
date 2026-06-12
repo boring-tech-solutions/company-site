@@ -108,6 +108,45 @@ export const caseStudies = [
     seoDescription:
       "See how Boring Tech Solutions approached custom software for YACO, supporting youth advocacy coordination, events, and nonprofit operations.",
   },
+  {
+    slug: "northern-landing",
+    path: "/case-studies/northern-landing",
+    canonicalUrl: `${siteUrl}/case-studies/northern-landing`,
+    client: "Northern Landing",
+    category: "Community Initiative",
+    hero: "Community-first support for newcomers, shaped by lived experience arriving in Canada.",
+    summary:
+      "A BTS community initiative that gathered trusted newcomer information, practical navigation support, and civic participation resources.",
+    cardChallenge: "Newcomer navigation gaps",
+    cardOutcome: "Trusted community guidance",
+    problem:
+      "Creig and Shradha saw how much time newcomers could lose searching for reliable information, especially when systems, language, and local context were all moving at once.",
+    approach:
+      "The work focused on clear, community-rooted information, simple learning resources, and practical navigation support shaped by lived experience rather than a sales pitch.",
+    outcome:
+      "Northern Landing gave BTS a way to share community help in a grounded, accessible format that stayed close to the needs of newcomers and the people supporting them.",
+    techStack: ["Content Strategy", "Accessibility", "Community Research", "Information Architecture", "React"],
+    industryContext: "Newcomer support, civic participation, and community information.",
+    ctaLabel: "Explore related community work",
+    seoTitle: "Northern Landing Case Study | Community-Focused Newcomer Support",
+    seoDescription:
+      "Read about Northern Landing, a BTS community initiative shaped by lived experience arriving in Canada and focused on trusted newcomer information and practical navigation support.",
+    bgColor: "bg-[#1B3540]",
+    textColor: "text-primary",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "@id": `${siteUrl}/case-studies/northern-landing#creativework`,
+      name: "Northern Landing",
+      url: `${siteUrl}/case-studies/northern-landing`,
+      description:
+        "A BTS community initiative shaped by lived experience arriving in Canada and focused on trusted newcomer information and practical navigation support.",
+      keywords: "newcomer support, community information, civic participation, accessibility",
+      publisher: {
+        "@id": "https://www.boringtechsolutions.com/#organization",
+      },
+    },
+  },
 ];
 
 export const caseStudiesBySlug = Object.fromEntries(

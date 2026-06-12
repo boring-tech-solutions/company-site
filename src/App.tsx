@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import RouteSeo from "./components/RouteSeo";
 import Index from "./pages/Index";
 import AILab from "./pages/AILab";
@@ -11,7 +11,6 @@ import CaseStudyDetail from "./pages/CaseStudyDetail";
 import About from "./pages/About";
 import CreigPhiri from "./pages/CreigPhiri";
 import ShradhaMaira from "./pages/ShradhaMaira";
-import NorthernLanding from "./pages/NorthernLanding";
 import Community from "./pages/Community";
 import Contact from "./pages/Contact";
 import ContactSuccess from "./pages/ContactSuccess";
@@ -40,7 +39,10 @@ const App = () => (
                     <Route path="/about/creig-phiri" element={<CreigPhiri />} />
                     <Route path="/about/shradha-maira" element={<ShradhaMaira />} />
                     <Route path="/community" element={<Community />} />
-                    <Route path="/community/northern-landing" element={<NorthernLanding />} />
+                    <Route
+                        path="/community/northern-landing"
+                        element={<Navigate replace to="/case-studies/northern-landing" />}
+                    />
                     <Route path="/contact" element={<Contact />} />
                     <Route
                         path="/contact/success"
